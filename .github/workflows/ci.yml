@@ -20,3 +20,4 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn
       - run: yarn rome check .
+      - run: yarn rome format .
