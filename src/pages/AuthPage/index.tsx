@@ -1,7 +1,9 @@
-import { AuthForm } from "../../modules/AuthForm"
+import { AuthForm } from "../../modules/AuthForm";
 
 export function AuthPage() {
   return (
-    <div><AuthForm /></div>
-  )
+    <div>
+      <AuthForm />
+    </div>
+  );
 }

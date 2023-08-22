@@ -1,28 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { IndexPage } from './pages/IndexPage';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { IndexPage } from "./pages/IndexPage";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { AuthPage } from './pages/AuthPage';
+import { AuthPage } from "./pages/AuthPage";
 // import './index.css'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <IndexPage />
+    element: <IndexPage />,
   },
   {
     path: "/auth",
-    element: <AuthPage />
+    element: <AuthPage />,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
-)
+);
