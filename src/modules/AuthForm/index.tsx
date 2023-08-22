@@ -8,8 +8,12 @@ import {
   PublicKeyCredentialCreationOptionsJSON,
   PublicKeyCredentialRequestOptionsJSON,
 } from "@simplewebauthn/typescript-types";
+import { observer } from "mobx-react";
+import { useRootContext } from "../../context";
 
-export function AuthForm() {
+export const AuthForm = observer(() => {
+  const rootStore = useRootContext();
+
   const [email, setEmail] = useState("");
 
   const handleSubmit = async function (e: React.SyntheticEvent) {
@@ -30,35 +34,38 @@ export function AuthForm() {
     ).data;
 
     if (res.challenge.creation_challenge_response) {
-      const qq = await startRegistration(
+      const reg = await startRegistration(
         res.challenge.creation_challenge_response.publicKey,
       );
 
-      console.log(qq);
+      const data = (
+        await axios.post<ResponseData>("/api/auth/complete", {
+          id: res.id,
+          reg,
+        })
+      ).data;
 
-      const zz = await axios.post("/api/auth/complete", {
-        id: res.id,
-        reg: qq,
-      });
+      rootStore.authStore.auth(data.token);
     }
 
     if (res.challenge.request_challenge_response) {
-      const qq = await startAuthentication(
+      const auth = await startAuthentication(
         res.challenge.request_challenge_response.publicKey,
       );
 
-      console.log(qq);
+      const data = (
+        await axios.post<ResponseData>("/api/auth/login", {
+          id: res.id,
+          auth,
+        })
+      ).data;
 
-      const zz = await axios.post("/api/auth/login", {
-        id: res.id,
-        auth: qq,
-      });
+      rootStore.authStore.auth(data.token);
     }
   };
 
   return (
     <div>
-      <div>AUTH FFORM</div>
       <div>
         <form onSubmit={handleSubmit}>
           <input value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -66,4 +73,4 @@ export function AuthForm() {
       </div>
     </div>
   );
-}
+});

@@ -5,12 +5,18 @@ import { IndexPage } from "./pages/IndexPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AuthPage } from "./pages/AuthPage";
+import { Layout } from "./utils/Layout";
 // import './index.css'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <IndexPage />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <IndexPage />,
+      },
+    ],
   },
   {
     path: "/auth",
