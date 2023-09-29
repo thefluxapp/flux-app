@@ -1,0 +1,16 @@
+name: CI
+
+on: push
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install
+        run: yarn --frozen-lockfile
+
+      - name: Format
+        run: yarn biome format .
+
