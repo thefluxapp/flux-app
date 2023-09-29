@@ -11,10 +11,10 @@ import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 import { useRootContext } from "../../context";
+import { ResponseData } from "./data";
 import { type IChallenge, type IForm } from "./entities";
 
 import s from "./index.module.css";
-import { ResponseData } from "./data";
 
 export const AuthForm = observer(() => {
   const rootStore = useRootContext();
