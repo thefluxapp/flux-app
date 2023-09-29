@@ -27,3 +27,6 @@ jobs:
       - name: Format
         run: yarn biome ci .
 
+      - name: TypeScript
+        run: yarn tsc --noEmit
+
