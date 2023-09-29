@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../api";
-import { useEffect, useState } from "react";
 
 import s from "./index.module.css";
 import { IStreams } from "./models";

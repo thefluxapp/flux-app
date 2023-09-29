@@ -1,6 +1,6 @@
 import {
-  type PublicKeyCredentialRequestOptionsJSON,
   type PublicKeyCredentialCreationOptionsJSON,
+  type PublicKeyCredentialRequestOptionsJSON,
 } from "@simplewebauthn/typescript-types";
 import { type IAuthJoinRequestData } from "../../api/auth";
 

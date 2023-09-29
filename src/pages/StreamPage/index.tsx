@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { api } from "../../api";
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import { api } from "../../api";
 
 import { MessageForm } from "../../modules/MessageForm";
 import { IMessage, IMessages, IStream } from "./entities";
 
 import s from "./index.module.css";
 
-import { ReactComponent as NewImg } from "./img/new.svg";
 import { useRootContext } from "../../context";
 import { Stream } from "./Stream";
+import { ReactComponent as NewImg } from "./img/new.svg";
 
 export const StreamPage = () => {
   const { messageStore } = useRootContext();

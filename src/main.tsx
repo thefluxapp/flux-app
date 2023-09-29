@@ -2,16 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { IndexPage } from "./pages/IndexPage";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { AuthPage } from "./pages/AuthPage";
-import { Layout } from "./utils/Layout";
 import { MessagePage } from "./pages/MessagePage";
 import { StreamPage } from "./pages/StreamPage";
+import { Layout } from "./utils/Layout";
 
 import "./index.css";
 
-  const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [

@@ -1,10 +1,10 @@
-import { FC, useEffect, useRef } from "react";
-import { useRootContext } from "../../context";
 import { observer } from "mobx-react";
+import { FC, useEffect, useRef } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useRootContext } from "../../context";
 
-import s from "./index.module.css";
 import { MessageForm } from "../../modules/MessageForm";
+import s from "./index.module.css";
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();

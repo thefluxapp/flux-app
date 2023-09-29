@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { observer } from "mobx-react";
+import { useState } from "react";
 
 import { api } from "../../api";
-import { IForm } from "./entities";
 import { useRootContext } from "../../context";
+import { IForm } from "./entities";
 
 import s from "./index.module.css";
 

@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
+import { LayoutStore } from "../../utils/Layout/store";
 import { AuthStore } from "../AuthStore";
 import { MessageStore } from "../MessageStore";
-import { LayoutStore } from "../../utils/Layout/store";
 
 export class RootStore {
   initialized = false;

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { MessageForm } from "../../modules/MessageForm";
-import { useRootContext } from "../../context";
 import { useNavigate } from "react-router-dom";
+import { useRootContext } from "../../context";
+import { MessageForm } from "../../modules/MessageForm";
 
 export const MessagePage = () => {
   const rootStore = useRootContext();

@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { redirect, useNavigate } from "react-router-dom";
 import {
   startAuthentication,
   startRegistration,
@@ -9,7 +6,10 @@ import {
   PublicKeyCredentialCreationOptionsJSON,
   PublicKeyCredentialRequestOptionsJSON,
 } from "@simplewebauthn/typescript-types";
+import axios from "axios";
 import { observer } from "mobx-react";
+import { useEffect, useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 import { useRootContext } from "../../context";
 import { type IChallenge, type IForm } from "./entities";
 

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { RootStore } from "../RootStore";
 import { IStreamsShowMessage, IStreamsShowStream } from "../../api/streams";
+import { RootStore } from "../RootStore";
 
 export class MessageStore {
   rootStore: RootStore;

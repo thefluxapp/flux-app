@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 import { useRootContext } from "../context";
 import { AuthStore } from "../stores/AuthStore";
-import { StreamsApi } from "./streams";
 import { MessagesApi } from "./messages";
+import { StreamsApi } from "./streams";
 
 export class Api {
   authStore: AuthStore;
