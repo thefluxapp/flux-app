@@ -1,0 +1,34 @@
+.root {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.header {
+  display: block;
+  position: relative;
+}
+
+.logo {
+  padding: calc(var(--yr) * 2) 0;
+  margin: 0 auto;
+  height: calc(var(--yr) * 10);
+  width: calc(var(--xr) * 10);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  background: red;
+}
+
+.session {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.auth {
+  display: block;
+  line-height: calc(var(--yr) * 10);
+  padding: 0 calc(var(--xr) * 2);
+}

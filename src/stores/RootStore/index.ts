@@ -1,14 +1,20 @@
 import { makeAutoObservable } from "mobx";
 import { AuthStore } from "../AuthStore";
+import { MessageStore } from "../MessageStore";
+import { LayoutStore } from "../../utils/Layout/store";
 
 export class RootStore {
   initialized = false;
   authStore: AuthStore;
+  messageStore: MessageStore;
+  layoutStore: LayoutStore;
 
   constructor() {
     makeAutoObservable(this);
 
     this.authStore = new AuthStore(this);
+    this.messageStore = new MessageStore(this);
+    this.layoutStore = new LayoutStore(this);
 
     this.initialize();
   }

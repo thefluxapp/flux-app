@@ -38,6 +38,11 @@ export class AuthStore {
     return { token };
   };
 
+  qqq = () => {
+    console.log("QQQQ");
+    return this.token;
+  };
+
   saveToStorage = async (token: string) => {
     await localForage.setItem(tokenKeyName, token);
   };

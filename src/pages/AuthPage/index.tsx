@@ -4,9 +4,11 @@ import { useRootContext } from "../../context";
 import { redirect } from "react-router-dom";
 import { observer } from "mobx-react";
 
+import s from "./index.module.css";
+
 export const AuthPage = observer(() => {
   return (
-    <div>
+    <div className={s.root}>
       <AuthForm />
     </div>
   );

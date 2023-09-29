@@ -6,16 +6,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AuthPage } from "./pages/AuthPage";
 import { Layout } from "./utils/Layout";
-// import './index.css'
+import { MessagePage } from "./pages/MessagePage";
+import { StreamPage } from "./pages/StreamPage";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      {
-        path: "/",
-        element: <IndexPage />,
-      },
+      { path: "/", element: <IndexPage /> },
+      { path: "/message", element: <MessagePage /> },
+      { path: "/streams/:streamId", element: <StreamPage /> },
     ],
   },
   {
