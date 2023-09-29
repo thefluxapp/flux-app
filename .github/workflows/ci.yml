@@ -3,7 +3,7 @@ name: CI
 on: push
 
 jobs:
-  fmt:
+  biome:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,5 +12,5 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Format
-        run: yarn biome format .
+        run: yarn biome ci .
 
