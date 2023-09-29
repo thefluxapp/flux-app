@@ -31,7 +31,7 @@ export const MessageForm = observer(() => {
     (messageStore.stream == null && messageStore.message == null) ||
     !rootStore.isAuth
   )
-    return;
+    return null;
 
   return (
     <div className={s.root}>

@@ -14,7 +14,7 @@ export function IndexPage() {
     })();
   }, []);
 
-  if (streams == null) return;
+  if (streams == null) return null;
 
   return (
     <div className={s.root}>

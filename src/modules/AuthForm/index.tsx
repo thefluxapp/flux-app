@@ -14,6 +14,7 @@ import { useRootContext } from "../../context";
 import { type IChallenge, type IForm } from "./entities";
 
 import s from "./index.module.css";
+import { ResponseData } from "./data";
 
 export const AuthForm = observer(() => {
   const rootStore = useRootContext();
@@ -71,7 +72,7 @@ export const AuthForm = observer(() => {
   const isRegister = challenge?.creation !== null;
 
   const tryLogin = async () => {
-    if (challenge.request == null) return;
+    if (challenge.request == null) return null;
 
     const auth = await startAuthentication(challenge.request.key, false);
     const data = (
@@ -86,7 +87,7 @@ export const AuthForm = observer(() => {
   };
 
   const tryRegister = async () => {
-    if (challenge.creation == null) return;
+    if (challenge.creation == null) return null;
 
     const reg = await startRegistration(challenge.creation.key);
     const data = (

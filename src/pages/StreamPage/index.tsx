@@ -15,7 +15,7 @@ export const StreamPage = () => {
   const { messageStore } = useRootContext();
   const { streamId } = useParams();
 
-  if (streamId === undefined) return;
+  if (streamId === undefined) return null;
 
   // const [activeMessage, setActiveMessage] = useState<IMessage | null>(null);
   const [stream, setStream] = useState<IStream | null>(null);

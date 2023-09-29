@@ -1,4 +1,4 @@
-interface ResponseData {
+export interface ResponseData {
   user: {
     id: string;
   };
