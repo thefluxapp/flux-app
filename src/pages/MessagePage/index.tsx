@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRootContext } from "../../context";
 import { MessageForm } from "../../modules/MessageForm";
+import { observer } from "mobx-react";
 
-export const MessagePage = () => {
+export const MessagePage = observer(() => {
   const rootStore = useRootContext();
   const navigate = useNavigate();
   const { messageStore } = rootStore;
@@ -13,10 +14,12 @@ export const MessagePage = () => {
       navigate("/", { replace: true });
     }
 
+    messageStore.setSelf();
+
     // return () => {
     //   messageStore.setSelf(false);
     // };
-  }, []);
+  }, [rootStore.isAuth]);
 
   return <></>;
-};
+});

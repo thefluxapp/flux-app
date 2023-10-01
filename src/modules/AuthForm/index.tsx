@@ -135,6 +135,7 @@ export const AuthForm = observer(() => {
             <div className={s.input}>
               <input
                 value={form.email}
+                type="email"
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
               />
             </div>

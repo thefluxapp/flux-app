@@ -6,7 +6,7 @@ const tokenKeyName = "auth-token";
 
 export class AuthStore {
   rootStore: RootStore;
-  token?: string;
+  token?: string | null;
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this, { rootStore: false });
@@ -17,11 +17,9 @@ export class AuthStore {
   initialize = async () => {
     const { token } = await this.loadFromStorage();
 
-    if (token) {
-      runInAction(() => {
-        this.token = token;
-      });
-    }
+    runInAction(() => {
+      this.token = token;
+    });
   };
 
   auth = async (token: string) => {

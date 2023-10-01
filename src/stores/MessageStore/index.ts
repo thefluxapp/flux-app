@@ -4,7 +4,7 @@ import { RootStore } from "../RootStore";
 
 export class MessageStore {
   rootStore: RootStore;
-  // self = false;
+  self = false;
   stream: IStream | null = null;
   message: IMessage | null = null;
   onCreate: (() => void) | null = null;
@@ -18,10 +18,18 @@ export class MessageStore {
   setStream = (stream: IStream | null) => {
     this.stream = stream;
     this.message = null;
+    this.self = false;
   };
 
   setMessage = (message: IMessage | null) => {
     this.message = message;
+    this.stream = null;
+    this.self = false;
+  };
+
+  setSelf = () => {
+    this.self = true;
+    this.message = null;
     this.stream = null;
   };
 

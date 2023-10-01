@@ -25,6 +25,6 @@ export class RootStore {
   };
 
   get isAuth() {
-    return this.authStore.token != null;
+    return this.authStore.token !== null;
   }
 }

@@ -28,7 +28,9 @@ export const MessageForm = observer(() => {
   };
 
   if (
-    (messageStore.stream == null && messageStore.message == null) ||
+    (messageStore.stream == null &&
+      messageStore.message == null &&
+      !messageStore.self) ||
     !rootStore.isAuth
   )
     return null;
