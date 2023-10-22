@@ -1,0 +1,50 @@
+.item {
+  padding: 0 var(--xr);
+}
+
+.item:not(:last-child) {
+  margin: 0 0 calc(var(--yr) * 4);
+}
+
+.message {
+  display: grid;
+  padding: 0 var(--xr);
+  border-radius: var(--yr);
+  grid-template-columns: calc(var(--yr) * 8 + var(--xr)) 1fr calc(var(--yr) * 4.5 + var(--xr));
+  margin: 0;
+}
+
+.label {
+  background: rgb(var(--theme-background-secondary-color));
+  border-radius: 50%;
+  width: calc(var(--yr) * 8);
+  height: calc(var(--yr) * 8);
+  line-height: calc(var(--yr) * 8);
+  text-align: center;
+  font-size: calc(var(--yr) * 3);
+}
+
+.user {
+  margin: calc(var(--yr) * 1) 0 0;
+  font-weight: bold;
+}
+
+.new {
+  display: block;
+  appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: calc(var(--yr) * 2);
+  cursor: pointer;
+}
+
+.new svg {
+  display: block;
+  width: calc(var(--yr) * 4);
+  height: calc(var(--yr) * 4);
+}
+
+.stream {
+  margin: 0 0 var(--yr);
+}
