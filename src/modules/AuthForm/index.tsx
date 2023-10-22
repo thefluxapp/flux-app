@@ -129,50 +129,70 @@ export const AuthForm = observer(() => {
     <div className={s.root}>
       <div className={s.main}>
         <form onSubmit={handleSubmit}>
-          <div className={s.item}>
-            <div className={s.label}>E-mail</div>
-
-            <div className={s.input}>
-              <input
-                value={form.email}
-                type="email"
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-              />
-            </div>
-
-            <div className={s.desc}>
-              Регаться и входить можно будет через Face ID, но пока для
-              эксперимента на всякий случай добавил e-mail
-            </div>
-          </div>
-
           {!isRegister && (
-            <button type="submit" className={s.button}>
-              Войти
-            </button>
+            <>
+              <div className={s.desc}>
+                You can log in or sign up through Passkey (Face ID or
+                fingerprint). But please enter the email to the future.
+              </div>
+
+              <div className={s.item}>
+                <div className={s.label}>E-mail</div>
+
+                <div className={s.input}>
+                  <input
+                    value={form.email}
+                    type="email"
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+
+              <button type="submit" className={s.button}>
+                Login
+              </button>
+            </>
           )}
 
           {isRegister && (
             <>
-              <div>
-                <input
-                  value={form.first_name}
-                  onChange={(e) =>
-                    setForm({ ...form, first_name: e.target.value })
-                  }
-                />
+              <div className={s.desc}>
+                Please fill correct first name because it's using in
+                summarization algorithm
               </div>
 
-              <div>
-                <input
-                  value={form.last_name}
-                  onChange={(e) =>
-                    setForm({ ...form, last_name: e.target.value })
-                  }
-                />
+              <div className={s.item}>
+                <div className={s.label}>First name</div>
+
+                <div className={s.input}>
+                  <input
+                    value={form.first_name}
+                    name="first_name"
+                    onChange={(e) =>
+                      setForm({ ...form, first_name: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className={s.item}>
+                <div className={s.label}>Last name</div>
+
+                <div className={s.input}>
+                  <input
+                    value={form.last_name}
+                    name="last_name"
+                    onChange={(e) =>
+                      setForm({ ...form, last_name: e.target.value })
+                    }
+                  />
+                </div>
               </div>
 
               <button
+                className={s.button}
                 type="submit"
                 disabled={
                   form.first_name.length < 3 || form.last_name.length < 3

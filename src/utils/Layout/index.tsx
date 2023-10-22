@@ -13,9 +13,9 @@ export const Layout = observer(() => {
   return (
     <div className={s.root}>
       <header className={s.header}>
-        <div className={s.logo}>
+        <Link className={s.logo} to="/">
           <div className={s.img} />
-        </div>
+        </Link>
 
         <div className={s.session}>
           {!rootStore.isAuth && (
