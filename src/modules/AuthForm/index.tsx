@@ -100,6 +100,7 @@ export const AuthForm = observer(() => {
     ).data;
 
     rootStore.authStore.auth(data.token);
+    navigate("/");
   };
 
   const handleSubmit = async function (e: React.SyntheticEvent) {
@@ -160,7 +161,12 @@ export const AuthForm = observer(() => {
             <>
               <div className={s.desc}>
                 Please fill correct first name because it's using in
-                summarization algorithm
+                summarization algorithm.
+              </div>
+
+              <div className={s.desc}>
+                Имя нужно обязательно чтобы работал AI-алгоритм. Фамилия пока
+                пофик. Минимум 3 символа.
               </div>
 
               <div className={s.item}>

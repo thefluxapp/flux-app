@@ -17,6 +17,7 @@
   font-size: calc(var(--yr) * 4);
   line-height: calc(var(--yr) * 4);
   appearance: none;
+  color: rgb(var(--theme-text-primary-color));
   background: rgb(var(--theme-background-primary-color));
   box-shadow: inset 0 0 0 1px gainsboro;
   border: 0;
