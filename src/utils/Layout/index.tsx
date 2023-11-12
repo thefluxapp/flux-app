@@ -5,14 +5,19 @@ import { useRootContext } from "../../context";
 
 import { MessageForm } from "../../modules/MessageForm";
 import s from "./index.module.css";
+import { UserPushSubscriptionForm } from "../../modules/UserPushSubscriptionForm";
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();
-  const { layoutStore } = rootStore;
+  // const { layoutStore } = rootStore;
 
   return (
     <div className={s.root}>
       <header className={s.header}>
+        <div className={s.notify}>
+          <UserPushSubscriptionForm />
+        </div>
+
         <Link className={s.logo} to="/">
           <div className={s.img} />
         </Link>

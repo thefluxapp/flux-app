@@ -3,6 +3,7 @@ import { useRootContext } from "../context";
 import { AuthStore } from "../stores/AuthStore";
 import { MessagesApi } from "./messages";
 import { StreamsApi } from "./streams";
+import { UsersApi } from "./users";
 
 export class Api {
   authStore: AuthStore;
@@ -10,6 +11,7 @@ export class Api {
 
   streams = new StreamsApi(this);
   messages = new MessagesApi(this);
+  users = new UsersApi(this);
 
   constructor(authStore: AuthStore) {
     this.authStore = authStore;

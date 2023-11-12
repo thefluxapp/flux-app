@@ -9,6 +9,8 @@ import { MessagePage } from "./pages/MessagePage";
 import { StreamPage } from "./pages/StreamPage";
 import { Layout } from "./utils/Layout";
 
+// import { register } from "./worker";
+
 import "./index.css";
 
 const router = createBrowserRouter([

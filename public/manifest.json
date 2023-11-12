@@ -1,0 +1,9 @@
+{
+  "short_name": "Flux",
+  "name": "The Flux",
+  "display_override": [
+    "window-control-overlay",
+    "minimal-ui"
+  ],
+  "display": "standalone"
+}
