@@ -1,18 +1,10 @@
-onmessage = function (e) {
-  console.log("Worker: Message received from main script");
-  console.log(e);
+declare let self: ServiceWorkerGlobalScope;
+
+self.onpush = async (event) => {
+  const w = self.registration.showNotification("HI!");
+
+  console.log(event.data);
+  event.waitUntil(w);
 };
 
-onerror = function (e) {
-  console.log("Worker: Message received from main script");
-  console.log(e);
-};
-
-self.addEventListener("push", async (event) => {
-  console.log(event);
-  // const { title, body } = await event.data.json();
-
-  // self.registration.showNotification(title, {
-  //   body,
-  // });
-});
+export default null;

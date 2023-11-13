@@ -7,9 +7,14 @@ export const UserPushSubscriptionForm = observer(() => {
   const handleSubmit = async () => {
     const vapid_keys = await api.users.push_subscriptions.vapid();
 
-    const serviceWorkerRegistration = await navigator.serviceWorker.register(
-      new URL("../../worker.ts", import.meta.url),
-    );
+    const serviceWorkerRegistration =
+      await navigator.serviceWorker.getRegistration(
+        new URL("./worker.ts", import.meta.url),
+      );
+
+    console.log(serviceWorkerRegistration);
+
+    if (!serviceWorkerRegistration) return;
 
     await Notification.requestPermission();
 
