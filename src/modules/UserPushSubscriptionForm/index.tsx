@@ -24,7 +24,7 @@ export const UserPushSubscriptionForm = observer(() => {
       setPermission(p);
     }
 
-    if (p !== "granted" || !workerStore.registration) return;
+    if (p !== "granted" || !workerStore.registration) return null;
 
     const vapid_keys = await api.users.push_subscriptions.vapid();
 
@@ -50,7 +50,7 @@ export const UserPushSubscriptionForm = observer(() => {
     !workerStore.registration ||
     !rootStore.isAuth
   )
-    return;
+    return null;
 
   return (
     <div>
