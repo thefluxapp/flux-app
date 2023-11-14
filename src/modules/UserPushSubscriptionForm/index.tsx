@@ -1,8 +1,8 @@
 import axios from "axios";
 import { observe } from "mobx";
 import { observer } from "mobx-react";
-import { api } from "../../api";
 import { useEffect, useState } from "react";
+import { api } from "../../api";
 import { useRootContext } from "../../context";
 
 export const UserPushSubscriptionForm = observer(() => {

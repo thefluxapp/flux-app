@@ -4,8 +4,8 @@ import { Link, Outlet } from "react-router-dom";
 import { useRootContext } from "../../context";
 
 import { MessageForm } from "../../modules/MessageForm";
-import s from "./index.module.css";
 import { UserPushSubscriptionForm } from "../../modules/UserPushSubscriptionForm";
+import s from "./index.module.css";
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();
