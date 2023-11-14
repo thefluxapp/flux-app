@@ -33,3 +33,13 @@
   line-height: calc(var(--yr) * 10);
   padding: 0 calc(var(--xr) * 2);
 }
+
+
+.notify {
+  display: block;
+  line-height: calc(var(--yr) * 10);
+  padding: 0 calc(var(--xr) * 2);
+  position: absolute;
+  left: 0;
+  top: 0;
+}

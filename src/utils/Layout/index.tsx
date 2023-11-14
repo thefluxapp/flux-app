@@ -4,15 +4,22 @@ import { Link, Outlet } from "react-router-dom";
 import { useRootContext } from "../../context";
 
 import { MessageForm } from "../../modules/MessageForm";
+import { UserPushSubscriptionForm } from "../../modules/UserPushSubscriptionForm";
 import s from "./index.module.css";
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();
-  const { layoutStore } = rootStore;
+  const { workerStore } = rootStore;
 
   return (
     <div className={s.root}>
       <header className={s.header}>
+        {workerStore.registration && (
+          <div className={s.notify}>
+            <UserPushSubscriptionForm />
+          </div>
+        )}
+
         <Link className={s.logo} to="/">
           <div className={s.img} />
         </Link>
