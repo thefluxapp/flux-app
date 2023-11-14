@@ -1,9 +1,17 @@
 declare let self: ServiceWorkerGlobalScope;
 
-self.onpush = async (event) => {
-  const w = self.registration.showNotification("HI!");
+interface IPushNotification {
+  title: string;
+  body: string;
+}
 
-  console.log(event.data);
+self.onpush = async (event) => {
+  const { title, body } = event.data?.json() as IPushNotification;
+
+  const w = self.registration.showNotification(title, {
+    body,
+  });
+
   event.waitUntil(w);
 };
 

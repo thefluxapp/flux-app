@@ -9,14 +9,16 @@ import { UserPushSubscriptionForm } from "../../modules/UserPushSubscriptionForm
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();
-  // const { layoutStore } = rootStore;
+  const { workerStore } = rootStore;
 
   return (
     <div className={s.root}>
       <header className={s.header}>
-        <div className={s.notify}>
-          <UserPushSubscriptionForm />
-        </div>
+        {workerStore.registration && (
+          <div className={s.notify}>
+            <UserPushSubscriptionForm />
+          </div>
+        )}
 
         <Link className={s.logo} to="/">
           <div className={s.img} />

@@ -9,8 +9,6 @@ import { MessagePage } from "./pages/MessagePage";
 import { StreamPage } from "./pages/StreamPage";
 import { Layout } from "./utils/Layout";
 
-// import { register } from "./worker";
-
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -33,27 +31,3 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
-
-const serviceWorkerRegistration = await navigator.serviceWorker.getRegistration(
-  new URL("./worker.ts", import.meta.url),
-);
-
-// const serviceWorkerRegistrations =
-//   await navigator.serviceWorker.getRegistrations();
-
-// console.log("serviceWorkerRegistration");
-// console.log(serviceWorkerRegistration);
-// console.log("serviceWorkerRegistrations");
-// console.log(serviceWorkerRegistrations);
-
-if (!serviceWorkerRegistration) {
-  const qq = await navigator.serviceWorker.register(
-    new URL("./worker.ts", import.meta.url),
-    {
-      type: "module",
-    },
-  );
-
-  console.log("qq");
-  console.log(qq);
-}

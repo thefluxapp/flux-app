@@ -2,24 +2,34 @@ import axios from "axios";
 import { observe } from "mobx";
 import { observer } from "mobx-react";
 import { api } from "../../api";
+import { useEffect, useState } from "react";
+import { useRootContext } from "../../context";
 
 export const UserPushSubscriptionForm = observer(() => {
+  const rootStore = useRootContext();
+  const { workerStore, authStore } = rootStore;
+  const [permission, setPermission] = useState<NotificationPermission>();
+
+  useEffect(() => {
+    (async () => {
+      setPermission(Notification.permission);
+    })();
+  }, []);
+
   const handleSubmit = async () => {
+    let p = permission;
+
+    if (permission === "default") {
+      p = await Notification.requestPermission();
+      setPermission(p);
+    }
+
+    if (p !== "granted" || !workerStore.registration) return;
+
     const vapid_keys = await api.users.push_subscriptions.vapid();
 
-    const serviceWorkerRegistration =
-      await navigator.serviceWorker.getRegistration(
-        new URL("./worker.ts", import.meta.url),
-      );
-
-    console.log(serviceWorkerRegistration);
-
-    if (!serviceWorkerRegistration) return;
-
-    await Notification.requestPermission();
-
     const subscription = (
-      await serviceWorkerRegistration.pushManager.subscribe({
+      await workerStore.registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: vapid_keys.public_key,
       })
@@ -31,10 +41,16 @@ export const UserPushSubscriptionForm = observer(() => {
         auth_key: subscription.keys.auth,
         p256dh_key: subscription.keys.p256dh,
       });
-
-      // serviceWorkerRegistration.showNotification("QQQ");
     }
   };
+
+  if (
+    !permission ||
+    permission === "denied" ||
+    !workerStore.registration ||
+    !rootStore.isAuth
+  )
+    return;
 
   return (
     <div>
