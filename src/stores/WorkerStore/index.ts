@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { RootStore } from "../RootStore";
 
-const WORKER_PATH = new URL("../../worker.ts", import.meta.url);
+import WORKER_PATH from "./../../worker?worker&url";
 
 export class WorkerStore {
   rootStore: RootStore;
