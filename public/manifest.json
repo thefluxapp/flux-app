@@ -1,7 +1,13 @@
 {
   "short_name": "Flux",
   "name": "The Flux",
-  "display_override": ["window-control-overlay", "minimal-ui"],
   "display": "standalone",
-  "start_url": "/"
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/flux.webp",
+      "sizes": "144x144",
+      "type": "image/webp"
+    }
+  ]
 }
