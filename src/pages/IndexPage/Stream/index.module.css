@@ -1,0 +1,24 @@
+.link {
+  padding: 0 var(--xr);
+  display: flex;
+  color: inherit;
+  text-decoration: none;
+}
+
+.label {
+  background: rgb(var(--theme-background-secondary-color));
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: calc(var(--yr) * 12);
+  line-height: calc(var(--yr) * 12);
+  width: calc(var(--yr) * 12);
+  text-align: center;
+}
+
+.dt {
+  margin: 0 0 0 var(--xr);
+}
+
+.title {
+  font-weight: 600;
+}

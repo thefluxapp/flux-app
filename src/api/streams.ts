@@ -56,17 +56,25 @@ export type IStreamsShowMessages = IStreamsShowMessage[];
 export type IStreamsShowMessage = {
   id: string;
   text: string;
-  user?: IStreamsShowMessageUser;
+  status: IStreamsShowMessageStatus;
+  user: IStreamsShowMessageUser;
   stream?: IStreamsShowMessageStream;
+  order: bigint;
 };
 
 export type IStreamsShowMessageUser = {
   id: string;
   name: string;
-  label: string;
+  image: string;
 };
 
 export type IStreamsShowMessageStream = {
   id: string;
   text: string;
 };
+
+export type IStreamsShowMessageStatus =
+  | "new"
+  | "processing"
+  | "saved"
+  | "failed";

@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRootContext } from "../../context";
 import { ResponseData } from "./data";
 import { type IChallenge, type IForm } from "./entities";
@@ -103,7 +103,7 @@ export const AuthForm = observer(() => {
     navigate("/");
   };
 
-  const handleSubmit = async function (e: React.SyntheticEvent) {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     if (challenge.creation != null) {

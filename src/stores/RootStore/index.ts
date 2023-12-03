@@ -1,33 +1,41 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { LayoutStore } from "../../utils/Layout/store";
 import { AuthStore } from "../AuthStore";
-import { MessageStore } from "../MessageStore";
+import { StreamsStore } from "../StreamsStore";
 import { WorkerStore } from "../WorkerStore";
 
 export class RootStore {
   initialized = false;
   authStore: AuthStore;
-  messageStore: MessageStore;
   layoutStore: LayoutStore;
   workerStore: WorkerStore;
+  streamsStore: StreamsStore;
 
   constructor() {
     makeAutoObservable(this);
 
     this.authStore = new AuthStore(this);
-    this.messageStore = new MessageStore(this);
     this.layoutStore = new LayoutStore(this);
     this.workerStore = new WorkerStore(this);
+    this.streamsStore = new StreamsStore(this);
 
     this.initialize();
   }
 
   initialize = async () => {
-    this.authStore.initialize();
+    await this.authStore.initialize();
     this.workerStore.initialize();
+
+    runInAction(() => {
+      this.initialized = true;
+    });
   };
 
   get isAuth() {
-    return this.authStore.token !== null;
+    return this.authStore.token !== null && this.authStore.token !== undefined;
+  }
+
+  get isInitialized() {
+    return this.initialized === true;
   }
 }

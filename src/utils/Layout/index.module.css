@@ -4,42 +4,41 @@
 }
 
 .header {
-  display: block;
+  display: flex;
   position: relative;
+  padding: 0 calc(var(--xr) - var(--yr));
 }
 
 .logo {
-  padding: calc(var(--yr) * 2) 0;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 0 0;
+  padding: var(--yr);
   height: calc(var(--yr) * 10);
-  width: calc(var(--xr) * 10);
+  width: calc(var(--yr) * 10);
 }
 
-.img {
+.logo svg {
+  display: block;
   width: 100%;
   height: 100%;
-  background: gray;
+  background: rgb(var(--theme-text-primary-color));
 }
 
-.session {
-  position: absolute;
-  right: 0;
-  top: 0;
+.logo svg rect {
+  fill: rgb(var(--theme-background-primary-color));
 }
 
 .auth {
   display: block;
-  line-height: calc(var(--yr) * 10);
-  padding: 0 calc(var(--xr) * 2);
+  padding: var(--yr);
+  height: calc(var(--yr) * 10);
+  width: calc(var(--yr) * 10);
 }
 
+.auth svg path {
+  fill: rgb(var(--theme-text-primary-color));
+}
 
 .notify {
   display: block;
-  line-height: calc(var(--yr) * 10);
-  padding: 0 calc(var(--xr) * 2);
-  position: absolute;
-  left: 0;
-  top: 0;
 }

@@ -1,0 +1,83 @@
+.message {
+  display: flex;
+  padding: 0 var(--xr);
+  margin: 0 0 calc(var(--yr) * 4);
+}
+
+.dt {
+  margin: 0 0 0 var(--xr);
+  /* position: relative; */
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  padding: 0 var(--xr) calc(var(--yr) * 4);
+}
+
+/* .form .dt::before {
+  position: absolute;
+  display: block;
+  content: "";
+  inset: calc((var(--xr) - var(--yr)) * -1);
+  box-shadow: inset 0 0 0 1px red;
+  z-index: -1;
+} */
+
+
+.textarea textarea {
+  border-radius: var(--yr);
+  background: rgb(var(--theme-input-background-color));
+  display: block;
+  border: none;
+  outline: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  padding: calc(var(--yr) * 2) calc(var(--xr));
+  width: 100%;
+  resize: none;
+}
+
+.submit {
+  margin: calc(var(--yr) * 2) 0 0;
+}
+
+.submit button {
+  appearance: none;
+  background: rgb(var(--theme-button-background-color));
+  color: rgb(var(--theme-button-text-color));
+  border: 0;
+  font-family: inherit;
+  font-size: calc(var(--yr) * 3);
+  line-height: calc(var(--yr) * 4);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  border-radius: calc(var(--yr) * 4);
+  text-transform: uppercase;
+}
+
+.submit button:disabled {
+  opacity: 0.5;
+}
+
+.image {
+  height: calc(var(--yr) * 8);
+  width: calc(var(--yr) * 8);
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image img,
+.image .img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: rgb(var(--theme-background-secondary-color));
+}
+
+.user {
+  margin: 0 0 calc(var(--yr));
+}

@@ -1,0 +1,7 @@
+.root {
+  padding: calc(var(--yr) * 4) 0 0;
+}
+
+.stream {
+  margin: 0 0 calc(var(--yr) * 4);
+}
