@@ -1,6 +1,5 @@
-import { useEffect, } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 
 import s from "./index.module.css";
 

@@ -15,9 +15,8 @@ export class WorkerStore {
   }
 
   initialize = async () => {
-    let registration = await navigator.serviceWorker.getRegistration(
-      WORKER_PATH,
-    );
+    let registration =
+      await navigator.serviceWorker.getRegistration(WORKER_PATH);
 
     if (!registration) {
       registration = await navigator.serviceWorker.register(WORKER_PATH, {

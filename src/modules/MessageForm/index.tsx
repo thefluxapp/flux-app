@@ -1,8 +1,6 @@
 import { observer } from "mobx-react";
 
-
 import s from "./index.module.css";
-
 
 export const MessageForm = observer(() => {
   // const rootStore = useRootContext();

@@ -1,4 +1,4 @@
-import { makeAutoObservable, } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
 import { StreamStore } from "../StreamStore";
 

@@ -1,4 +1,3 @@
-
 import { IUser } from "../../models";
 import s from "./index.module.css";
 
