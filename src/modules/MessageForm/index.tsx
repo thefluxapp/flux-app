@@ -10,34 +10,34 @@ import s from "./index.module.css";
 import { ReactComponent as SendImg } from "./img/send.svg";
 
 export const MessageForm = observer(() => {
-  const rootStore = useRootContext();
-  const { messageStore } = rootStore;
+  // const rootStore = useRootContext();
+  // // const { messageStore } = rootStore;
 
-  const [form, setForm] = useState<IForm>({ text: "" });
+  // const [form, setForm] = useState<IForm>({ text: "" });
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  // const handleSubmit = async (e: React.SyntheticEvent) => {
+  //   e.preventDefault();
 
-    await api.messages.create({
-      ...form,
-      stream_id: messageStore.stream?.id,
-      message_id: messageStore.message?.id,
-    });
-    if (messageStore.onCreate) messageStore.onCreate();
-    setForm({ text: "" });
-  };
+  //   await api.messages.create({
+  //     ...form,
+  //     stream_id: messageStore.stream?.id,
+  //     message_id: messageStore.message?.id,
+  //   });
+  //   if (messageStore.onCreate) messageStore.onCreate();
+  //   setForm({ text: "" });
+  // };
 
-  if (
-    (messageStore.stream == null &&
-      messageStore.message == null &&
-      !messageStore.self) ||
-    !rootStore.isAuth
-  )
-    return null;
+  // if (
+  //   (messageStore.stream == null &&
+  //     messageStore.message == null &&
+  //     !messageStore.self) ||
+  //   !rootStore.isAuth
+  // )
+  //   return null;
 
   return (
     <div className={s.root}>
-      {messageStore.message && (
+      {/* {messageStore.message && (
         <div className={s.reply}>{messageStore.message.text}</div>
       )}
 
@@ -58,7 +58,7 @@ export const MessageForm = observer(() => {
             </span>
           </button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 });

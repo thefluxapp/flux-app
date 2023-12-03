@@ -1,6 +1,6 @@
-export interface ResponseData {
+export type ResponseData = {
   user: {
     id: string;
   };
   token: string;
-}
+};

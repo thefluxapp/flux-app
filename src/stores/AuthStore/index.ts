@@ -1,12 +1,15 @@
 import localForage from "localforage";
 import { makeAutoObservable, runInAction } from "mobx";
 import { RootStore } from "../RootStore";
+import { api } from "../../api";
+import { IAuthIndexUser } from "../../api/auth";
 
 const tokenKeyName = "auth-token";
 
 export class AuthStore {
   rootStore: RootStore;
-  token?: string | null;
+  token: string | null = null;
+  user: IUser | null = null;
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this, { rootStore: false });
@@ -16,9 +19,17 @@ export class AuthStore {
 
   initialize = async () => {
     const { token } = await this.loadFromStorage();
+    const { user } = await api.auth.index(token);
 
     runInAction(() => {
-      this.token = token;
+      if (user === null) {
+        if (token !== null) {
+          this.removeFromStorage();
+        }
+      } else {
+        this.user = user;
+        this.token = token;
+      }
     });
   };
 
@@ -27,6 +38,7 @@ export class AuthStore {
 
     runInAction(() => {
       this.token = token;
+      console.log(token);
     });
   };
 
@@ -36,12 +48,13 @@ export class AuthStore {
     return { token };
   };
 
-  qqq = () => {
-    console.log("QQQQ");
-    return this.token;
-  };
-
   saveToStorage = async (token: string) => {
     await localForage.setItem(tokenKeyName, token);
   };
+
+  removeFromStorage = async () => {
+    await localForage.removeItem(tokenKeyName);
+  };
 }
+
+export type IUser = IAuthIndexUser;

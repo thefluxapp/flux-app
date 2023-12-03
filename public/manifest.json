@@ -5,9 +5,9 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/flux.webp",
+      "src": "/flux.jpg",
       "sizes": "144x144",
-      "type": "image/webp"
+      "type": "image/jpeg"
     }
   ]
 }

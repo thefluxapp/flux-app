@@ -1,9 +1,11 @@
-import axios from "axios";
-import { observe } from "mobx";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
-import { api } from "../../api";
-import { useRootContext } from "../../context";
+import { useRootContext } from "../../../context";
+import { api } from "../../../api";
+
+import s from "./index.module.css";
+
+import { ReactComponent as NotifyImg } from "./assets/notify.svg";
 
 export const UserPushSubscriptionForm = observer(() => {
   const rootStore = useRootContext();
@@ -53,10 +55,8 @@ export const UserPushSubscriptionForm = observer(() => {
     return null;
 
   return (
-    <div>
-      <button type="button" onClick={handleSubmit}>
-        Notify
-      </button>
-    </div>
+    <button className={s.root} type="button" onClick={handleSubmit}>
+      <NotifyImg />
+    </button>
   );
 });
