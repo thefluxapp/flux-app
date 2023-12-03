@@ -1,10 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { api } from "../../api";
 import { IAuthIndexUser } from "../../api/auth";
-import {
-  IStreamsShowMessage,
-  IStreamsShowMessageStatus,
-} from "../../api/streams";
+import { IStreamsShowMessage } from "../../api/streams";
 import { AuthStore } from "../AuthStore";
 import { MessageStore } from "../MessageStore";
 import { StreamsStore } from "../StreamsStore";
@@ -46,9 +43,9 @@ export class StreamStore {
     // TODO: join update and load
     const stream = await api.streams.show(this.streamId);
 
-    stream.messages.forEach((message) => {
+    for (const message of stream.messages) {
       this.appendMessage(message);
-    });
+    }
   };
 
   load = async () => {
@@ -57,9 +54,9 @@ export class StreamStore {
     const stream = await api.streams.show(this.streamId);
 
     runInAction(() => {
-      stream.messages.forEach((message) => {
+      for (const message of stream.messages) {
         this.appendMessage(message);
-      });
+      }
 
       this.loaded = true;
     });
@@ -98,11 +95,13 @@ export class StreamStore {
     return Array.from(this.messages).sort((a, b) => {
       if (a.order === 0n) {
         return 1;
-      } else if (b.order === 0n) {
-        return -1;
-      } else {
-        return a.order > b.order ? 1 : 0;
       }
+
+      if (b.order === 0n) {
+        return -1;
+      }
+
+      return a.order > b.order ? 1 : 0;
     });
   }
 }

@@ -1,13 +1,8 @@
 import { observer } from "mobx-react";
-import { useState } from "react";
 
-import { api } from "../../api";
-import { useRootContext } from "../../context";
-import { IForm } from "./entities";
 
 import s from "./index.module.css";
 
-import { ReactComponent as SendImg } from "./img/send.svg";
 
 export const MessageForm = observer(() => {
   // const rootStore = useRootContext();

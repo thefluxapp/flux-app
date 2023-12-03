@@ -1,7 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { LayoutStore } from "../../utils/Layout/store";
 import { AuthStore } from "../AuthStore";
-import { MessageStore } from "../MessageStore";
 import { StreamsStore } from "../StreamsStore";
 import { WorkerStore } from "../WorkerStore";
 

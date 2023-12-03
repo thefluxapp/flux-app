@@ -1,17 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
-import { api } from "../../api";
+import { useEffect, } from "react";
+import { useParams } from "react-router-dom";
 
-import { MessageForm } from "../../modules/MessageForm";
-import { IMessage, IMessages, IStream } from "./entities";
 
 import s from "./index.module.css";
 
 import { observer } from "mobx-react";
 import { useRootContext } from "../../context";
 import { Message } from "./Message";
-import { Stream } from "./Stream";
-import { ReactComponent as NewImg } from "./img/new.svg";
 
 export const StreamPage = observer(() => {
   const { streamsStore } = useRootContext();

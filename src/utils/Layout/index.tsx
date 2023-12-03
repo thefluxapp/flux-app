@@ -6,8 +6,8 @@ import { UserPushSubscriptionForm } from "./UserPushSubscriptionForm";
 
 import s from "./index.module.css";
 
-import { ReactComponent as LoginImg } from "./assets/login.svg";
-import { ReactComponent as LogoImg } from "./assets/logo.svg";
+import LoginImg from "./assets/login.svg?react";
+import LogoImg from "./assets/logo.svg?react";
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();

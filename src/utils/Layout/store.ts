@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import { useRef } from "react";
 import { RootStore } from "../../stores/RootStore";
 
 export class LayoutStore {

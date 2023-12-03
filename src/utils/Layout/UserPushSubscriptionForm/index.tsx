@@ -5,7 +5,7 @@ import { useRootContext } from "../../../context";
 
 import s from "./index.module.css";
 
-import { ReactComponent as NotifyImg } from "./assets/notify.svg";
+import NotifyImg from "./assets/notify.svg?react";
 
 export const UserPushSubscriptionForm = observer(() => {
   const rootStore = useRootContext();
