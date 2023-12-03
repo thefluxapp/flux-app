@@ -1,4 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { api } from "../../api";
+import { IMessagesCreateRequestData } from "../../api/messages";
 import {
   IStreamsShowMessage,
   IStreamsShowMessageStatus,
@@ -7,8 +9,6 @@ import {
 } from "../../api/streams";
 import { RootStore } from "../RootStore";
 import { IMessage, StreamStore } from "../StreamStore";
-import { api } from "../../api";
-import { IMessagesCreateRequestData } from "../../api/messages";
 
 export class MessageStore {
   id: string;

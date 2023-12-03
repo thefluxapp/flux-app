@@ -7,11 +7,11 @@ import { IMessage, IMessages, IStream } from "./entities";
 
 import s from "./index.module.css";
 
+import { observer } from "mobx-react";
 import { useRootContext } from "../../context";
+import { Message } from "./Message";
 import { Stream } from "./Stream";
 import { ReactComponent as NewImg } from "./img/new.svg";
-import { observer } from "mobx-react";
-import { Message } from "./Message";
 
 export const StreamPage = observer(() => {
   const { streamsStore } = useRootContext();

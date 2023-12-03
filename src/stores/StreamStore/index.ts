@@ -1,13 +1,13 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { StreamsStore } from "../StreamsStore";
 import { api } from "../../api";
+import { IAuthIndexUser } from "../../api/auth";
 import {
   IStreamsShowMessage,
   IStreamsShowMessageStatus,
 } from "../../api/streams";
-import { MessageStore } from "../MessageStore";
-import { IAuthIndexUser } from "../../api/auth";
 import { AuthStore } from "../AuthStore";
+import { MessageStore } from "../MessageStore";
+import { StreamsStore } from "../StreamsStore";
 
 export class StreamStore {
   streamsStore: StreamsStore;

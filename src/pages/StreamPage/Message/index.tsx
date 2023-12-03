@@ -3,8 +3,8 @@ import { observer } from "mobx-react";
 import { MessageStore } from "../../../stores/MessageStore";
 // import { IStreamsShowMessageStatus } from "../../../api/streams";
 
-import s from "./index.module.css";
 import { User } from "./User";
+import s from "./index.module.css";
 
 export const Message = observer(
   ({ messageStore }: { messageStore: MessageStore }) => {

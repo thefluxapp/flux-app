@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
-import { useRootContext } from "../../../context";
 import { api } from "../../../api";
+import { useRootContext } from "../../../context";
 
 import s from "./index.module.css";
 
