@@ -22,7 +22,7 @@ export class StreamsStore {
       if (stream === undefined) {
         stream = new StreamStore(this, streamId, this.rootStore.authStore);
       } else {
-        stream.update();
+        stream.update(5);
       }
 
       this.streamsStore.set(streamId, stream);
