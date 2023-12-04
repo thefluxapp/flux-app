@@ -13,10 +13,16 @@ export class StreamsApi {
     ).data.streams;
   };
 
-  show = async (streamId: string) => {
+  show = async (streamId: string, limit: number, before?: string) => {
     return (
       await this.api.client.get<IStreamsShowResponseData>(
         `/api/streams/${streamId}`,
+        {
+          params: {
+            limit,
+            before,
+          },
+        },
       )
     ).data;
   };

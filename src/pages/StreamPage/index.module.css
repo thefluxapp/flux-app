@@ -2,6 +2,29 @@
   padding: calc(var(--yr) * 4) 0 0;
 }
 
+.prev {
+  width: 100%;
+  padding: calc(var(--yr) * 2) var(--xr);
+  margin: 0 0 calc(var(--yr) * 4);
+  border: 0;
+  background: none;
+  appearance: none;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.prev .label {
+  display: block;
+  text-decoration: underline;
+}
+
+.prev .todo {
+  display: block;
+  margin: var(--yr) 0 0;
+  font-size: calc(var(--yr) * 3);
+}
+
 /* .item {
   padding: 0 var(--xr);
 }

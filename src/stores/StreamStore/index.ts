@@ -12,7 +12,7 @@ export class StreamStore {
   streamId: string;
   loaded?: boolean;
   initialized = false;
-  // messages = new Map<string, MessageStore>();
+  lazy = false;
   messages = new Set<MessageStore>();
   message: MessageStore | null = null;
 
@@ -30,7 +30,7 @@ export class StreamStore {
   }
 
   initialize = async () => {
-    await this.load();
+    await this.load(5);
 
     this.generateMessage();
 
@@ -39,25 +39,30 @@ export class StreamStore {
     });
   };
 
-  update = async () => {
+  update = async (limit: number, before?: string) => {
     // TODO: join update and load
-    const stream = await api.streams.show(this.streamId);
+    const stream = await api.streams.show(this.streamId, limit, before);
 
     for (const message of stream.messages) {
       this.appendMessage(message);
     }
+
+    runInAction(() => {
+      this.lazy = stream.messages.length >= limit;
+    });
   };
 
-  load = async () => {
+  load = async (limit: number) => {
     this.loaded = false;
 
-    const stream = await api.streams.show(this.streamId);
+    const stream = await api.streams.show(this.streamId, limit);
 
     runInAction(() => {
       for (const message of stream.messages) {
         this.appendMessage(message);
       }
 
+      this.lazy = stream.messages.length >= limit;
       this.loaded = true;
     });
   };
@@ -91,6 +96,10 @@ export class StreamStore {
     return !this.initialized || !this.loaded;
   }
 
+  get isLazy() {
+    return this.lazy;
+  }
+
   get messageList(): Array<MessageStore> {
     return Array.from(this.messages).sort((a, b) => {
       if (a.order === 0n) {
@@ -101,7 +110,14 @@ export class StreamStore {
         return -1;
       }
 
-      return a.order > b.order ? 1 : 0;
+      if (a.order > b.order) {
+        return 1;
+      }
+      if (a.order < b.order) {
+        return -1;
+      }
+
+      return 0;
     });
   }
 }
