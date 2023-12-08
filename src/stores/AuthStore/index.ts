@@ -38,7 +38,6 @@ export class AuthStore {
 
     runInAction(() => {
       this.token = token;
-      console.log(token);
     });
   };
 
