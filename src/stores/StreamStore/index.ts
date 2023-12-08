@@ -7,12 +7,13 @@ import { MessageStore } from "../MessageStore";
 import { StreamsStore } from "../StreamsStore";
 
 export class StreamStore {
+  limit = 10;
   streamsStore: StreamsStore;
   authStore: AuthStore;
   streamId: string;
-  loaded?: boolean;
+  updating = false;
   initialized = false;
-  lazy = false;
+  depleted = false;
   messages = new Set<MessageStore>();
   message: MessageStore | null = null;
 
@@ -30,7 +31,7 @@ export class StreamStore {
   }
 
   initialize = async () => {
-    await this.load(5);
+    await this.load();
 
     this.generateMessage();
 
@@ -39,31 +40,17 @@ export class StreamStore {
     });
   };
 
-  update = async (limit: number, before?: string) => {
-    // TODO: join update and load
-    const stream = await api.streams.show(this.streamId, limit, before);
+  load = async (before?: string) => {
+    this.updating = true;
+    const stream = await api.streams.show(this.streamId, this.limit, before);
 
     for (const message of stream.messages) {
       this.appendMessage(message);
     }
 
     runInAction(() => {
-      this.lazy = stream.messages.length >= limit;
-    });
-  };
-
-  load = async (limit: number) => {
-    this.loaded = false;
-
-    const stream = await api.streams.show(this.streamId, limit);
-
-    runInAction(() => {
-      for (const message of stream.messages) {
-        this.appendMessage(message);
-      }
-
-      this.lazy = stream.messages.length >= limit;
-      this.loaded = true;
+      this.depleted = stream.messages.length < this.limit;
+      this.updating = false;
     });
   };
 
@@ -92,12 +79,16 @@ export class StreamStore {
     this.message = new MessageStore(message, this);
   };
 
-  get isLoading() {
-    return !this.initialized || !this.loaded;
+  get isInitialized() {
+    return !this.initialized;
   }
 
-  get isLazy() {
-    return this.lazy;
+  get isDepleted() {
+    return this.depleted;
+  }
+
+  get isUpdating() {
+    return this.updating;
   }
 
   get messageList(): Array<MessageStore> {

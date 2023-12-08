@@ -6,6 +6,7 @@ import s from "./index.module.css";
 import { observer } from "mobx-react";
 import { useRootContext } from "../../context";
 import { Message } from "./Message";
+import { Loader } from "./Loader";
 
 export const StreamPage = observer(() => {
   const { streamsStore } = useRootContext();
@@ -16,35 +17,21 @@ export const StreamPage = observer(() => {
     (async () => {
       await streamsStore.updateStream(streamId);
     })();
-  }, [streamId]);
 
-  const handleLoadPrevClick = async () => {
-    if (streamStore !== null) {
-      streamStore.update(5, streamStore.messageList[0].id);
-    }
-  };
+    return () => {
+      streamsStore.clear();
+    };
+  }, [streamId]);
 
   if (streamStore === null) return null;
 
   return (
     <div className={s.root}>
-      {streamStore.isLoading && <div>LOADING</div>}
+      {streamStore.isInitialized && <div>LOADING</div>}
 
-      {!streamStore.isLoading && (
+      {!streamStore.isInitialized && (
         <div>
-          {/* TODO: Make placeholder when reach the end */}
-          {streamStore.isLazy && (
-            <button
-              type="button"
-              className={s.prev}
-              onClick={handleLoadPrevClick}
-            >
-              <span className={s.label}>Загрузить старые сообщения</span>
-              <span className={s.todo}>
-                (Тут должен быть реалтайм суммарайзер, но пока заглушка)
-              </span>
-            </button>
-          )}
+          <Loader streamStore={streamStore} />
 
           <div className={s.list}>
             {streamStore.messageList.map((messageStore) => (

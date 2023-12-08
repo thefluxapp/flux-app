@@ -49,6 +49,7 @@
   appearance: none;
   background: rgb(var(--theme-button-background-color));
   color: rgb(var(--theme-button-text-color));
+  display: block;
   border: 0;
   font-family: inherit;
   font-size: calc(var(--yr) * 3);
