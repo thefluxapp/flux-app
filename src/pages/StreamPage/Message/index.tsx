@@ -43,7 +43,7 @@ export const Message = observer(
 
                 <div className={s.submit}>
                   <button type="submit" disabled={messageStore.isEmpty}>
-                    Send
+                    Отправить
                   </button>
                 </div>
               </div>
