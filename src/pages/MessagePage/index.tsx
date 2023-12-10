@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 import { useRootContext } from "../../context";
-
-import s from "./index.module.css";
 import { Message } from "./Message";
 import { Loader } from "./Loader";
+
+import s from "./index.module.css";
+import { StreamMessageStore } from "../../stores/StreamStore/StreamMessageStore";
+import { StreamStore } from "../../stores/StreamStore";
 
 export const MessagePage = observer(() => {
   const rootStore = useRootContext();
@@ -37,24 +39,11 @@ export const MessagePage = observer(() => {
 
           <div className={s.list}>
             {streamStore.messageList.map((streamMessageStore) => (
-              <>
-                {streamMessageStore.id === streamStore.messageId && (
-                  <Message
-                    key={streamMessageStore.id}
-                    streamMessageStore={streamMessageStore}
-                  />
-                )}
-
-                {streamMessageStore.id !== streamStore.messageId && (
-                  <Link
-                    className={s.link}
-                    key={streamMessageStore.id}
-                    to={`/messages/${streamMessageStore.id}`}
-                  >
-                    <Message streamMessageStore={streamMessageStore} />
-                  </Link>
-                )}
-              </>
+              <ListItem
+                key={streamMessageStore.id}
+                streamStore={streamStore}
+                streamMessageStore={streamMessageStore}
+              />
             ))}
 
             {streamStore.message !== null && (
@@ -66,3 +55,30 @@ export const MessagePage = observer(() => {
     </div>
   );
 });
+
+// TODO: Move to standalone compomnent
+const ListItem = ({
+  streamMessageStore,
+  streamStore,
+}: { streamMessageStore: StreamMessageStore; streamStore: StreamStore }) => {
+  return (
+    <>
+      {streamMessageStore.id === streamStore.messageId && (
+        <Message
+          key={streamMessageStore.id}
+          streamMessageStore={streamMessageStore}
+        />
+      )}
+
+      {streamMessageStore.id !== streamStore.messageId && (
+        <Link
+          className={s.link}
+          key={streamMessageStore.id}
+          to={`/messages/${streamMessageStore.id}`}
+        >
+          <Message streamMessageStore={streamMessageStore} />
+        </Link>
+      )}
+    </>
+  );
+};

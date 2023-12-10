@@ -8,7 +8,7 @@ import s from "./index.module.css";
 import { useRootContext } from "../../context";
 
 export const StreamsPage = observer(() => {
-  const { api } = useRootContext();
+  const { api, layoutStore } = useRootContext();
 
   const [streams, setStreams] = useState<IStreams | null>(null);
 
@@ -16,6 +16,8 @@ export const StreamsPage = observer(() => {
     (async () => {
       setStreams(await api.streams.index());
     })();
+
+    layoutStore.clearBackUrl();
   }, []);
 
   if (streams == null) return null;

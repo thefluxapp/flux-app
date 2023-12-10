@@ -83,7 +83,8 @@ export type IMessagesMessagesUser = {
 
 export type IMessagesMessagesStream = {
   id: string;
-  text: string;
+  message_id: string;
+  text?: string;
 };
 
 export type IMessageStatus = "new" | "active" | "processing";

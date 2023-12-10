@@ -8,6 +8,7 @@ import s from "./index.module.css";
 
 import LoginImg from "./assets/login.svg?react";
 import LogoImg from "./assets/logo.svg?react";
+import { Back } from "./Back";
 
 export const Layout = observer(() => {
   const rootStore = useRootContext();
@@ -21,6 +22,10 @@ export const Layout = observer(() => {
         <Link className={s.logo} to="/">
           <LogoImg />
         </Link>
+
+        <div className={s.back}>
+          <Back />
+        </div>
 
         {(rootStore.isAuth || true) && (
           <Link className={s.message} to="/messages">

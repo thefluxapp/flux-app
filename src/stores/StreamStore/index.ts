@@ -54,6 +54,17 @@ export class StreamStore {
         this.appendMessage(message);
       }
 
+      // TODO: Move from here
+      if (message.stream !== undefined) {
+        if (message.stream.message_id !== this.messageId) {
+          this.rootStore.layoutStore.setBackUrl(
+            `/messages/${message.stream.message_id}`,
+          );
+        } else {
+          this.rootStore.layoutStore.setBackUrl("/");
+        }
+      }
+
       this.depleted = messages.length < this.limit;
       this.fetching = false;
     });
