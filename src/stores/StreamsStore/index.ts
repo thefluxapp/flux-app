@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+
 import { RootStore } from "../RootStore";
 import { StreamStore } from "../StreamStore";
 
@@ -13,20 +14,24 @@ export class StreamsStore {
     this.rootStore = rootStore;
   }
 
-  updateStream = async (streamId?: string) => {
-    if (streamId === undefined) {
-      this.streamStore = null;
-    } else {
-      let stream = this.streamsStore.get(streamId);
-
-      if (stream === undefined) {
-        stream = new StreamStore(this, streamId, this.rootStore.authStore);
-      } else {
-        stream.update(5);
-      }
-
-      this.streamsStore.set(streamId, stream);
-      this.streamStore = stream;
-    }
+  clear = () => {
+    // TODO: Make smart cleanup when WS is here
+    this.streamStore = null;
+    this.streamsStore.clear();
   };
+  // updateStream = async (streamId?: string) => {
+  //   if (streamId === undefined) {
+  //     // this.streamStore = null;
+  //     // this.streamsStore.clear();
+  //   } else {
+  //     let stream = this.streamsStore.get(streamId);
+
+  //     if (stream === undefined) {
+  //       stream = new StreamStore(this, streamId, this.rootStore.authStore);
+  //     }
+
+  //     this.streamsStore.set(streamId, stream);
+  //     this.streamStore = stream;
+  //   }
+  // };
 }

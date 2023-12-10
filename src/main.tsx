@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { IndexPage } from "./pages/IndexPage";
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { RootContext } from "./context";
 import { AuthPage } from "./pages/AuthPage";
+import { MessageNewPage } from "./pages/MessageNewPage";
 import { MessagePage } from "./pages/MessagePage";
-import { StreamPage } from "./pages/StreamPage";
+import { StreamsPage } from "./pages/StreamsPage";
+import { RootStore } from "./stores/RootStore";
 import { Layout } from "./utils/Layout";
 
 import "./index.css";
@@ -15,9 +16,9 @@ const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      { path: "/", element: <IndexPage /> },
-      { path: "/message", element: <MessagePage /> },
-      { path: "/streams/:streamId", element: <StreamPage /> },
+      { path: "/", element: <StreamsPage /> },
+      { path: "/messages", element: <MessageNewPage /> },
+      { path: "/messages/:messageId", element: <MessagePage /> },
     ],
   },
   {
@@ -28,6 +29,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RootContext.Provider value={new RootStore()}>
+      <RouterProvider router={router} />
+    </RootContext.Provider>
   </React.StrictMode>,
 );

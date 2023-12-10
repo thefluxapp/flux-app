@@ -1,49 +1,47 @@
 import { observer } from "mobx-react";
 
-import { MessageStore } from "../../../stores/MessageStore";
-// import { IStreamsShowMessageStatus } from "../../../api/streams";
-
+import { StreamMessageStore } from "../../../stores/StreamStore/StreamMessageStore";
 import { User } from "./User";
+
 import s from "./index.module.css";
 
 export const Message = observer(
-  ({ messageStore }: { messageStore: MessageStore }) => {
+  ({ streamMessageStore }: { streamMessageStore: StreamMessageStore }) => {
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      messageStore.updateText(e.target.value);
+      streamMessageStore.updateText(e.target.value);
     };
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
-      messageStore.updateMessage();
+      streamMessageStore.updateMessage();
 
       e.preventDefault();
     };
 
     return (
       <div className={s.root}>
-        {messageStore.isForm && (
+        {streamMessageStore.isForm && (
           <form onSubmit={handleSubmit} className={s.form}>
             <div className={s.image}>
-              <img src={messageStore.user.image} alt={messageStore.user.name} />
+              <img
+                src={streamMessageStore.user.image}
+                alt={streamMessageStore.user.name}
+              />
             </div>
 
             <div className={s.dt}>
-              {/* <div className={s.user}>
-                <User user={messageStore.user} />
-              </div> */}
-
               <div className={s.input}>
                 <div className={s.textarea}>
                   <textarea
                     name="text"
-                    value={messageStore.text}
+                    value={streamMessageStore.text}
                     onChange={handleChange}
                     placeholder="Message.."
                   />
                 </div>
 
                 <div className={s.submit}>
-                  <button type="submit" disabled={messageStore.isEmpty}>
-                    Send
+                  <button type="submit" disabled={streamMessageStore.isEmpty}>
+                    Отправить
                   </button>
                 </div>
               </div>
@@ -51,20 +49,23 @@ export const Message = observer(
           </form>
         )}
 
-        {!messageStore.isForm && (
+        {!streamMessageStore.isForm && (
           <div className={s.message}>
             <div className={s.image}>
-              <img src={messageStore.user.image} alt={messageStore.user.name} />
+              <img
+                src={streamMessageStore.user.image}
+                alt={streamMessageStore.user.name}
+              />
             </div>
 
             <div className={s.dt}>
               <div className={s.user}>
-                <User user={messageStore.user} />
+                <User user={streamMessageStore.user} />
               </div>
 
-              <div className={s.text}>{messageStore.text}</div>
+              <div className={s.text}>{streamMessageStore.text}</div>
 
-              {messageStore.isProcessing && <div>processing..</div>}
+              {streamMessageStore.isProcessing && <div>processing..</div>}
             </div>
           </div>
         )}

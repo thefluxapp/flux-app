@@ -1,4 +1,70 @@
 .root {
-  max-width: 16rem;
-  margin: 0 auto;
+  padding: 0 var(--xr);
+}
+
+.text {
+  margin: calc(var(--yr) * 12) 0 calc(var(--yr) * 4);
+}
+
+.title {
+  margin: 0 0 calc(var(--yr) * 2);
+  font-size: calc(var(--yr) * 8);
+  line-height: calc(var(--yr) * 10);
+}
+
+.desc {
+  margin: 0 20% 0 0;
+}
+
+/* .item:not(:first-child) {
+  margin: calc(var(--yr) * 4) 0 0;
+}
+
+ */
+
+.label {
+  font-weight: bold;
+}
+
+
+.input {
+  margin: calc(var(--yr) * 2) 0 0;
+}
+
+.input input {
+  border-radius: var(--yr);
+  background: rgb(var(--theme-input-background-color));
+  display: block;
+  border: none;
+  outline: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+  color: inherit;
+  padding: calc(var(--yr) * 2) calc(var(--xr));
+  width: 100%;
+}
+
+.submit {
+  margin: calc(var(--yr) * 4) 0 0;
+}
+
+.submit button {
+  appearance: none;
+  background: rgb(var(--theme-button-background-color));
+  color: rgb(var(--theme-button-text-color));
+  display: block;
+  border: 0;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: calc(var(--yr) * 3);
+  line-height: calc(var(--yr) * 4);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  border-radius: calc(var(--yr) * 4);
+  text-transform: uppercase;
+}
+
+.submit button:disabled {
+  opacity: 0.5;
 }

@@ -1,69 +1,72 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { api } from "../../api";
+
 import { IAuthIndexUser } from "../../api/auth";
-import { IStreamsShowMessage } from "../../api/streams";
-import { AuthStore } from "../AuthStore";
-import { MessageStore } from "../MessageStore";
-import { StreamsStore } from "../StreamsStore";
+import { IMessage } from "../../api/messages";
+import { RootStore } from "../RootStore";
+import { StreamMessageStore } from "./StreamMessageStore";
 
 export class StreamStore {
-  streamsStore: StreamsStore;
-  authStore: AuthStore;
-  streamId: string;
-  loaded?: boolean;
+  limit = 5;
+  messageId: string;
+
+  fetching = false;
   initialized = false;
-  lazy = false;
-  messages = new Set<MessageStore>();
-  message: MessageStore | null = null;
+  depleted = false;
 
-  constructor(
-    streamsStore: StreamsStore,
-    streamId: string,
-    authStore: AuthStore,
-  ) {
-    makeAutoObservable(this, { streamsStore: false, authStore: false });
+  messages = new Set<StreamMessageStore>();
+  message: StreamMessageStore | null = null;
 
-    this.streamId = streamId;
-    this.streamsStore = streamsStore;
-    this.authStore = authStore;
-    this.initialize();
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore, messageId: string) {
+    makeAutoObservable(this, { rootStore: false });
+
+    this.messageId = messageId;
+
+    this.rootStore = rootStore;
   }
 
   initialize = async () => {
-    await this.load(5);
-
-    this.generateMessage();
+    await this.fetch();
+    this.appendNewMessage();
 
     runInAction(() => {
       this.initialized = true;
     });
   };
 
-  update = async (limit: number, before?: string) => {
-    // TODO: join update and load
-    const stream = await api.streams.show(this.streamId, limit, before);
+  fetch = async (before?: string) => {
+    this.fetching = true;
 
-    for (const message of stream.messages) {
-      this.appendMessage(message);
-    }
-
-    runInAction(() => {
-      this.lazy = stream.messages.length >= limit;
-    });
-  };
-
-  load = async (limit: number) => {
-    this.loaded = false;
-
-    const stream = await api.streams.show(this.streamId, limit);
+    const { message } = await this.rootStore.api.messages.show(this.messageId);
+    const { messages } = await this.rootStore.api.messages.messages(
+      this.messageId,
+      this.limit,
+      before,
+    );
 
     runInAction(() => {
-      for (const message of stream.messages) {
+      if (messages.length > 0) {
+        for (const message of messages) {
+          this.appendMessage(message);
+        }
+      } else {
         this.appendMessage(message);
       }
 
-      this.lazy = stream.messages.length >= limit;
-      this.loaded = true;
+      // TODO: Move from here
+      if (message.stream !== undefined) {
+        if (message.stream.message_id !== this.messageId) {
+          this.rootStore.layoutStore.setBackUrl(
+            `/messages/${message.stream.message_id}`,
+          );
+        } else {
+          this.rootStore.layoutStore.setBackUrl("/");
+        }
+      }
+
+      this.depleted = messages.length < this.limit;
+      this.fetching = false;
     });
   };
 
@@ -74,33 +77,37 @@ export class StreamStore {
     );
 
     if (!messageIds.has(message.id)) {
-      this.messages.add(new MessageStore(message, this));
+      this.messages.add(new StreamMessageStore(this, message));
     }
   };
 
-  generateMessage = () => {
-    if (this.authStore.user === null) return null;
+  appendNewMessage = () => {
+    if (this.rootStore.authStore.user === null) return null;
 
     const message: IMessage = {
       id: "",
       text: "",
       status: "new",
-      user: this.authStore.user,
+      user: this.rootStore.authStore.user,
       order: 0n,
     };
 
-    this.message = new MessageStore(message, this);
+    this.message = new StreamMessageStore(this, message);
   };
 
-  get isLoading() {
-    return !this.initialized || !this.loaded;
+  get isInitialized() {
+    return !this.initialized;
   }
 
-  get isLazy() {
-    return this.lazy;
+  get isDepleted() {
+    return this.depleted;
   }
 
-  get messageList(): Array<MessageStore> {
+  get isFetching() {
+    return this.fetching;
+  }
+
+  get messageList(): Array<StreamMessageStore> {
     return Array.from(this.messages).sort((a, b) => {
       if (a.order === 0n) {
         return 1;
@@ -122,5 +129,4 @@ export class StreamStore {
   }
 }
 
-export type IMessage = IStreamsShowMessage;
 export type IUser = IAuthIndexUser;

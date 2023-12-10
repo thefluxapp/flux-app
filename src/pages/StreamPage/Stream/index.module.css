@@ -1,4 +1,0 @@
-.root {
-  margin: calc(var(--yr) * 2) calc(var(--yr) * 8 + var(--xr)) 0;
-  padding: 0 var(--xr);
-}
