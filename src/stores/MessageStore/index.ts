@@ -5,6 +5,7 @@ import { RootStore } from "../RootStore";
 
 export class MessageStore {
   id: string;
+  title: string;
   text: string;
   rootStore: RootStore;
 
@@ -12,17 +13,29 @@ export class MessageStore {
     makeAutoObservable(this, { rootStore: false });
 
     this.id = "";
+    this.title = "";
     this.text = "";
 
     this.rootStore = rootStore;
   }
 
+  clear = () => {
+    this.id = "";
+    this.title = "";
+    this.text = "";
+  };
+
   updateText = (text: string) => {
     this.text = text;
   };
 
+  updateTitle = (title: string) => {
+    this.title = title;
+  };
+
   updateMessage = async () => {
     const messageData: IMessagesCreateRequestData = {
+      title: this.title,
       text: this.text,
     };
 

@@ -55,6 +55,7 @@ export type IMessagesIndexMessage = {
 };
 
 export type IMessagesCreateRequestData = {
+  title?: string;
   text: string;
   message_id?: string;
   stream_id?: string;

@@ -17,6 +17,7 @@ export const MessageNewPage = observer(() => {
     await messageStore.updateMessage();
 
     navigate(`/messages/${messageStore.id}`, { replace: true });
+    messageStore.clear();
   };
 
   useEffect(() => {
@@ -33,21 +34,30 @@ export const MessageNewPage = observer(() => {
         </div>
 
         <div className={s.dt}>
-          <div className={s.input}>
-            <div className={s.textarea}>
-              <textarea
-                name="text"
-                value={messageStore.text}
-                onChange={(e) => messageStore.updateText(e.target.value)}
-                placeholder="Message.."
-              />
-            </div>
+          <div className={s.title}>
+            <input
+              name="title"
+              className={s.input}
+              value={messageStore.title}
+              onChange={(e) => messageStore.updateTitle(e.target.value)}
+              placeholder="Title.."
+            />
+          </div>
 
-            <div className={s.submit}>
-              <button type="submit" disabled={messageStore.isEmpty}>
-                Отправить
-              </button>
-            </div>
+          <div className={s.text}>
+            <textarea
+              name="text"
+              className={s.input}
+              value={messageStore.text}
+              onChange={(e) => messageStore.updateText(e.target.value)}
+              placeholder="Message.."
+            />
+          </div>
+
+          <div className={s.submit}>
+            <button type="submit" disabled={messageStore.isEmpty}>
+              Отправить
+            </button>
           </div>
         </div>
       </form>

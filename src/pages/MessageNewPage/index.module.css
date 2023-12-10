@@ -12,7 +12,11 @@
   padding: 0 var(--xr) calc(var(--yr) * 4);
 }
 
-.textarea textarea {
+.text {
+  margin: calc(var(--yr) * 2) 0 0;
+}
+
+.input {
   border-radius: var(--yr);
   background: rgb(var(--theme-input-background-color));
   display: block;
