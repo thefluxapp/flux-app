@@ -1,9 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { IAuthIndexUser } from "../../api/auth";
+import { IMessage } from "../../api/messages";
 import { RootStore } from "../RootStore";
 import { StreamMessageStore } from "./StreamMessageStore";
-import { IMessage } from "../../api/messages";
 
 export class StreamStore {
   limit = 5;

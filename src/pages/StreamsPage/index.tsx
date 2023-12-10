@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
+import { useEffect, useState } from "react";
 
 import { Streams } from "./Streams";
 import { IStreams } from "./models";
 
-import s from "./index.module.css";
 import { useRootContext } from "../../context";
+import s from "./index.module.css";
 
 export const StreamsPage = observer(() => {
   const { api, layoutStore } = useRootContext();

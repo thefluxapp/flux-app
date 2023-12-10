@@ -2,9 +2,9 @@ import { observer } from "mobx-react";
 
 import s from "./index.module.css";
 
-import BackImg from "./assets/back.svg?react";
-import { useRootContext } from "../../../context";
 import { Link } from "react-router-dom";
+import { useRootContext } from "../../../context";
+import BackImg from "./assets/back.svg?react";
 
 export const Back = observer(() => {
   const { layoutStore } = useRootContext();

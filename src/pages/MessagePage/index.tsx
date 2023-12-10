@@ -1,14 +1,14 @@
 import { observer } from "mobx-react";
-import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import { useRootContext } from "../../context";
-import { Message } from "./Message";
 import { Loader } from "./Loader";
+import { Message } from "./Message";
 
-import s from "./index.module.css";
-import { StreamMessageStore } from "../../stores/StreamStore/StreamMessageStore";
 import { StreamStore } from "../../stores/StreamStore";
+import { StreamMessageStore } from "../../stores/StreamStore/StreamMessageStore";
+import s from "./index.module.css";
 
 export const MessagePage = observer(() => {
   const rootStore = useRootContext();

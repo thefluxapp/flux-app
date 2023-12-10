@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 import s from "./index.module.css";
 
-import NotifyImg from "./assets/notify.svg?react";
 import { useRootContext } from "../../../context";
+import NotifyImg from "./assets/notify.svg?react";
 
 export const UserPushSubscriptionForm = observer(() => {
   const rootStore = useRootContext();

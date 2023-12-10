@@ -1,11 +1,11 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { Api } from "../../api";
 import { LayoutStore } from "../../utils/Layout/store";
 import { AuthStore } from "../AuthStore";
-// import { StreamsStore } from "../StreamsStore";
-import { WorkerStore } from "../WorkerStore";
 import { MessageStore } from "../MessageStore";
 import { StreamStore } from "../StreamStore";
-import { Api } from "../../api";
+// import { StreamsStore } from "../StreamsStore";
+import { WorkerStore } from "../WorkerStore";
 
 export class RootStore {
   initialized = false;
@@ -27,7 +27,6 @@ export class RootStore {
     // this.streamsStore = new StreamsStore(this);
     this.messageStore = new MessageStore(this);
     this.api = new Api(this.authStore);
-    // new Api(new RootStore().authStore);
 
     this.initialize();
   }
