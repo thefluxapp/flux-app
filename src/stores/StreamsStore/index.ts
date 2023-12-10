@@ -18,20 +18,19 @@ export class StreamsStore {
     this.streamStore = null;
     this.streamsStore.clear();
   };
+  // updateStream = async (streamId?: string) => {
+  //   if (streamId === undefined) {
+  //     // this.streamStore = null;
+  //     // this.streamsStore.clear();
+  //   } else {
+  //     let stream = this.streamsStore.get(streamId);
 
-  updateStream = async (streamId?: string) => {
-    if (streamId === undefined) {
-      // this.streamStore = null;
-      // this.streamsStore.clear();
-    } else {
-      let stream = this.streamsStore.get(streamId);
+  //     if (stream === undefined) {
+  //       stream = new StreamStore(this, streamId, this.rootStore.authStore);
+  //     }
 
-      if (stream === undefined) {
-        stream = new StreamStore(this, streamId, this.rootStore.authStore);
-      }
-
-      this.streamsStore.set(streamId, stream);
-      this.streamStore = stream;
-    }
-  };
+  //     this.streamsStore.set(streamId, stream);
+  //     this.streamStore = stream;
+  //   }
+  // };
 }
