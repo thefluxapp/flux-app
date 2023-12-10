@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { api } from "../../api";
+import { observer } from "mobx-react";
 
 import { Streams } from "./Streams";
-import s from "./index.module.css";
 import { IStreams } from "./models";
 
-export function IndexPage() {
+import s from "./index.module.css";
+import { useRootContext } from "../../context";
+
+export const StreamsPage = observer(() => {
+  const { api } = useRootContext();
+
   const [streams, setStreams] = useState<IStreams | null>(null);
 
   useEffect(() => {
@@ -21,4 +25,4 @@ export function IndexPage() {
       <Streams streams={streams} />
     </div>
   );
-}
+});

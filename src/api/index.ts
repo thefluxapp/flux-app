@@ -1,10 +1,10 @@
 import axios, { AxiosInstance } from "axios";
-import { useRootContext } from "../context";
 import { AuthStore } from "../stores/AuthStore";
 import { AuthApi } from "./auth";
 import { MessagesApi } from "./messages";
 import { StreamsApi } from "./streams";
 import { UsersApi } from "./users";
+// import { RootStore } from "../stores/RootStore";
 
 export class Api {
   authStore: AuthStore;
@@ -28,7 +28,3 @@ export class Api {
     });
   }
 }
-
-const rootStore = useRootContext();
-
-export const api = new Api(rootStore.authStore);

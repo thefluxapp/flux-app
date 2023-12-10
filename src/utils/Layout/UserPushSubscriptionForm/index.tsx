@@ -1,15 +1,14 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
-import { api } from "../../../api";
-import { useRootContext } from "../../../context";
 
 import s from "./index.module.css";
 
 import NotifyImg from "./assets/notify.svg?react";
+import { useRootContext } from "../../../context";
 
 export const UserPushSubscriptionForm = observer(() => {
   const rootStore = useRootContext();
-  const { workerStore, authStore } = rootStore;
+  const { workerStore, authStore, api } = rootStore;
   const [permission, setPermission] = useState<NotificationPermission>();
 
   useEffect(() => {

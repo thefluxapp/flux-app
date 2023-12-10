@@ -36,6 +36,7 @@ export type IStreamsIndexStreams = IStreamsIndexStream[];
 
 export type IStreamsIndexStream = {
   id: string;
+  message_id: string;
   title: string;
   label: string;
   text: string;

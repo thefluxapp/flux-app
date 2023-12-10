@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import { Link, Outlet } from "react-router-dom";
-import { useRootContext } from "../../context";
 
+import { useRootContext } from "../../context";
 import { UserPushSubscriptionForm } from "./UserPushSubscriptionForm";
 
 import s from "./index.module.css";
@@ -21,6 +21,12 @@ export const Layout = observer(() => {
         <Link className={s.logo} to="/">
           <LogoImg />
         </Link>
+
+        {(rootStore.isAuth || true) && (
+          <Link className={s.message} to="/messages">
+            Запостить
+          </Link>
+        )}
 
         {workerStore.registration && rootStore.isAuth && (
           <div className={s.notify}>

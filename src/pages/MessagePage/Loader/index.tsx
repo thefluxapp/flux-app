@@ -8,7 +8,7 @@ export const Loader = observer(
   ({ streamStore }: { streamStore: StreamStore }) => {
     const handleClick = async () => {
       if (streamStore !== null) {
-        streamStore.load(streamStore.messageList[0].id);
+        streamStore.fetch(streamStore.messageList[0].id);
       }
     };
 
@@ -18,7 +18,7 @@ export const Loader = observer(
           onClick={handleClick}
           className={s.button}
           type="button"
-          disabled={streamStore.isUpdating || streamStore.isDepleted}
+          disabled={streamStore.isFetching || streamStore.isDepleted}
         >
           Load prev
         </button>

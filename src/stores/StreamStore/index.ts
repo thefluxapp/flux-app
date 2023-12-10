@@ -1,56 +1,61 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { api } from "../../api";
+
 import { IAuthIndexUser } from "../../api/auth";
-import { IStreamsShowMessage } from "../../api/streams";
-import { AuthStore } from "../AuthStore";
-import { MessageStore } from "../MessageStore";
-import { StreamsStore } from "../StreamsStore";
+import { RootStore } from "../RootStore";
+import { StreamMessageStore } from "./StreamMessageStore";
+import { IMessage } from "../../api/messages";
 
 export class StreamStore {
-  limit = 10;
-  streamsStore: StreamsStore;
-  authStore: AuthStore;
-  streamId: string;
-  updating = false;
+  limit = 5;
+  messageId: string;
+
+  fetching = false;
   initialized = false;
   depleted = false;
-  messages = new Set<MessageStore>();
-  message: MessageStore | null = null;
 
-  constructor(
-    streamsStore: StreamsStore,
-    streamId: string,
-    authStore: AuthStore,
-  ) {
-    makeAutoObservable(this, { streamsStore: false, authStore: false });
+  messages = new Set<StreamMessageStore>();
+  message: StreamMessageStore | null = null;
 
-    this.streamId = streamId;
-    this.streamsStore = streamsStore;
-    this.authStore = authStore;
-    this.initialize();
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore, messageId: string) {
+    makeAutoObservable(this, { rootStore: false });
+
+    this.messageId = messageId;
+
+    this.rootStore = rootStore;
   }
 
   initialize = async () => {
-    await this.load();
-
-    this.generateMessage();
+    await this.fetch();
+    this.appendNewMessage();
 
     runInAction(() => {
       this.initialized = true;
     });
   };
 
-  load = async (before?: string) => {
-    this.updating = true;
-    const stream = await api.streams.show(this.streamId, this.limit, before);
+  fetch = async (before?: string) => {
+    this.fetching = true;
 
-    for (const message of stream.messages) {
-      this.appendMessage(message);
-    }
+    const { message } = await this.rootStore.api.messages.show(this.messageId);
+    const { messages } = await this.rootStore.api.messages.messages(
+      this.messageId,
+      this.limit,
+      before,
+    );
 
     runInAction(() => {
-      this.depleted = stream.messages.length < this.limit;
-      this.updating = false;
+      if (messages.length > 0) {
+        for (const message of messages) {
+          this.appendMessage(message);
+        }
+      } else {
+        this.appendMessage(message);
+      }
+
+      this.depleted = messages.length < this.limit;
+      this.fetching = false;
     });
   };
 
@@ -61,22 +66,22 @@ export class StreamStore {
     );
 
     if (!messageIds.has(message.id)) {
-      this.messages.add(new MessageStore(message, this));
+      this.messages.add(new StreamMessageStore(this, message));
     }
   };
 
-  generateMessage = () => {
-    if (this.authStore.user === null) return null;
+  appendNewMessage = () => {
+    if (this.rootStore.authStore.user === null) return null;
 
     const message: IMessage = {
       id: "",
       text: "",
       status: "new",
-      user: this.authStore.user,
+      user: this.rootStore.authStore.user,
       order: 0n,
     };
 
-    this.message = new MessageStore(message, this);
+    this.message = new StreamMessageStore(this, message);
   };
 
   get isInitialized() {
@@ -87,11 +92,11 @@ export class StreamStore {
     return this.depleted;
   }
 
-  get isUpdating() {
-    return this.updating;
+  get isFetching() {
+    return this.fetching;
   }
 
-  get messageList(): Array<MessageStore> {
+  get messageList(): Array<StreamMessageStore> {
     return Array.from(this.messages).sort((a, b) => {
       if (a.order === 0n) {
         return 1;
@@ -113,5 +118,4 @@ export class StreamStore {
   }
 }
 
-export type IMessage = IStreamsShowMessage;
 export type IUser = IAuthIndexUser;

@@ -10,9 +10,10 @@ import axios from "axios";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRootContext } from "../../context";
+
 import { ResponseData } from "./data";
 import { type IChallenge, type IForm } from "./entities";
+import { useRootContext } from "../../context";
 
 import s from "./index.module.css";
 
