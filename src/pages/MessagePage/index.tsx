@@ -47,7 +47,10 @@ export const MessagePage = observer(() => {
             ))}
 
             {streamStore.message !== null && (
-              <Message streamMessageStore={streamStore.message} />
+              <Message
+                streamMessageStore={streamStore.message}
+                showStream={false}
+              />
             )}
           </div>
         </div>
@@ -67,6 +70,7 @@ const ListItem = ({
         <Message
           key={streamMessageStore.id}
           streamMessageStore={streamMessageStore}
+          showStream={false}
         />
       )}
 
@@ -76,7 +80,7 @@ const ListItem = ({
           key={streamMessageStore.id}
           to={`/messages/${streamMessageStore.id}`}
         >
-          <Message streamMessageStore={streamMessageStore} />
+          <Message streamMessageStore={streamMessageStore} showStream={true} />
         </Link>
       )}
     </>

@@ -6,7 +6,10 @@ import { User } from "./User";
 import s from "./index.module.css";
 
 export const Message = observer(
-  ({ streamMessageStore }: { streamMessageStore: StreamMessageStore }) => {
+  ({
+    streamMessageStore,
+    showStream,
+  }: { streamMessageStore: StreamMessageStore; showStream: boolean }) => {
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       streamMessageStore.updateText(e.target.value);
     };
@@ -65,7 +68,7 @@ export const Message = observer(
 
               <div className={s.text}>{streamMessageStore.text}</div>
 
-              {streamMessageStore.stream && (
+              {streamMessageStore.stream && showStream && (
                 <div className={s.stream}>{streamMessageStore.stream.text}</div>
               )}
 
