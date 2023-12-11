@@ -50,7 +50,7 @@ export class RootStore {
   };
 
   get isAuth() {
-    return this.authStore.token !== null && this.authStore.token !== undefined;
+    return this.initialized === true && this.authStore.user.id !== "0";
   }
 
   get isInitialized() {

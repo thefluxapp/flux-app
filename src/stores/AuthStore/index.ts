@@ -21,6 +21,10 @@ export class AuthStore {
 
   initialize = async () => {
     const { token } = await this.loadFromStorage();
+    this.fetch(token);
+  };
+
+  fetch = async (token: string | null) => {
     const { user } = await this.rootStore.api.auth.index(token);
 
     runInAction(() => {
@@ -45,10 +49,7 @@ export class AuthStore {
 
   auth = async (token: string) => {
     await this.saveToStorage(token);
-
-    runInAction(() => {
-      this.token = token;
-    });
+    this.fetch(token);
   };
 
   loadFromStorage = async () => {

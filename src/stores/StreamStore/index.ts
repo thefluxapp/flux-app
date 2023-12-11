@@ -6,7 +6,7 @@ import { RootStore } from "../RootStore";
 import { StreamMessageStore } from "./StreamMessageStore";
 
 export class StreamStore {
-  limit = 5;
+  limit = 10;
   messageId: string;
 
   fetching = false;
@@ -82,7 +82,7 @@ export class StreamStore {
   };
 
   appendNewMessage = () => {
-    if (this.rootStore.authStore.user === null) return null;
+    if (!this.rootStore.isAuth) return null;
 
     const message: IMessage = {
       id: "",

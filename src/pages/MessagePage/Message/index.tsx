@@ -65,6 +65,10 @@ export const Message = observer(
 
               <div className={s.text}>{streamMessageStore.text}</div>
 
+              {streamMessageStore.stream && (
+                <div className={s.stream}>{streamMessageStore.stream.text}</div>
+              )}
+
               {streamMessageStore.isProcessing && <div>processing..</div>}
             </div>
           </div>
