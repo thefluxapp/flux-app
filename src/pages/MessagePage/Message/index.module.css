@@ -85,4 +85,6 @@
 
 .stream {
   margin: calc(var(--yr) * 2) 0 0;
+  border-left: var(--yr) solid rgb(var(--theme-background-secondary-color));
+  padding: 0 0 0 calc(var(--yr) * 2);
 }
