@@ -28,6 +28,6 @@
     "@vitejs/plugin-react": "^4.2.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "typescript": "^5.3.2",
-    "vite": "^5.0.5"
+    "vite": "^5.0.12"
   }
 }
