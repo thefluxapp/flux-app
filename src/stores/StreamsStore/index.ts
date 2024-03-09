@@ -1,12 +1,13 @@
 import { makeAutoObservable } from "mobx";
 
 import { RootStore } from "../RootStore";
-import { StreamStore } from "../StreamStore";
+// import { StreamStore } from "../StreamStore";
 
 export class StreamsStore {
   rootStore: RootStore;
-  streamStore: StreamStore | null = null;
-  streamsStore = new Map<string, StreamStore>();
+  isCurrentUser = false;
+  // streamStore: StreamStore | null = null;
+  // streamsStore = new Map<string, StreamStore>();
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this, { rootStore: false });
@@ -14,10 +15,14 @@ export class StreamsStore {
     this.rootStore = rootStore;
   }
 
+  setIsCurrentUser = (isCurrentUser: boolean) => {
+    this.isCurrentUser = isCurrentUser;
+  };
+
   clear = () => {
     // TODO: Make smart cleanup when WS is here
-    this.streamStore = null;
-    this.streamsStore.clear();
+    // this.streamStore = null;
+    // this.streamsStore.clear();
   };
   // updateStream = async (streamId?: string) => {
   //   if (streamId === undefined) {

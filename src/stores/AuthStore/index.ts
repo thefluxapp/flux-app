@@ -8,11 +8,16 @@ const tokenKeyName = "auth-token";
 
 export class AuthStore {
   rootStore: RootStore;
-  token: string | null = null;
+  token: Promise<string | null>;
+  resolve: (value: string | null) => void = () => {};
   user: IUser;
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this, { rootStore: false });
+
+    this.token = new Promise((resolve) => {
+      this.resolve = resolve;
+    });
 
     this.user = this.placeholder();
 
@@ -21,20 +26,20 @@ export class AuthStore {
 
   initialize = async () => {
     const { token } = await this.loadFromStorage();
-    this.fetch(token);
+    this.resolve(token);
+
+    await this.fetch();
   };
 
-  fetch = async (token: string | null) => {
-    const { user } = await this.rootStore.api.auth.index(token);
+  fetch = async () => {
+    const { user } = await this.rootStore.api.auth.index();
 
     runInAction(() => {
       if (user === null) {
-        if (token !== null) {
-          this.removeFromStorage();
-        }
+        this.resolve(null);
+        this.removeFromStorage();
       } else {
         this.user = user;
-        this.token = token;
       }
     });
   };
@@ -43,13 +48,16 @@ export class AuthStore {
     return {
       id: "0",
       name: "Guest",
+      abbr: "G",
       image: "data:,",
     };
   };
 
   auth = async (token: string) => {
     await this.saveToStorage(token);
-    this.fetch(token);
+    this.token = Promise.resolve(token);
+
+    await this.fetch();
   };
 
   loadFromStorage = async () => {

@@ -24,12 +24,7 @@ export const Message = observer(
       <div className={s.root}>
         {streamMessageStore.isForm && (
           <form onSubmit={handleSubmit} className={s.form}>
-            <div className={s.image}>
-              <img
-                src={streamMessageStore.user.image}
-                alt={streamMessageStore.user.name}
-              />
-            </div>
+            <div className={s.image}>{streamMessageStore.user.abbr}</div>
 
             <div className={s.dt}>
               <div className={s.input}>
@@ -54,12 +49,7 @@ export const Message = observer(
 
         {!streamMessageStore.isForm && (
           <div className={s.message}>
-            <div className={s.image}>
-              <img
-                src={streamMessageStore.user.image}
-                alt={streamMessageStore.user.name}
-              />
-            </div>
+            <div className={s.image}>{streamMessageStore.user.abbr}</div>
 
             <div className={s.dt}>
               <div className={s.user}>

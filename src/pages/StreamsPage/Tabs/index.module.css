@@ -1,0 +1,42 @@
+.root {
+  padding: 0 var(--xr);
+  display: flex;
+  margin: 0 0 calc(var(--yr) * 2);
+}
+
+.link {
+  /* background: rgb(var(--theme-background-secondary-color)); */
+  appearance: none;
+  background: none;
+  border: 0;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  /* border-radius: calc(var(--yr) * 2); */
+  font-size: calc(var(--yr) * 3.25);
+  line-height: calc(var(--yr) * 8);
+  font-weight: 500;
+  position: relative;
+}
+
+.link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgb(var(--theme-background-active-color));
+}
+
+.link:not(:last-child) {
+  margin: 0 var(--xr) 0 0;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}

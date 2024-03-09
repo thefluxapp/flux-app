@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from "react-router-dom";
 
 import { RootContext } from "./context";
 import { AuthPage } from "./pages/AuthPage";
@@ -14,9 +18,15 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    loader: () => {
+      return redirect("/streams");
+    },
+  },
+  {
     element: <Layout />,
     children: [
-      { path: "/", element: <StreamsPage /> },
+      { path: "/streams", element: <StreamsPage /> },
       { path: "/messages", element: <MessageNewPage /> },
       { path: "/messages/:messageId", element: <MessagePage /> },
     ],

@@ -10,7 +10,7 @@ export class PushSubscriptionsApi {
   vapid = async () => {
     return (
       await this.api.client.get<IUsersPushSubscriptionsVapidResponseData>(
-        "/api/users/push_subscriptions/vapid",
+        "/api/users/push-subscriptions/vapid",
       )
     ).data;
   };
@@ -18,7 +18,7 @@ export class PushSubscriptionsApi {
   create = async (data: IUsersPushSubscriptionsCreateRequestData) => {
     return (
       await this.api.client.post<IUsersPushSubscriptionsCreateResponseData>(
-        "/api/users/push_subscriptions",
+        "/api/users/push-subscriptions",
         data,
       )
     ).data;

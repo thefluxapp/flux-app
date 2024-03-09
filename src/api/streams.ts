@@ -41,6 +41,7 @@ export type IStreamsIndexStream = {
   label: string;
   text: string;
   user?: IStreamsIndexUser;
+  is_current_user: boolean;
 };
 
 export type IStreamsIndexUser = {

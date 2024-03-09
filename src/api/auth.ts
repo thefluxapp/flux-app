@@ -7,14 +7,9 @@ export class AuthApi {
     this.api = api;
   }
 
-  index = async (token: string | null) => {
-    return (
-      await this.api.client.get<IAuthIndexResponseData>("/api/auth", {
-        headers: {
-          Authorization: token === null ? undefined : `Bearer ${token}`,
-        },
-      })
-    ).data;
+  index = async () => {
+    return (await this.api.client.get<IAuthIndexResponseData>("/api/auth"))
+      .data;
   };
 }
 
@@ -31,5 +26,6 @@ export type IAuthIndexResponseData = {
 export type IAuthIndexUser = {
   id: string;
   name: string;
-  image: string;
+  abbr: string;
+  image?: string;
 };

@@ -83,7 +83,7 @@ export const AuthPage = observer(() => {
       })
     ).data;
 
-    rootStore.authStore.auth(data.token);
+    await rootStore.authStore.auth(data.token);
     navigate("/");
   };
 
@@ -100,7 +100,7 @@ export const AuthPage = observer(() => {
       })
     ).data;
 
-    rootStore.authStore.auth(data.token);
+    await rootStore.authStore.auth(data.token);
     navigate("/");
   };
 

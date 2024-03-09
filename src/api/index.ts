@@ -19,9 +19,11 @@ export class Api {
     this.authStore = authStore;
 
     this.client = axios.create();
-    this.client.interceptors.request.use((config) => {
-      if (this.authStore.token !== null) {
-        config.headers.Authorization = `Bearer ${this.authStore.token}`;
+    this.client.interceptors.request.use(async (config) => {
+      const token = await this.authStore.token;
+
+      if (token !== null) {
+        config.headers.Authorization = `Bearer ${token}`;
       }
 
       return config;
