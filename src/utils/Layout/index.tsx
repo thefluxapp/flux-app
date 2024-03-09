@@ -7,7 +7,7 @@ import { UserPushSubscriptionForm } from "./UserPushSubscriptionForm";
 import s from "./index.module.css";
 
 import { Back } from "./Back";
-import LoginImg from "./assets/login.svg?react";
+// import LoginImg from "./assets/login.svg?react";
 import LogoImg from "./assets/logo.svg?react";
 
 export const Layout = observer(() => {
@@ -27,12 +27,6 @@ export const Layout = observer(() => {
           <Back />
         </div>
 
-        {(rootStore.isAuth || true) && (
-          <Link className={s.message} to="/messages">
-            Запостить
-          </Link>
-        )}
-
         {workerStore.registration && rootStore.isAuth && (
           <div className={s.notify}>
             <UserPushSubscriptionForm />
@@ -40,9 +34,11 @@ export const Layout = observer(() => {
         )}
 
         {!rootStore.isAuth && (
-          <Link className={s.auth} to="/auth">
-            <LoginImg />
-          </Link>
+          <div className={s.auth}>
+            <Link to="/auth" className={s.link}>
+              Войти
+            </Link>
+          </div>
         )}
       </header>
 

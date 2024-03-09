@@ -29,13 +29,22 @@
 
 .auth {
   display: block;
-  padding: var(--yr);
-  height: calc(var(--yr) * 10);
-  width: calc(var(--yr) * 10);
 }
 
-.auth svg path {
-  fill: rgb(var(--theme-text-primary-color));
+.button {
+  appearance: none;
+  background: rgb(var(--theme-button-background-color));
+  color: rgb(var(--theme-button-text-color));
+  display: block;
+  border: 0;
+  font-family: inherit;
+  font-size: calc(var(--yr) * 3.25);
+  line-height: calc(var(--yr) * 6);
+  padding: 0 calc(var(--xr) * 1.5);
+  margin: calc(var(--yr) * 2) 0;
+  border-radius: calc(var(--yr) * 3);
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .notify {

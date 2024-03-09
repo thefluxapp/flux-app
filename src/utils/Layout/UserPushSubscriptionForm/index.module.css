@@ -1,18 +1,17 @@
-.root {
+.button {
   appearance: none;
+  background: rgb(var(--theme-button-background-color));
+  color: rgb(var(--theme-button-text-color));
   display: block;
-  padding: var(--yr);
-  height: calc(var(--yr) * 10);
-  width: calc(var(--yr) * 10);
   border: 0;
-  background: none;
+  font-family: inherit;
   cursor: pointer;
-}
-
-.root svg {
-  display: block;
-}
-
-.root svg path {
-  fill: rgb(var(--theme-text-primary-color));
+  font-size: calc(var(--yr) * 2.5);
+  line-height: calc(var(--yr) * 6);
+  padding: 0 calc(var(--xr) * 1);
+  margin: calc(var(--yr) * 2) 0;
+  border-radius: calc(var(--yr) * 3);
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
 }

@@ -29,9 +29,7 @@ export const MessageNewPage = observer(() => {
   return (
     <div className={s.root}>
       <form onSubmit={handleSubmit} className={s.form}>
-        <div className={s.image}>
-          <img src={authStore.user.image} alt={authStore.user.name} />
-        </div>
+        <div className={s.image}>{authStore.user.abbr}</div>
 
         <div className={s.dt}>
           <div className={s.title}>

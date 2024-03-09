@@ -4,7 +4,7 @@ import { LayoutStore } from "../../utils/Layout/store";
 import { AuthStore } from "../AuthStore";
 import { MessageStore } from "../MessageStore";
 import { StreamStore } from "../StreamStore";
-// import { StreamsStore } from "../StreamsStore";
+import { StreamsStore } from "../StreamsStore";
 import { WorkerStore } from "../WorkerStore";
 
 export class RootStore {
@@ -13,7 +13,7 @@ export class RootStore {
   layoutStore: LayoutStore;
   workerStore: WorkerStore;
   streamStore: StreamStore | null;
-  // streamsStore: StreamsStore;
+  streamsStore: StreamsStore;
   messageStore: MessageStore;
   api: Api;
 
@@ -24,7 +24,7 @@ export class RootStore {
     this.layoutStore = new LayoutStore(this);
     this.workerStore = new WorkerStore(this);
     this.streamStore = null;
-    // this.streamsStore = new StreamsStore(this);
+    this.streamsStore = new StreamsStore(this);
     this.messageStore = new MessageStore(this);
     this.api = new Api(this.authStore);
 
@@ -32,8 +32,8 @@ export class RootStore {
   }
 
   initialize = async () => {
-    await this.authStore.initialize();
     this.workerStore.initialize();
+    await this.authStore.initialize();
 
     runInAction(() => {
       this.initialized = true;

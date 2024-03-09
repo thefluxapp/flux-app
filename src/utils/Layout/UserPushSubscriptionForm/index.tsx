@@ -1,10 +1,9 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 
-import s from "./index.module.css";
-
 import { useRootContext } from "../../../context";
-import NotifyImg from "./assets/notify.svg?react";
+
+import s from "./index.module.css";
 
 export const UserPushSubscriptionForm = observer(() => {
   const rootStore = useRootContext();
@@ -54,8 +53,10 @@ export const UserPushSubscriptionForm = observer(() => {
     return null;
 
   return (
-    <button className={s.root} type="button" onClick={handleSubmit}>
-      <NotifyImg />
-    </button>
+    <div className={s.root}>
+      <button className={s.button} type="button" onClick={handleSubmit}>
+        Уведомления
+      </button>
+    </div>
   );
 });

@@ -78,7 +78,8 @@ export type IMessagesMessagesResponseData = {
 export type IMessagesMessagesUser = {
   id: string;
   name: string;
-  image: string;
+  abbr: string;
+  image?: string;
 };
 
 export type IMessagesMessagesStream = {
