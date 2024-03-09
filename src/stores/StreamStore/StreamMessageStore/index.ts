@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { StreamStore } from "..";
-import {
+import type { StreamStore } from "..";
+import type {
   IMessage,
   IMessageStatus,
   IMessagesCreateRequestData,

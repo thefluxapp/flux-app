@@ -1,4 +1,4 @@
-import { Api } from ".";
+import type { Api } from ".";
 
 export class AuthApi {
   api: Api;

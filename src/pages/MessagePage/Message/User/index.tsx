@@ -1,4 +1,4 @@
-import { IUser } from "../../models";
+import type { IUser } from "../../models";
 
 import s from "./index.module.css";
 

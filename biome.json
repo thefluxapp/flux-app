@@ -11,13 +11,11 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "warn"
       },
       "suspicious": {
         "noConsoleLog": "warn"
-      },
-      "nursery": {
-        "noUnusedImports": "warn"
       }
     }
   }

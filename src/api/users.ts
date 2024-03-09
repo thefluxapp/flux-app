@@ -1,4 +1,4 @@
-import { Api } from ".";
+import type { Api } from ".";
 import { PushSubscriptionsApi } from "./users/push_subscriptions";
 
 export class UsersApi {

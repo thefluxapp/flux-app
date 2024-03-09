@@ -2,7 +2,7 @@ import {
   startAuthentication,
   startRegistration,
 } from "@simplewebauthn/browser";
-import {
+import type {
   PublicKeyCredentialCreationOptionsJSON,
   PublicKeyCredentialRequestOptionsJSON,
 } from "@simplewebauthn/typescript-types";
@@ -12,8 +12,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useRootContext } from "../../context";
-import { ResponseData } from "./data";
-import { type IChallenge, type IForm } from "./entities";
+import type { ResponseData } from "./data";
+import type { IChallenge, IForm } from "./entities";
 
 import s from "./index.module.css";
 

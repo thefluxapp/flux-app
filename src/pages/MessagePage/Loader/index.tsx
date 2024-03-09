@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 
-import { StreamStore } from "../../../stores/StreamStore";
+import type { StreamStore } from "../../../stores/StreamStore";
 
 import s from "./index.module.css";
 

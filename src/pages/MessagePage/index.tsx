@@ -6,8 +6,8 @@ import { useRootContext } from "../../context";
 import { Loader } from "./Loader";
 import { Message } from "./Message";
 
-import { StreamStore } from "../../stores/StreamStore";
-import { StreamMessageStore } from "../../stores/StreamStore/StreamMessageStore";
+import type { StreamStore } from "../../stores/StreamStore";
+import type { StreamMessageStore } from "../../stores/StreamStore/StreamMessageStore";
 import s from "./index.module.css";
 
 export const MessagePage = observer(() => {

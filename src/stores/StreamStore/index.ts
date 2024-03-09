@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { IAuthIndexUser } from "../../api/auth";
-import { IMessage } from "../../api/messages";
-import { RootStore } from "../RootStore";
+import type { IAuthIndexUser } from "../../api/auth";
+import type { IMessage } from "../../api/messages";
+import type { RootStore } from "../RootStore";
 import { StreamMessageStore } from "./StreamMessageStore";
 
 export class StreamStore {

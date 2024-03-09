@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { IStream } from "../models";
+import type { IStream } from "../models";
 
 import s from "./index.module.css";
 

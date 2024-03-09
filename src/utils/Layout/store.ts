@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { RootStore } from "../../stores/RootStore";
+import type { RootStore } from "../../stores/RootStore";
 
 export class LayoutStore {
   rootStore: RootStore;
