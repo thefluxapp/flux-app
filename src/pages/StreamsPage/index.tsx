@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRootContext } from "../../context";
 import { Streams } from "./Streams";
 import { Tabs } from "./Tabs";
-import { IStreams } from "./models";
+import type { IStreams } from "./models";
 
 import s from "./index.module.css";
 

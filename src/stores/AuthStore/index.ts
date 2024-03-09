@@ -1,8 +1,8 @@
 import localForage from "localforage";
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { IAuthIndexUser } from "../../api/auth";
-import { RootStore } from "../RootStore";
+import type { IAuthIndexUser } from "../../api/auth";
+import type { RootStore } from "../RootStore";
 
 const tokenKeyName = "auth-token";
 

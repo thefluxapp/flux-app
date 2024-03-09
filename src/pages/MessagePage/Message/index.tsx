@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 
-import { StreamMessageStore } from "../../../stores/StreamStore/StreamMessageStore";
+import type { StreamMessageStore } from "../../../stores/StreamStore/StreamMessageStore";
 import { User } from "./User";
 
 import s from "./index.module.css";

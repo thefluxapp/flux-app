@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 
 import { useRootContext } from "../../../context";
 import { Stream } from "../Stream";
-import { IStreams } from "../models";
+import type { IStreams } from "../models";
 
 import s from "./index.module.css";
 

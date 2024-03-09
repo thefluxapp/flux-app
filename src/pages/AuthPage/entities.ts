@@ -1,8 +1,8 @@
-import {
-  type PublicKeyCredentialCreationOptionsJSON,
-  type PublicKeyCredentialRequestOptionsJSON,
+import type {
+  PublicKeyCredentialCreationOptionsJSON,
+  PublicKeyCredentialRequestOptionsJSON,
 } from "@simplewebauthn/typescript-types";
-import { type IAuthJoinRequestData } from "../../api/auth";
+import type { IAuthJoinRequestData } from "../../api/auth";
 
 export type IChallenge = {
   creation: {

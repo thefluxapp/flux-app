@@ -1,5 +1,5 @@
-import axios, { AxiosInstance } from "axios";
-import { AuthStore } from "../stores/AuthStore";
+import axios, { type AxiosInstance } from "axios";
+import type { AuthStore } from "../stores/AuthStore";
 import { AuthApi } from "./auth";
 import { MessagesApi } from "./messages";
 import { StreamsApi } from "./streams";

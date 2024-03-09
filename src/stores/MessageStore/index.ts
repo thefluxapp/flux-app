@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { IMessagesCreateRequestData } from "../../api/messages";
-import { RootStore } from "../RootStore";
+import type { IMessagesCreateRequestData } from "../../api/messages";
+import type { RootStore } from "../RootStore";
 
 export class MessageStore {
   id: string;

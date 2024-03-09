@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { RootStore } from "../RootStore";
+import type { RootStore } from "../RootStore";
 
 import WORKER_PATH from "./../../worker?worker&url";
 
