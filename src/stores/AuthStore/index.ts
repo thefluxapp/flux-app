@@ -48,6 +48,7 @@ export class AuthStore {
     return {
       id: "0",
       name: "Guest",
+      abbr: "G",
       image: "data:,",
     };
   };
