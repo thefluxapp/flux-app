@@ -20,8 +20,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     loader: () => {
-      console.log("Q");
-
       return redirect("/streams");
     },
   },
