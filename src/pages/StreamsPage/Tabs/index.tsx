@@ -1,6 +1,6 @@
+import { clsx } from "clsx";
 import { observer } from "mobx-react";
 import { NavLink } from "react-router-dom";
-import { clsx } from "clsx";
 
 import { useRootContext } from "../../../context";
 
