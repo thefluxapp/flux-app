@@ -31,7 +31,7 @@
   display: block;
 }
 
-.button {
+.link {
   appearance: none;
   background: rgb(var(--theme-button-background-color));
   color: rgb(var(--theme-button-text-color));
