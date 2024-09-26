@@ -8,6 +8,6 @@ declare const __DEV__: boolean;
 // 	export default src;
 // }
 declare module "*.module.css" {
-	const styles: Record<string, string>;
-	export default styles;
+  const styles: Record<string, string>;
+  export default styles;
 }

@@ -6,12 +6,14 @@
     "start": "farm start",
     "build": "farm build",
     "preview": "farm preview",
-    "clean": "farm clean"
+    "clean": "farm clean",
+    "ci": "biome ci ."
   },
   "dependencies": {
     "solid-js": "^1.8.16"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.2",
     "@farmfe/cli": "^1.0.2",
     "@farmfe/core": "^1.3.0",
     "solid-refresh": "^0.7.5",
