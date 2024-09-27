@@ -9,13 +9,19 @@ export class MessagesAPI {
 
   create_message = async (data: CreateMessageRequestData) => {
     return (
-      await this.api.client.post<CreateMessageResponseData>("/api/messages", data)
+      await this.api.client.post<CreateMessageResponseData>(
+        "/api/messages",
+        data,
+      )
     ).data;
   };
 
   create_message_stream = async (data: CreateMessageStreamRequestData) => {
     return (
-      await this.api.client.post<CreateMessageStreamResponseData>("/api/messages/stream", data)
+      await this.api.client.post<CreateMessageStreamResponseData>(
+        "/api/messages/stream",
+        data,
+      )
     ).data;
   };
 
@@ -38,22 +44,20 @@ type CreateMessageStreamRequestData = {
 
 type CreateMessageStreamResponseData = {
   stream: {
-    id: string
-  }
+    id: string;
+  };
 };
 
 type CreateMessageResponseData = {
   message: {
     id: string;
     // order: bigint;
-  },
+  };
   stream: {
     id: string;
-  },
+  };
 };
 
 type ShowResponseData = {
   id: string;
 };
-
-

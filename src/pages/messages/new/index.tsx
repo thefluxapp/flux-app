@@ -3,12 +3,12 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import { useAPI } from "../../../contexts/api";
 import { useNavigate } from "@solidjs/router";
+import { useAPI } from "../../../contexts/api";
 
 export const MessagesNewPage = () => {
   const api = useAPI();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [form, setForm] = createStore({
     title: "",
@@ -20,8 +20,11 @@ export const MessagesNewPage = () => {
   ) => {
     e.preventDefault();
 
-    const data = await api.messages.create_message_stream({ title: form.title, text: form.text });
-    navigate(`/streams/${data.stream.id}`)
+    const data = await api.messages.create_message_stream({
+      title: form.title,
+      text: form.text,
+    });
+    navigate(`/streams/${data.stream.id}`);
   };
 
   return (
@@ -63,7 +66,11 @@ export const MessagesNewPage = () => {
         </div>
 
         <div class={s.submit}>
-          <button class={s.button} type="submit" disabled={form.title.length < 3 || form.text.length < 3}>
+          <button
+            class={s.button}
+            type="submit"
+            disabled={form.title.length < 3 || form.text.length < 3}
+          >
             Создать
           </button>
         </div>

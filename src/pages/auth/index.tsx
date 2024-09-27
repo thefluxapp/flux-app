@@ -1,17 +1,17 @@
-import { Show, onMount } from "solid-js";
-import { MetaProvider, Title } from "@solidjs/meta";
-import { useNavigate } from "@solidjs/router";
-import { createStore } from "solid-js/store";
 import type {
   CredentialCreationOptionsJSON,
   CredentialRequestOptionsJSON,
 } from "@github/webauthn-json";
+import { MetaProvider, Title } from "@solidjs/meta";
+import { useNavigate } from "@solidjs/router";
+import { Show, onMount } from "solid-js";
+import { createStore } from "solid-js/store";
 
-import { Join } from "./join";
+import { useAuth } from "../../contexts/auth";
 import { Complete } from "./complete";
 import type { CredentialOptions } from "./entities";
+import { Join } from "./join";
 import { Login } from "./login";
-import { useAuth } from "../../contexts/auth";
 
 export const AuthPage = () => {
   const { authStore } = useAuth();

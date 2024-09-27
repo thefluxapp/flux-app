@@ -5,8 +5,8 @@ import { createStore } from "solid-js/store";
 import s from "./index.module.css";
 
 import { useAPI } from "../../../contexts/api";
-import { useStream } from "../../../contexts/stream";
 import { useAuth } from "../../../contexts/auth";
+import { useStream } from "../../../contexts/stream";
 
 export const StreamsShowPage = () => {
   const params = useParams();

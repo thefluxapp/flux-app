@@ -1,10 +1,10 @@
 import {
   type ParentComponent,
   createContext,
-  useContext,
   onMount,
+  useContext,
 } from "solid-js";
-import { createStore, produce, type SetStoreFunction } from "solid-js/store";
+import { type SetStoreFunction, createStore } from "solid-js/store";
 
 import { useAPI } from "./api";
 import type { IndexStreamResponseData } from "./api/streams";
@@ -28,10 +28,10 @@ export const StreamsProvider: ParentComponent = (props) => {
   const update = async () => {
     const data = await api.streams.index();
 
-    console.log(data.streams)
+    console.log(data.streams);
     setStreamsStore(
       "streams",
-      data.streams
+      data.streams,
       // produce((s) => {
       //   s.streams = data.streams;
       // }),

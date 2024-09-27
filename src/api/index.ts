@@ -1,6 +1,6 @@
 import axios from "axios";
-import * as auth from "./auth";
 import { useAuth } from "../contexts/auth";
+import * as auth from "./auth";
 
 export default { auth };
 

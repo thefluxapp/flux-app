@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&display=swap");
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@93.7,372&display=swap'); */
 
 :root {
@@ -38,7 +38,8 @@ body {
 }
 
 button,
-input, textarea {
+input,
+textarea {
   font-size: inherit;
   line-height: inherit;
 }
@@ -52,8 +53,6 @@ input, textarea {
   :root {
     --theme-background-primary-color: rgb(30 30 30);
     --theme-background-secondary-color: rgb(30 30 30);
-
-
   }
 
   /* :root {

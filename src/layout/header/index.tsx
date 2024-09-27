@@ -2,8 +2,8 @@ import type { Component } from "solid-js";
 
 import s from "./index.module.css";
 
-import { Logo } from "./logo";
 import { Account } from "./account";
+import { Logo } from "./logo";
 
 export const Header: Component = () => {
   return (

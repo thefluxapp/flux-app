@@ -6,11 +6,11 @@ import { onMount } from "solid-js";
 // import { RootContext } from "../../contexts/root";
 
 export const HomePage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   onMount(() => {
-    navigate("/streams")
-  })
+    navigate("/streams");
+  });
 
   return (
     <MetaProvider>

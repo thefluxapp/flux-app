@@ -1,10 +1,10 @@
 import { type ParentComponent, createContext, useContext } from "solid-js";
-import { createStore, type SetStoreFunction } from "solid-js/store";
+import { type SetStoreFunction, createStore } from "solid-js/store";
 
 import { useAPI } from "./api";
 import type {
-  MessagesMessageResponseData,
   GetStreamStreamResponseData,
+  MessagesMessageResponseData,
 } from "./api/streams";
 
 const StreamContext = createContext({

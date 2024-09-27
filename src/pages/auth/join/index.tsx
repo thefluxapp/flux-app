@@ -36,7 +36,9 @@ export const Join = ({
 
   return (
     <div class={s.root}>
-      <div class={s.title}>Войти и зарегаться можно через Passkey (Face ID или отпечаток пальца)</div>
+      <div class={s.title}>
+        Войти и зарегаться можно через Passkey (Face ID или отпечаток пальца)
+      </div>
 
       <div class={s.desc}>
         Почта используется как идентификатор и чтобы можно было восстановить

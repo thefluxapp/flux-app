@@ -1,8 +1,8 @@
-import type { JSX } from "solid-js";
-import { createStore } from "solid-js/store";
 import type { CredentialCreationOptionsJSON } from "@github/webauthn-json";
 import { createExtended } from "@github/webauthn-json/extended";
 import { useNavigate } from "@solidjs/router";
+import type { JSX } from "solid-js";
+import { createStore } from "solid-js/store";
 
 import { useAPI } from "../../../contexts/api";
 import { useRoot } from "../../../contexts/root";

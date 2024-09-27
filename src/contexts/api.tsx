@@ -1,15 +1,15 @@
-import axios, { type AxiosInstance } from "axios";
-import { type ParentComponent, createContext, useContext } from "solid-js";
 import type {
   CredentialCreationOptionsJSON,
   CredentialRequestOptionsJSON,
   PublicKeyCredentialWithAssertionJSON,
   PublicKeyCredentialWithAttestationJSON,
 } from "@github/webauthn-json";
+import axios, { type AxiosInstance } from "axios";
+import { type ParentComponent, createContext, useContext } from "solid-js";
 
-import { type RootStore, useRoot } from "./root";
 import { MessagesAPI } from "./api/messages";
 import { StreamsAPI } from "./api/streams";
+import { type RootStore, useRoot } from "./root";
 
 const APIContext = createContext<API>(null as unknown as API);
 
@@ -81,9 +81,9 @@ class AuthAPI {
 
 export type MeResponseData = {
   user?: {
-    id: string,
-  }
-}
+    id: string;
+  };
+};
 
 export type JoinRequestData = {
   email: string;

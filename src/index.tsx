@@ -5,13 +5,13 @@ import "./index.css";
 
 import { RootProvider } from "./contexts/root";
 import { Layout } from "./layout";
+import { AccountPage } from "./pages/account";
 import { AuthPage } from "./pages/auth";
 import { HomePage } from "./pages/home";
-import { AccountPage } from "./pages/account";
-import { StreamsIndexPage } from "./pages/streams/index";
 import { MessagesNewPage } from "./pages/messages/new";
-import { StreamsWrapper } from "./pages/streams/wrapper";
+import { StreamsIndexPage } from "./pages/streams/index";
 import { StreamsShowPage } from "./pages/streams/show";
+import { StreamsWrapper } from "./pages/streams/wrapper";
 
 const root = document.getElementById("root");
 
