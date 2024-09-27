@@ -1,0 +1,19 @@
+.root {
+  padding: calc(var(--yr) * 4) var(--xr);
+}
+
+.stream {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.stream:not(:last-child) {
+  margin: 0 0 calc(var(--yr) * 6);
+}
+
+.title {
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 5);
+  font-weight: var(--font-bold);
+}

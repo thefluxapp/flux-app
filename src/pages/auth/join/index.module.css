@@ -1,0 +1,61 @@
+.root {
+  padding: calc(var(--yr) * 30) var(--xr) calc(var(--yr) * 10);
+  max-width: 35rem;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 calc(var(--yr) * 2);
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 7);
+}
+
+.desc {
+  margin: 0 0 calc(var(--yr) * 4);
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+}
+
+.label {
+  margin: 0 0 calc(var(--yr) * 1);
+  display: block;
+}
+
+.row {
+  margin: 0 0 calc(var(--yr) * 4);
+}
+
+.field {
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+  background: var(--theme-background-secondary-color);
+  display: block;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  outline: none;
+  border-radius: var(--yr);
+  padding: calc(var(--yr) * 4) var(--xr);
+}
+
+.button {
+  display: block;
+  border-radius: var(--yr);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  border: 0;
+  cursor: pointer;
+  background: var(--theme-button-primary-color);
+  color: white;
+  font-weight: var(--font-bold);
+  transition: 0.3s;
+  margin: 0 0 0 auto;
+}
+
+.button:disabled {
+  /* background: oklch(from var(--theme-button-primary-color) calc(l + 0.2) c h); */
+}
+
+.button:not(:disabled):hover {
+  /* background: oklch(from var(--theme-button-primary-color) calc(l - 0.1) c h); */
+}

@@ -10,6 +10,10 @@
     "ci": "biome ci ."
   },
   "dependencies": {
+    "@github/webauthn-json": "^2.1.1",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.14.6",
+    "axios": "^1.7.7",
     "solid-js": "^1.8.16"
   },
   "devDependencies": {
@@ -17,6 +21,7 @@
     "@farmfe/cli": "^1.0.2",
     "@farmfe/core": "^1.3.0",
     "solid-refresh": "^0.7.5",
-    "vite-plugin-solid": "^2.10.2"
+    "vite-plugin-solid": "^2.10.2",
+    "vite-plugin-solid-svg": "^0.8.1"
   }
 }

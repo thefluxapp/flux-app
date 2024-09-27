@@ -1,0 +1,18 @@
+.root {
+  padding: calc(var(--yr) * 30) var(--xr) calc(var(--yr) * 10);
+  max-width: 35rem;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 calc(var(--yr) * 2);
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 7);
+}
+
+.desc {
+  margin: 0 0 calc(var(--yr) * 4);
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+}

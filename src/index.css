@@ -1,10 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@93.7,372&display=swap'); */
+
 :root {
   color-scheme: light dark;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --yr: 0.25rem;
+  --xr: 0.75rem;
+
+  --font-normal: 400;
+  --font-bold: 550;
+
+  /* --theme-background-primary-color: oklch(0.99 0 0); */
+  /* --theme-background-secondary-color: oklch(from var(--theme-background-primary-color) calc(l - 0.03) c h); */
+
+  --theme-button-primary-color: oklch(0.44 0.1361 268.13);
 }
 
 *,
 ::after,
 ::before {
-  color: red;
   box-sizing: border-box;
+}
+
+body {
+  font-size: calc(var(--yr) * 3.5);
+  line-height: calc(var(--yr) * 4.5);
+  font-weight: var(--font-normal);
+  margin: 0;
+  background: var(--theme-background-primary-color);
+}
+
+button,
+input, textarea {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+#root {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-background-primary-color: rgb(30 30 30);
+    --theme-background-secondary-color: rgb(30 30 30);
+
+
+  }
+
+  /* :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  } */
 }

@@ -1,5 +1,6 @@
 import { defineConfig } from "@farmfe/core";
 import solid from "vite-plugin-solid";
+import svg from "vite-plugin-solid-svg";
 
 export default defineConfig({
   vitePlugins: [
@@ -7,5 +8,15 @@ export default defineConfig({
       vitePlugin: solid(),
       filters: ["\\.tsx$", "\\.jsx$"],
     }),
+    svg(),
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:3010",
+        changeOrigin: true,
+          // pathRewrite: (path: any) => path.replace(/^\/api/, ""),
+      }
+    },
+  },
 });
