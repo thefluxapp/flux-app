@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  height: calc(var(--yr) * 10);
+}
+
+.logo {
+  height: 100%;
+  margin: 0 auto 0 0;
+}
+
+.account {
+  height: 100%;
+}

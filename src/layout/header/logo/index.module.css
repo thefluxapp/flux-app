@@ -1,0 +1,11 @@
+.root {
+  display: block;
+  color: inherit;
+  height: 100%;
+  padding: calc(var(--yr) * 3) var(--xr);
+}
+
+.root svg {
+  display: block;
+  height: 100%;
+}
