@@ -7,57 +7,61 @@ export class MessagesAPI {
     this.api = api;
   }
 
-  create_message = async (data: CreateMessageRequestData) => {
+  create_message = async (data: CreateMessageRequest) => {
     return (
-      await this.api.client.post<CreateMessageResponseData>(
-        "/api/messages",
-        data,
-      )
+      await this.api.client.post<CreateMessageResponse>("/api/messages", data)
     ).data;
   };
 
-  create_message_stream = async (data: CreateMessageStreamRequestData) => {
+  get_message = async (data: GetMessageRequest) => {
     return (
-      await this.api.client.post<CreateMessageStreamResponseData>(
-        "/api/messages/stream",
-        data,
+      await this.api.client.get<GetMessageResponse>(
+        `/api/messages/${data.message_id}`,
       )
-    ).data;
-  };
-
-  show = async (messageId: string) => {
-    return (
-      await this.api.client.get<ShowResponseData>(`/api/messages/${messageId}`)
     ).data;
   };
 }
 
-type CreateMessageRequestData = {
+type GetMessageRequest = {
   message_id: string;
-  text: string;
 };
 
-type CreateMessageStreamRequestData = {
-  title: string;
-  text: string;
-};
+type GetMessageResponse = {
+  messages: {
+    message_id: string;
+    text: string;
+    user: {
+      user_id: string;
+      name: string;
+    };
+  }[];
 
-type CreateMessageStreamResponseData = {
-  stream: {
-    id: string;
-  };
-};
-
-type CreateMessageResponseData = {
   message: {
-    id: string;
+    message_id: string;
+    text: string;
+    user: {
+      user_id: string;
+      name: string;
+    };
+  };
+
+  stream: {
+    stream_id: string;
+    text: string | null;
+  } | null;
+};
+
+type CreateMessageRequest = {
+  message_id?: string;
+  text: string;
+};
+
+type CreateMessageResponse = {
+  message: {
+    message_id: string;
     // order: bigint;
   };
-  stream: {
-    id: string;
-  };
-};
-
-type ShowResponseData = {
-  id: string;
+  // stream: {
+  //   id: string;
+  // };
 };

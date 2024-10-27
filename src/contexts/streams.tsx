@@ -7,11 +7,12 @@ import {
 import { type SetStoreFunction, createStore } from "solid-js/store";
 
 import { useAPI } from "./api";
-import type { IndexStreamResponseData } from "./api/streams";
+// import type { IndexStreamResponseData } from "./api/streams";
 
 const StreamsContext = createContext({
   streamsStore: null as unknown as StreamsStore,
   setStreamsStore: null as unknown as SetStoreFunction<StreamsStore>,
+  update: null as unknown as () => Promise<void>,
 });
 
 export const StreamsProvider: ParentComponent = (props) => {
@@ -21,14 +22,15 @@ export const StreamsProvider: ParentComponent = (props) => {
     StreamsStore.initialize(),
   );
 
-  onMount(async () => {
-    update();
-  });
+  // onMount(async () => {
+  //   update();
+  // });
 
   const update = async () => {
-    const data = await api.streams.index();
+    const data = await api.streams.get_stream();
 
     console.log(data.streams);
+
     setStreamsStore(
       "streams",
       data.streams,
@@ -41,7 +43,7 @@ export const StreamsProvider: ParentComponent = (props) => {
   };
 
   return (
-    <StreamsContext.Provider value={{ streamsStore, setStreamsStore }}>
+    <StreamsContext.Provider value={{ streamsStore, setStreamsStore, update }}>
       {props.children}
     </StreamsContext.Provider>
   );
@@ -57,4 +59,8 @@ class StreamsStore {
 
 export const useStreams = () => useContext(StreamsContext);
 
-type Stream = IndexStreamResponseData;
+type Stream = {
+  id: string;
+  message_id: string;
+  text: string | null;
+};

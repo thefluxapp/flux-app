@@ -62,40 +62,36 @@ export const Complete = ({
       </div>
 
       <form class={s.form} onSubmit={handleSubmit}>
-        <div class={s.row}>
+        <div class={s.field}>
           <label class={s.label} for="first_name">
             Имя
           </label>
 
-          <div class={s.input}>
-            <input
-              class={s.field}
-              type="text"
-              name="first_name"
-              id="first_name"
-              required
-              value={form.first_name}
-              onInput={(e) => setForm("first_name", e.target.value)}
-            />
-          </div>
+          <input
+            class={s.input}
+            type="text"
+            name="first_name"
+            id="first_name"
+            required
+            value={form.first_name}
+            onInput={(e) => setForm("first_name", e.target.value)}
+          />
         </div>
 
-        <div class={s.row}>
+        <div class={s.field}>
           <label class={s.label} for="last_name">
             Фамилия
           </label>
 
-          <div class={s.input}>
-            <input
-              class={s.field}
-              type="text"
-              name="last_name"
-              id="last_name"
-              required
-              value={form.last_name}
-              onInput={(e) => setForm("last_name", e.target.value)}
-            />
-          </div>
+          <input
+            class={s.input}
+            type="text"
+            name="last_name"
+            id="last_name"
+            required
+            value={form.last_name}
+            onInput={(e) => setForm("last_name", e.target.value)}
+          />
         </div>
 
         <div class={s.submit}>

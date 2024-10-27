@@ -4,7 +4,7 @@ import { type ParentComponent, Show } from "solid-js";
 import { APIProvider } from "../contexts/api";
 import { AuthProvider } from "../contexts/auth";
 import { useRoot } from "../contexts/root";
-import { StreamProvider } from "../contexts/stream";
+import { MessagesProvider } from "../contexts/messages";
 import { StreamsProvider } from "../contexts/streams";
 import { Header } from "./header";
 
@@ -16,13 +16,13 @@ export const Layout: ParentComponent = (props) => {
       <APIProvider>
         <AuthProvider>
           <StreamsProvider>
-            <StreamProvider>
+            <MessagesProvider>
               <MetaProvider>
                 <Header />
 
                 {props.children}
               </MetaProvider>
-            </StreamProvider>
+            </MessagesProvider>
           </StreamsProvider>
         </AuthProvider>
       </APIProvider>

@@ -25,6 +25,7 @@ export const AuthProvider: ParentComponent = (props) => {
       setStore(
         produce((s) => {
           s.isAuth = true;
+          s.user = data.user;
         }),
       );
     }
@@ -40,7 +41,13 @@ export const AuthProvider: ParentComponent = (props) => {
 class AuthStore {
   isInit = false;
   isAuth = false;
+  user: IUser | null = null;
   token: string | null = null;
 }
 
 export const useAuth = () => useContext(AuthContext);
+
+type IUser = {
+  user_id: string;
+  name: string;
+};

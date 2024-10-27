@@ -1,6 +1,6 @@
 .root {
   padding: calc(var(--yr) * 30) var(--xr) calc(var(--yr) * 10);
-  max-width: 35rem;
+  max-width: 30rem;
   margin: 0 auto;
 }
 
@@ -18,15 +18,25 @@
 }
 
 .label {
-  margin: 0 0 calc(var(--yr) * 1);
+  font-size: calc(var(--yr) * 2.75);
+  line-height: calc(var(--yr) * 4);
+  margin: 0;
   display: block;
-}
-
-.row {
-  margin: 0 0 calc(var(--yr) * 4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: var(--yr) var(--xr) 0;
+  text-transform: uppercase;
 }
 
 .field {
+  margin: 0 0 calc(var(--yr) * 4);
+  position: relative;
+}
+
+.input {
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
   background: var(--theme-background-secondary-color);
   display: block;
   width: 100%;
@@ -34,7 +44,7 @@
   margin: 0;
   outline: none;
   border-radius: var(--yr);
-  padding: calc(var(--yr) * 4) var(--xr);
+  padding: calc(var(--yr) * 6) var(--xr) calc(var(--yr) * 2);
 }
 
 .button {

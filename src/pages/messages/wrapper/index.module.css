@@ -1,4 +1,4 @@
-.root {
+/* .root {
   display: flex;
   padding: 0 calc(var(--xr) / 2);
   font-size: calc(var(--yr) * 3.25);
@@ -20,5 +20,16 @@
   bottom: 0;
   height: 2px;
   background: black;
-  /* background: rgb(var(--theme-background-active-color));   */
+} */
+
+.new {
+  padding: 0 var(--xr);
+  max-width: 40rem;
+  margin: 0 auto calc(var(--yr) * 10);
+}
+
+.tabs {
+  padding: 0 var(--xr);
+  max-width: 40rem;
+  margin: 0 auto;
 }

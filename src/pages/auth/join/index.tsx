@@ -46,23 +46,20 @@ export const Join = ({
       </div>
 
       <form class={s.form} onSubmit={handleSubmit}>
-        <div class={s.row}>
-          {/* <label class={s.label} for="email">
+        <div class={s.field}>
+          <label class={s.label} for="email">
             Email
-          </label> */}
+          </label>
 
-          <div class={s.input}>
-            <input
-              class={s.field}
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              id="email"
-              required
-              value={form.email}
-              onInput={(e) => setForm("email", e.target.value)}
-            />
-          </div>
+          <input
+            class={s.input}
+            type="email"
+            name="email"
+            id="email"
+            required
+            value={form.email}
+            onInput={(e) => setForm("email", e.target.value)}
+          />
         </div>
 
         <div class={s.submit}>

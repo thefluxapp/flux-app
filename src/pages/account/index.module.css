@@ -1,6 +1,6 @@
 .root {
   padding: calc(var(--yr) * 30) var(--xr) calc(var(--yr) * 10);
-  max-width: 35rem;
+  max-width: 30rem;
   margin: 0 auto;
 }
 

@@ -1,4 +1,5 @@
 import type { Component } from "solid-js";
+import { A } from "@solidjs/router";
 
 import { useAuth } from "../../../contexts/auth";
 
@@ -10,8 +11,8 @@ export const Account: Component = () => {
   const { authStore } = useAuth();
 
   return (
-    <a href={authStore.isAuth ? "/account" : "/auth"} class={s.root}>
+    <A href={authStore.isAuth ? "/account" : "/auth"} class={s.root}>
       <AccountImg />
-    </a>
+    </A>
   );
 };

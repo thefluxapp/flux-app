@@ -17,10 +17,16 @@
   --font-normal: 400;
   --font-bold: 550;
 
-  /* --theme-background-primary-color: oklch(0.99 0 0); */
-  /* --theme-background-secondary-color: oklch(from var(--theme-background-primary-color) calc(l - 0.03) c h); */
+  --theme-text-primary-color: lch(2% 0 0);
+  --theme-background-primary-color: lch(98 0 0);
+  --theme-background-secondary-color: lch(
+    from var(--theme-background-primary-color) calc(l - 3) c h
+  );
+  --theme-background-secondary-color-active: lch(
+    from var(--theme-background-secondary-color) calc(l - 3) c h
+  );
 
-  --theme-button-primary-color: oklch(0.44 0.1361 268.13);
+  /* --theme-button-primary-color: lch(33.52% 50 284.77); */
 }
 
 *,
@@ -34,6 +40,7 @@ body {
   line-height: calc(var(--yr) * 4.5);
   font-weight: var(--font-normal);
   margin: 0;
+  color: var(--theme-text-primary-color);
   background: var(--theme-background-primary-color);
 }
 
@@ -51,8 +58,12 @@ textarea {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --theme-background-primary-color: rgb(30 30 30);
-    --theme-background-secondary-color: rgb(30 30 30);
+    --theme-text-primary-color: lch(88% 0 0);
+    --theme-background-primary-color: lch(10% 0 0);
+
+    /* --theme-text-primary-color: lch(2% 0 0); */
+    /* --theme-background-primary-color: rgb(30 30 30); */
+    /* --theme-background-secondary-color: rgb(30 30 30); */
   }
 
   /* :root {

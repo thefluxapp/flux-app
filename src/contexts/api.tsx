@@ -80,9 +80,10 @@ class AuthAPI {
 }
 
 export type MeResponseData = {
-  user?: {
-    id: string;
-  };
+  user: {
+    user_id: string;
+    name: string;
+  } | null;
 };
 
 export type JoinRequestData = {

@@ -8,10 +8,10 @@ import { Layout } from "./layout";
 import { AccountPage } from "./pages/account";
 import { AuthPage } from "./pages/auth";
 import { HomePage } from "./pages/home";
+import { MessagesIndexPage } from "./pages/messages/index";
+import { MessagesShowPage } from "./pages/messages/show";
+import { MessagesWrapper } from "./pages/messages/wrapper";
 import { MessagesNewPage } from "./pages/messages/new";
-import { StreamsIndexPage } from "./pages/streams/index";
-import { StreamsShowPage } from "./pages/streams/show";
-import { StreamsWrapper } from "./pages/streams/wrapper";
 
 const root = document.getElementById("root");
 
@@ -26,12 +26,12 @@ render(
         <Route path="/" component={HomePage} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/account" component={AccountPage} />
-        <Route path="/streams" component={StreamsWrapper}>
-          <Route path={["/", "/my"]} component={StreamsIndexPage} />
+        <Route path="/messages" component={MessagesWrapper}>
+          <Route path={["/", "/my"]} component={MessagesIndexPage} />
           <Route path="/new" component={MessagesNewPage} />
         </Route>
 
-        <Route path="/streams/:id" component={StreamsShowPage} />
+        <Route path="/messages/:id" component={MessagesShowPage} />
       </Router>
     </RootProvider>
   ),

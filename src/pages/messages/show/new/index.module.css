@@ -1,0 +1,49 @@
+/* .input {
+  color: inherit;
+  font-size: inherit;
+  border: 0;
+  background: var(--theme-background-secondary-color);
+  width: 100%;
+  resize: vertical;
+} */
+
+.root {
+  margin: 0 calc(var(--xr) / 2 * -1);
+}
+
+.label {
+  /* font-size: calc(var(--yr) * 2.75); */
+  line-height: calc(var(--yr) * 4);
+  font-size: calc(var(--yr) * 3);
+  font-weight: var(--font-bold);
+  margin: 0;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: var(--yr) calc(var(--xr) / 2);
+  user-select: none;
+  /* text-transform: uppercase; */
+}
+
+.field {
+  margin: 0 0 calc(var(--yr) * 4);
+  position: relative;
+}
+
+.input {
+  /* font-size: calc(var(--yr) * 4); */
+  /* line-height: calc(var(--yr) * 6); */
+  color: inherit;
+  font-size: inherit;
+  background: var(--theme-background-secondary-color);
+  display: block;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  outline: none;
+  border-radius: var(--yr);
+  padding: calc(var(--yr) * 6) calc(var(--xr) / 2) calc(var(--yr) * 2);
+  resize: vertical;
+  field-sizing: content;
+}

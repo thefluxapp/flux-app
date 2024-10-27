@@ -1,0 +1,11 @@
+.root {
+  padding: calc(var(--yr) * 4) var(--xr);
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
