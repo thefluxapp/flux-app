@@ -2,10 +2,13 @@ import { A, useMatch } from "@solidjs/router";
 import { Show, type ParentComponent } from "solid-js";
 
 import s from "./index.module.css";
+
 import { MessagesNew } from "./new";
+import { useI18n } from "../../../contexts/i18n";
 
 export const MessagesWrapper: ParentComponent = (props) => {
   const isStreamsNew = useMatch(() => "/messages/new");
+  const { t } = useI18n();
 
   return (
     <>
@@ -22,10 +25,10 @@ export const MessagesWrapper: ParentComponent = (props) => {
               class={s.link}
               activeClass={s.active}
             >
-              Все стримы
+              {t.streams.all()}
             </A>
             <A href="/messages/my" class={s.link} activeClass={s.active}>
-              Только мои
+              {t.streams.my()}
             </A>
           </div>
         </Show>
