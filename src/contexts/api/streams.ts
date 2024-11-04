@@ -17,5 +17,9 @@ type IndexResponse = {
     id: string;
     message_id: string;
     text: string | null;
+    users: {
+      user_id: string;
+      name: string;
+    }[];
   }[];
 };

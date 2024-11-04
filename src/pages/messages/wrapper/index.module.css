@@ -25,7 +25,7 @@
 .new {
   padding: 0 var(--xr);
   max-width: 40rem;
-  margin: 0 auto calc(var(--yr) * 10);
+  margin: calc(var(--yr) * 4) auto calc(var(--yr) * 10);
 }
 
 .tabs {

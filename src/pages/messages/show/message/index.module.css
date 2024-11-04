@@ -14,3 +14,18 @@
   border-left: var(--yr) solid var(--theme-background-secondary-color);
   margin: calc(var(--yr) * 2) 0 0;
 }
+
+.users {
+  display: flex;
+  padding: var(--yr) 0;
+}
+
+.user {
+  font-size: calc(var(--yr) * 3);
+  line-height: calc(var(--yr) * 4);
+  font-weight: var(--font-bold);
+}
+
+.user:not(:last-child) {
+  margin: 0 var(--xr) 0 0;
+}

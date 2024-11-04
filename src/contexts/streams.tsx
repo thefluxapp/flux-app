@@ -29,7 +29,7 @@ export const StreamsProvider: ParentComponent = (props) => {
   const update = async () => {
     const data = await api.streams.get_stream();
 
-    console.log(data.streams);
+    // console.log(data.streams);
 
     setStreamsStore(
       "streams",
@@ -63,4 +63,8 @@ type Stream = {
   id: string;
   message_id: string;
   text: string | null;
+  users: {
+    user_id: string;
+    name: string;
+  }[];
 };

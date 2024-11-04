@@ -74,6 +74,10 @@ export type IMessage = {
   };
   stream?: {
     text: string;
+    users: {
+      user_id: string;
+      name: string;
+    }[];
   };
 };
 

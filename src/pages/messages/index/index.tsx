@@ -23,6 +23,16 @@ export const MessagesIndexPage = () => {
             <div class={s.text}>
               {stream.text !== null ? stream.text : "..."}
             </div>
+
+            <div class={s.users}>
+              <For each={stream.users}>
+                {(user) => (
+                  <div class={s.user}>
+                    <div>{user.name}</div>
+                  </div>
+                )}
+              </For>
+            </div>
           </A>
         )}
       </For>
