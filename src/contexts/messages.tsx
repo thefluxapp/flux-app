@@ -71,17 +71,20 @@ export type IMessage = {
   user: {
     user_id: string;
     name: string;
+    first_name: string;
+    last_name: string;
   };
-  stream?: {
-    text: string;
-    users: {
-      user_id: string;
-      name: string;
-    }[];
-  };
+  stream?: IStream;
 };
 
-type IStream = {
+export type IStream = {
   stream_id: string;
+  message_id: string;
   text: string | null;
+  users: {
+    user_id: string;
+    name: string;
+    first_name: string;
+    last_name: string;
+  }[];
 };

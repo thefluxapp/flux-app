@@ -4,6 +4,7 @@ import { For, createEffect } from "solid-js";
 import s from "./index.module.css";
 
 import { useStreams } from "../../../contexts/streams";
+import { Stream } from "./stream";
 
 export const MessagesIndexPage = () => {
   const location = useLocation();
@@ -18,23 +19,7 @@ export const MessagesIndexPage = () => {
   return (
     <div class={s.root}>
       <For each={streamsStore.streams}>
-        {(stream) => (
-          <A href={`/messages/${stream.message_id}`} class={s.stream}>
-            <div class={s.text}>
-              {stream.text !== null ? stream.text : "..."}
-            </div>
-
-            <div class={s.users}>
-              <For each={stream.users}>
-                {(user) => (
-                  <div class={s.user}>
-                    <div>{user.name}</div>
-                  </div>
-                )}
-              </For>
-            </div>
-          </A>
-        )}
+        {(stream) => <Stream stream={stream} />}
       </For>
     </div>
   );

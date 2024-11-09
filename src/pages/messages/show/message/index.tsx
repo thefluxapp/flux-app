@@ -1,31 +1,39 @@
-import { For, type Component } from "solid-js";
-
-import type { IMessage } from "../../../../contexts/messages";
+import type { Component } from "solid-js";
+import { A } from "@solidjs/router";
 
 import s from "./index.module.css";
 
+import { useMessages, type IMessage } from "../../../../contexts/messages";
+import { useI18n } from "../../../../contexts/i18n";
+import { Stream } from "../stream";
+
 export const Message: Component<{ message: IMessage }> = ({ message }) => {
+  const { t } = useI18n();
+  const { messagesStore } = useMessages();
+
   return (
     <>
       <div class={s.root}>
-        <div class={s.user}>{message.user.name}</div>
-        <div>{message.text}</div>
+        <div>
+          <div class={s.image} />
+        </div>
+        <div>
+          <div class={s.user}>{message.user.name}</div>
 
-        {message.stream && (
-          <div class={s.stream}>
-            <div>{message.stream.text}</div>
+          <div class={s.text}>{message.text}</div>
 
-            <div class={s.users}>
-              <For each={message.stream.users}>
-                {(user) => (
-                  <div class={s.user}>
-                    <div>{user.name}</div>
-                  </div>
-                )}
-              </For>
+          {message.stream && <Stream stream={message.stream} />}
+
+          {messagesStore.message?.message_id !== message.message_id && (
+            <div class={s.actions}>
+              <div class={s.date}>21:50</div>
+              <div class={s.like}>{t.message.like()}</div>
+              <A href={`/messages/${message.message_id}`} class={s.reply}>
+                {t.message.reply()}
+              </A>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );

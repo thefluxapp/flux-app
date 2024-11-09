@@ -1,5 +1,9 @@
 .root {
-  margin: 0 0 calc(var(--yr) * 4);
+  margin: 0 0 calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 1) calc(var(--xr) / 2) calc(var(--yr) * 2);
+
+  display: grid;
+  grid-template-columns: calc(var(--yr) * 10) 1fr;
 }
 
 .user {
@@ -9,23 +13,43 @@
   font-weight: var(--font-bold);
 }
 
-.stream {
-  padding: 0 0 0 calc(var(--xr) - var(--yr));
-  border-left: var(--yr) solid var(--theme-background-secondary-color);
-  margin: calc(var(--yr) * 2) 0 0;
+.image {
+  width: calc(var(--yr) * 8);
+  height: calc(var(--yr) * 8);
+  background: var(--theme-background-secondary-color);
+  border-radius: 50%;
 }
 
-.users {
+.actions {
   display: flex;
-  padding: var(--yr) 0;
+  user-select: none;
+  color: var(--theme-text-secondary-color);
 }
 
-.user {
+.date {
+  margin-right: var(--xr);
+}
+
+.like {
+  margin-right: var(--xr);
+}
+
+.reply {
+  margin-right: auto;
+}
+
+.date,
+.like,
+.reply {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  padding: calc(var(--yr) * 1) 0;
   font-size: calc(var(--yr) * 3);
   line-height: calc(var(--yr) * 4);
-  font-weight: var(--font-bold);
 }
 
-.user:not(:last-child) {
-  margin: 0 var(--xr) 0 0;
+.like,
+.reply {
+  font-weight: var(--font-bold);
 }

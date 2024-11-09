@@ -33,6 +33,8 @@ type GetMessageResponse = {
     user: {
       user_id: string;
       name: string;
+      first_name: string;
+      last_name: string;
     };
   }[];
 
@@ -42,6 +44,8 @@ type GetMessageResponse = {
     user: {
       user_id: string;
       name: string;
+      first_name: string;
+      last_name: string;
     };
   };
 

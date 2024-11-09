@@ -1,12 +1,12 @@
-import { useParams, A } from "@solidjs/router";
+import { useParams } from "@solidjs/router";
 import { For, Show, createEffect, onCleanup } from "solid-js";
+
+import s from "./index.module.css";
 
 import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
 import { Message } from "./message";
 import { New } from "./new";
-
-import s from "./index.module.css";
 
 export const MessagesShowPage = () => {
   const params = useParams();
@@ -24,19 +24,7 @@ export const MessagesShowPage = () => {
   return (
     <div class={s.root}>
       <For each={messagesStore.messages}>
-        {(message) => (
-          <>
-            {messagesStore.message?.message_id === message.message_id && (
-              <Message message={message} />
-            )}
-
-            {messagesStore.message?.message_id !== message.message_id && (
-              <A href={`/messages/${message.message_id}`} class={s.a}>
-                <Message message={message} />
-              </A>
-            )}
-          </>
-        )}
+        {(message) => <Message message={message} />}
       </For>
 
       <Show when={authStore.isAuth}>

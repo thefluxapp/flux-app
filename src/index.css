@@ -18,6 +18,10 @@
   --font-bold: 550;
 
   --theme-text-primary-color: lch(2% 0 0);
+  --theme-text-secondary-color: lch(
+    from var(--theme-text-primary-color) calc(l + 50) c h
+  );
+
   --theme-background-primary-color: lch(98 0 0);
   --theme-background-secondary-color: lch(
     from var(--theme-background-primary-color) calc(l - 3) c h
@@ -59,7 +63,14 @@ textarea {
 @media (prefers-color-scheme: dark) {
   :root {
     --theme-text-primary-color: lch(88% 0 0);
+    --theme-text-secondary-color: lch(
+      from var(--theme-text-primary-color) calc(l - 20) c h
+    );
+
     --theme-background-primary-color: lch(10% 0 0);
+    --theme-background-secondary-color: lch(
+      from var(--theme-background-primary-color) calc(l + 5) c h
+    );
 
     /* --theme-text-primary-color: lch(2% 0 0); */
     /* --theme-background-primary-color: rgb(30 30 30); */

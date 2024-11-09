@@ -5,6 +5,7 @@ import {
   proxyTranslator,
   type ChainedTranslator,
   flatten,
+  resolveTemplate,
 } from "@solid-primitives/i18n";
 
 import type { Dict } from "../i18n";
@@ -52,7 +53,7 @@ class I18nStore {
       }
     })();
 
-    this.t = proxyTranslator(translator(() => flatten(dict)));
+    this.t = proxyTranslator(translator(() => flatten(dict), resolveTemplate));
   }
 }
 

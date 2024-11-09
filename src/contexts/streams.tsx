@@ -1,9 +1,4 @@
-import {
-  type ParentComponent,
-  createContext,
-  onMount,
-  useContext,
-} from "solid-js";
+import { type ParentComponent, createContext, useContext } from "solid-js";
 import { type SetStoreFunction, createStore } from "solid-js/store";
 
 import { useAPI } from "./api";
@@ -60,11 +55,13 @@ class StreamsStore {
 export const useStreams = () => useContext(StreamsContext);
 
 type Stream = {
-  id: string;
+  stream_id: string;
   message_id: string;
   text: string | null;
   users: {
     user_id: string;
     name: string;
+    first_name: string;
+    last_name: string;
   }[];
 };
