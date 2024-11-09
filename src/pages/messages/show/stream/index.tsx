@@ -2,17 +2,21 @@ import { For, type Component } from "solid-js";
 
 import s from "./index.module.css";
 
-import type { IStream } from "../../../../contexts/messages";
+import type { IMessage, IStream } from "../../../../contexts/messages";
 import { useI18n } from "../../../../contexts/i18n";
+import { A } from "@solidjs/router";
 
-export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
+export const Stream: Component<{ stream: IStream; message: IMessage }> = ({
+  stream,
+  message,
+}) => {
   const { t } = useI18n();
 
   const visible = stream.users.slice(0, 3);
   const hidden = stream.users.slice(3);
 
   return (
-    <div class={s.root}>
+    <A href={`/messages/${message.message_id}`} class={s.root}>
       <div>{stream.text}</div>
 
       <div class={s.users}>
@@ -26,6 +30,6 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
           {hidden.length > 0 && t.stream.more({ count: hidden.length })}
         </div>
       </div>
-    </div>
+    </A>
   );
 };

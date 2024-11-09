@@ -22,17 +22,21 @@ export const Message: Component<{ message: IMessage }> = ({ message }) => {
 
           <div class={s.text}>{message.text}</div>
 
-          {message.stream && <Stream stream={message.stream} />}
+          {message.stream && (
+            <Stream stream={message.stream} message={message} />
+          )}
 
-          {messagesStore.message?.message_id !== message.message_id && (
-            <div class={s.actions}>
-              <div class={s.date}>21:50</div>
-              <div class={s.like}>{t.message.like()}</div>
+          <div class={s.actions}>
+            <div class={s.date}>21:50</div>
+
+            <div class={s.like}>{t.message.like()}</div>
+
+            {messagesStore.message?.message_id !== message.message_id && (
               <A href={`/messages/${message.message_id}`} class={s.reply}>
                 {t.message.reply()}
               </A>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </>
