@@ -24,7 +24,7 @@
 
   --theme-background-primary-color: lch(98 0 0);
   --theme-background-secondary-color: lch(
-    from var(--theme-background-primary-color) calc(l - 3) c h
+    from var(--theme-background-primary-color) calc(l - 5) c h
   );
   --theme-background-secondary-color-active: lch(
     from var(--theme-background-secondary-color) calc(l - 3) c h

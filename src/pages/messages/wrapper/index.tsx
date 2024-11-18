@@ -16,23 +16,17 @@ export const MessagesWrapper: ParentComponent = (props) => {
         <MessagesNew />
       </div>
 
-      <div class={s.tabs}>
-        <Show when={!isStreamsNew()}>
-          <div>
-            <A
-              href="/messages"
-              end={true}
-              class={s.link}
-              activeClass={s.active}
-            >
-              {t.streams.all()}
-            </A>
-            <A href="/messages/my" class={s.link} activeClass={s.active}>
-              {t.streams.my()}
-            </A>
-          </div>
-        </Show>
-      </div>
+      <Show when={!isStreamsNew()}>
+        <div class={s.tabs}>
+          <A href="/messages" end={true} class={s.tab} activeClass={s.active}>
+            {t.streams.all()}
+          </A>
+
+          <A href="/messages/my" class={s.tab} activeClass={s.active}>
+            {t.streams.my()}
+          </A>
+        </div>
+      </Show>
 
       {props.children}
     </>

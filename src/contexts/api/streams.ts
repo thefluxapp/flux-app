@@ -7,12 +7,20 @@ export class StreamsAPI {
     this.api = api;
   }
 
-  get_stream = async (): Promise<IndexResponse> => {
-    return (await this.api.client.get<IndexResponse>("/api/streams")).data;
+  get_streams = async (user: boolean): Promise<GetStreamsResponse> => {
+    const url = ((): string => {
+      if (user) {
+        return "/api/streams/my";
+      }
+
+      return "/api/streams";
+    })();
+
+    return (await this.api.client.get<GetStreamsResponse>(url)).data;
   };
 }
 
-type IndexResponse = {
+type GetStreamsResponse = {
   streams: {
     stream_id: string;
     message_id: string;

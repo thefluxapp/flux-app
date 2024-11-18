@@ -2,12 +2,11 @@ import { type ParentComponent, createContext, useContext } from "solid-js";
 import { type SetStoreFunction, createStore } from "solid-js/store";
 
 import { useAPI } from "./api";
-// import type { IndexStreamResponseData } from "./api/streams";
 
 const StreamsContext = createContext({
   streamsStore: null as unknown as StreamsStore,
   setStreamsStore: null as unknown as SetStoreFunction<StreamsStore>,
-  update: null as unknown as () => Promise<void>,
+  update: null as unknown as (user: boolean) => Promise<void>,
 });
 
 export const StreamsProvider: ParentComponent = (props) => {
@@ -17,24 +16,12 @@ export const StreamsProvider: ParentComponent = (props) => {
     StreamsStore.initialize(),
   );
 
-  // onMount(async () => {
-  //   update();
-  // });
+  const update = async (user: boolean) => {
+    setStreamsStore("streams", []);
 
-  const update = async () => {
-    const data = await api.streams.get_stream();
+    const data = await api.streams.get_streams(user);
 
-    // console.log(data.streams);
-
-    setStreamsStore(
-      "streams",
-      data.streams,
-      // produce((s) => {
-      //   s.streams = data.streams;
-      // }),
-    );
-
-    // console.log(data.streams);
+    setStreamsStore("streams", data.streams);
   };
 
   return (

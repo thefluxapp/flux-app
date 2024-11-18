@@ -1,4 +1,4 @@
-import { useLocation, A } from "@solidjs/router";
+import { useLocation } from "@solidjs/router";
 import { For, createEffect } from "solid-js";
 
 import s from "./index.module.css";
@@ -11,9 +11,9 @@ export const MessagesIndexPage = () => {
   const { streamsStore, update } = useStreams();
 
   createEffect(async () => {
-    console.log(location.pathname);
+    const my = location.pathname === "/messages/my";
 
-    await update();
+    await update(my);
   });
 
   return (

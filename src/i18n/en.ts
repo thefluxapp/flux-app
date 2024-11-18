@@ -10,6 +10,7 @@ export const dict = {
   },
 
   stream: {
+    summarizing: "Summarizing in progress..",
     more: "and {{count}} more",
   },
 };

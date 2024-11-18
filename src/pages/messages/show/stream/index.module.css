@@ -37,3 +37,14 @@
   white-space: nowrap;
   align-self: center;
 }
+
+.shimmer {
+  display: grid;
+  color: var(--theme-text-secondary-color);
+  grid-template-columns: calc(var(--yr) * (4.5 + 1)) 1fr;
+}
+
+.shimmer svg {
+  display: block;
+  width: calc(var(--yr) * 4.5);
+}

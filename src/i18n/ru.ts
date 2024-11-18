@@ -8,10 +8,11 @@ export const dict: Dict = {
 
   message: {
     reply: "Ответить",
-    like: "Like",
+    like: "Лайк",
   },
 
   stream: {
+    summarizing: "Сокращаем текст.. через пару секунд будет готово..",
     more: "и ещё {{count}}",
   },
 };
