@@ -15,7 +15,9 @@ export const Message: Component<{ message: IMessage }> = ({ message }) => {
     <>
       <div class={s.root}>
         <div>
-          <div class={s.image} />
+          <div class={s.image} style={{ background: message.user.color }}>
+            {message.user.abbr}
+          </div>
         </div>
         <div>
           <div class={s.user}>{message.user.name}</div>

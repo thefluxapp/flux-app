@@ -27,9 +27,9 @@ export const MessagesShowPage = () => {
         {(message) => <Message message={message} />}
       </For>
 
-      <Show when={authStore.isAuth}>
-        <New />
-      </Show>
+      {messagesStore.message !== null && authStore.isAuth && (
+        <New message={messagesStore.message} />
+      )}
     </div>
   );
 };

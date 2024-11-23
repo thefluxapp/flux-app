@@ -7,6 +7,7 @@ export const dict = {
   message: {
     reply: "Reply",
     like: "Like",
+    submit: "Send",
   },
 
   stream: {

@@ -1,14 +1,16 @@
-/* .input {
-  color: inherit;
-  font-size: inherit;
-  border: 0;
-  background: var(--theme-background-secondary-color);
-  width: 100%;
-  resize: vertical;
-} */
-
 .root {
-  margin: 0 calc(var(--xr) / 2 * -1);
+  margin: 0 0 calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 1) calc(var(--xr) / 2) calc(var(--yr) * 2);
+
+  display: grid;
+  grid-template-columns: calc(var(--yr) * 10) 1fr;
+}
+
+.image {
+  width: calc(var(--yr) * 8);
+  height: calc(var(--yr) * 8);
+  background: var(--theme-background-secondary-color);
+  border-radius: 50%;
 }
 
 .label {

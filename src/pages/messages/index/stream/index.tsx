@@ -27,7 +27,13 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
 
       <div class={s.users}>
         <div class={s.images}>
-          <For each={visible}>{(_) => <div class={s.image} />}</For>
+          <For each={visible}>
+            {(user) => (
+              <div class={s.image} style={{ background: user.color }}>
+                {user.abbr}
+              </div>
+            )}
+          </For>
         </div>
 
         <div class={s.names}>

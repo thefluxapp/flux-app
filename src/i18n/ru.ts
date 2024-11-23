@@ -9,6 +9,7 @@ export const dict: Dict = {
   message: {
     reply: "Ответить",
     like: "Лайк",
+    submit: "Отравить",
   },
 
   stream: {

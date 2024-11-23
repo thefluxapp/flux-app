@@ -50,5 +50,7 @@ type Stream = {
     name: string;
     first_name: string;
     last_name: string;
+    abbr: string;
+    color: string;
   }[];
 };

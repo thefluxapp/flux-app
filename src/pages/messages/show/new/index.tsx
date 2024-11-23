@@ -1,35 +1,42 @@
 import type { Component, JSX } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { useAPI } from "../../../../contexts/api";
-import { useAuth } from "../../../../contexts/auth";
-
 import s from "./index.module.css";
 
-export const New: Component = () => {
+import { useAPI } from "../../../../contexts/api";
+import { useAuth } from "../../../../contexts/auth";
+import { useI18n } from "../../../../contexts/i18n";
+import type { IMessage } from "../../../../contexts/messages";
+
+export const New: Component<{ message: IMessage }> = ({ message }) => {
   const api = useAPI();
   const { authStore } = useAuth();
+  const { t } = useI18n();
 
   const [form, setForm] = createStore({
     text: "",
   });
 
-  const handleSubmit: JSX.EventHandler<HTMLFormElement, SubmitEvent> = async (
+  const handleSubmit: JSX.EventHandler<HTMLButtonElement, MouseEvent> = async (
     e,
   ) => {
     e.preventDefault();
 
-    // if (authStore.user === null) return null;
+    if (authStore.user === null) return null;
 
-    // await api.messages.create_message({
-    //   text: form.text,
-    //   message_id: streamStore.stream.message_id,
-    // });
+    await api.messages.create_message({
+      text: form.text,
+      message_id: message.message_id,
+    });
   };
 
   return (
     <div class={s.root}>
-      <form class={s.form} onSubmit={handleSubmit}>
+      <div>
+        <div class={s.image} />
+      </div>
+
+      <div>
         <div class={s.field}>
           <div class={s.label}>{authStore.user?.name}</div>
 
@@ -43,13 +50,14 @@ export const New: Component = () => {
         <div class={s.submit}>
           <button
             class={s.button}
-            type="submit"
+            type="button"
+            onClick={handleSubmit}
             disabled={form.text.length < 3}
           >
-            Отправить
+            {t.message.submit()}
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

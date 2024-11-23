@@ -73,6 +73,8 @@ export type IMessage = {
     name: string;
     first_name: string;
     last_name: string;
+    abbr: string;
+    color: string;
   };
   stream?: IStream;
 };
@@ -86,5 +88,7 @@ export type IStream = {
     name: string;
     first_name: string;
     last_name: string;
+    abbr: string;
+    color: string;
   }[];
 };
