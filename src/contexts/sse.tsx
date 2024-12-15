@@ -6,15 +6,11 @@ import { IState, useMessages } from "./messages";
 
 const SSEContext = createContext({
   sseStore: null as unknown as SSEStore,
-  // setSseStore: null as unknown as SetStoreFunction<SSEStore>,
 });
 
 export const SSEProvider: ParentComponent = (props) => {
-  // const api = useAPI();
-  const { append } = useMessages();
+  const { append, messagesStore } = useMessages();
   const es = new EventSource("/api/notify");
-
-  // console.log(es);
 
   const [sseStore] = createStore(SSEStore.initialize(es));
 
@@ -26,7 +22,12 @@ export const SSEProvider: ParentComponent = (props) => {
     const data: IEvent = JSON.parse(e.data);
 
     if (data.message !== null) {
-      append([{ ...data.message, state: IState.Active }]);
+      if (
+        messagesStore.rootStore?.messageStore.message_id ===
+        data.message.stream.message_id
+      ) {
+        append([{ ...data.message, state: IState.Active }]);
+      }
     }
   };
 
@@ -60,4 +61,10 @@ type IEventMessage = {
   text: string;
   code: string;
   order: number;
+  stream: IEventMessageStream;
+};
+
+type IEventMessageStream = {
+  message_id: string;
+  stream_id: string;
 };
