@@ -26,7 +26,7 @@
   --theme-background-secondary-color: lch(
     from var(--theme-background-primary-color) calc(l - 5) c h
   );
-  --theme-background-secondary-color-active: lch(
+  --theme-background-secondary-color-inactive: lch(
     from var(--theme-background-secondary-color) calc(l - 3) c h
   );
 

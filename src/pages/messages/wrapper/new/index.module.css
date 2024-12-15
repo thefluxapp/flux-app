@@ -4,7 +4,7 @@
 }
 
 .input {
-  background: var(--theme-background-secondary-color);
+  background: var(--theme-background-secondary-color-inactive);
   outline: none;
   border-radius: var(--yr);
   padding: calc(var(--yr) * 3) calc(var(--xr) / 2);
@@ -12,8 +12,12 @@
   transition: background 0.3s ease-out;
 }
 
+.input p {
+  margin: 0;
+}
+
 .input:focus {
-  background: var(--theme-background-secondary-color-active);
+  background: var(--theme-background-secondary-color);
 }
 
 /* .input::before {

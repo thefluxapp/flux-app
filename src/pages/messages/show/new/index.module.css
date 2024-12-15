@@ -47,7 +47,7 @@
 .input {
   color: inherit;
   font-size: inherit;
-  background: var(--theme-background-secondary-color);
+  background: var(--theme-background-secondary-color-inactive);
   display: block;
   width: 100%;
   border: 0;
@@ -57,6 +57,10 @@
   padding: calc(var(--yr) * 6) var(--yr) calc(var(--yr) * 2);
   resize: vertical;
   field-sizing: content;
+}
+
+.input:focus {
+  background: var(--theme-background-secondary-color);
 }
 
 .input p {

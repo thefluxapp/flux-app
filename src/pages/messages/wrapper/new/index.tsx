@@ -1,5 +1,5 @@
 import { useMatch, useNavigate } from "@solidjs/router";
-import { Show, type JSX } from "solid-js";
+import { createEffect, onMount, Show, type JSX } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import { useAuth } from "../../../../contexts/auth";
@@ -9,6 +9,9 @@ import SubmitImg from "./right.svg";
 
 import s from "./index.module.css";
 import { nanoid } from "nanoid";
+import { $getRoot, $setSelection, createEditor } from "lexical";
+import { registerPlainText } from "@lexical/plain-text";
+import { $rootTextContent } from "@lexical/text";
 
 export const MessagesNew = () => {
   const navigate = useNavigate();
@@ -16,6 +19,8 @@ export const MessagesNew = () => {
   const api = useAPI();
   const isNew = useMatch(() => "/messages/new");
 
+  let editorRef!: HTMLDivElement;
+  const editor = createEditor({});
   const [form, setForm] = createStore({
     text: "",
   });
@@ -27,34 +32,55 @@ export const MessagesNew = () => {
 
     if (!isNew()) {
       navigate("/messages/new");
-    } else {
-      // Clear input and remove cursor
     }
   };
+
+  createEffect(async () => {
+    if (!isNew()) {
+      editor.update(() => {
+        $getRoot().clear();
+        $setSelection(null);
+      });
+    }
+  }, [isNew]);
 
   const handleSubmit: JSX.EventHandler<HTMLButtonElement, MouseEvent> = async (
     e,
   ) => {
     e.preventDefault();
 
-    const code = nanoid();
-
     const res = await api.messages.create_message({
+      message_id: null,
       text: form.text,
-      code,
+      code: nanoid(),
     });
 
-    navigate(`/messages/${res.message.message_id}`);
+    if (res) {
+      navigate(`/messages/${res.message.message_id}`);
+    } else {
+      // TODO: handle error
+    }
   };
+
+  onMount(() => {
+    editor.setRootElement(editorRef);
+
+    registerPlainText(editor);
+
+    editor.registerUpdateListener(({ editorState }) => {
+      editorState.read(() => {
+        setForm("text", $rootTextContent());
+      });
+    });
+  });
 
   return (
     <div class={s.root} classList={{ [s.active]: Boolean(isNew()) }}>
       <div
-        contentEditable="plaintext-only"
-        title="Create new message..."
-        onFocus={handleFocus}
         class={s.input}
-        onInput={(e) => setForm("text", e.target.textContent || "")}
+        onFocus={handleFocus}
+        contentEditable="plaintext-only"
+        ref={editorRef}
       />
 
       <Show when={authStore.user !== null}>
