@@ -58,3 +58,7 @@
   resize: vertical;
   field-sizing: content;
 }
+
+.input p {
+  margin: 0;
+}

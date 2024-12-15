@@ -1,18 +1,23 @@
-import type { Component, JSX } from "solid-js";
+import { onMount, type Component, type JSX } from "solid-js";
 import { createStore } from "solid-js/store";
+import { nanoid } from "nanoid";
+import { $rootTextContent } from "@lexical/text";
+import { $getRoot, createEditor } from "lexical";
+import { registerPlainText } from "@lexical/plain-text";
 
 import s from "./index.module.css";
 
 import { useAuth } from "../../../../contexts/auth";
 import { useI18n } from "../../../../contexts/i18n";
 import { IState, useMessages } from "../../../../contexts/messages";
-import { nanoid } from "nanoid";
 
 export const New: Component = () => {
   const { authStore } = useAuth();
   const { append, messagesStore } = useMessages();
   const { t } = useI18n();
 
+  let editorRef!: HTMLDivElement;
+  const editor = createEditor({});
   const [form, setForm] = createStore({
     text: "",
   });
@@ -25,21 +30,34 @@ export const New: Component = () => {
     if (authStore.user === null || messagesStore.rootStore === null)
       return null;
 
-    const code = nanoid();
-
-    // e.target.innerHTML = "";
-
     append([
       {
         message_id: messagesStore.rootStore.messageStore.message_id,
         text: form.text,
-        code,
+        code: nanoid(),
         state: IState.New,
         order: (performance.timeOrigin + performance.now()) * 1000,
         user: authStore.user,
       },
     ]);
+
+    editor.update(() => {
+      const root = $getRoot();
+      root.clear();
+    });
   };
+
+  onMount(() => {
+    editor.setRootElement(editorRef);
+
+    registerPlainText(editor);
+
+    editor.registerUpdateListener(({ editorState }) => {
+      editorState.read(() => {
+        setForm("text", $rootTextContent());
+      });
+    });
+  });
 
   return (
     <div class={s.root}>
@@ -53,16 +71,7 @@ export const New: Component = () => {
         <div class={s.field}>
           <div class={s.label}>{authStore.user?.name}</div>
 
-          <textarea
-            contenteditable={true}
-            class={s.input}
-            // textContent={form.text}
-            value={"QQQ"}
-            onInput={(e) => {
-              e.preventDefault();
-              setForm("text", e.target.textContent || "");
-            }}
-          />
+          <div class={s.input} contenteditable={true} ref={editorRef} />
         </div>
 
         <div class={s.submit}>
