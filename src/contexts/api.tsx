@@ -83,6 +83,10 @@ export type MeResponseData = {
   user: {
     user_id: string;
     name: string;
+    first_name: string;
+    last_name: string;
+    abbr: string;
+    color: string;
   } | null;
 };
 

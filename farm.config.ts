@@ -11,6 +11,7 @@ export default defineConfig({
     svg(),
   ],
   server: {
+    hmr: false,
     proxy: {
       "/api": {
         target: "http://localhost:3010",

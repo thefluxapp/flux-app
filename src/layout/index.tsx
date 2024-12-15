@@ -8,6 +8,7 @@ import { MessagesProvider } from "../contexts/messages";
 import { StreamsProvider } from "../contexts/streams";
 import { Header } from "./header";
 import { I18nProvider } from "../contexts/i18n";
+import { SSEProvider } from "../contexts/sse";
 
 export const Layout: ParentComponent = (props) => {
   const { rootStore: store } = useRoot();
@@ -18,13 +19,15 @@ export const Layout: ParentComponent = (props) => {
         <AuthProvider>
           <StreamsProvider>
             <MessagesProvider>
-              <MetaProvider>
-                <I18nProvider>
-                  <Header />
+              <SSEProvider>
+                <MetaProvider>
+                  <I18nProvider>
+                    <Header />
 
-                  {props.children}
-                </I18nProvider>
-              </MetaProvider>
+                    {props.children}
+                  </I18nProvider>
+                </MetaProvider>
+              </SSEProvider>
             </MessagesProvider>
           </StreamsProvider>
         </AuthProvider>

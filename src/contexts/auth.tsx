@@ -50,4 +50,8 @@ export const useAuth = () => useContext(AuthContext);
 type IUser = {
   user_id: string;
   name: string;
+  first_name: string;
+  last_name: string;
+  abbr: string;
+  color: string;
 };

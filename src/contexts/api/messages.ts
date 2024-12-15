@@ -8,9 +8,21 @@ export class MessagesAPI {
   }
 
   create_message = async (data: CreateMessageRequest) => {
-    return (
-      await this.api.client.post<CreateMessageResponse>("/api/messages", data)
-    ).data;
+    const res = await this.api.client.post<CreateMessageResponse>(
+      "/api/messages",
+      data,
+      {
+        validateStatus: (_) => {
+          return true;
+        },
+      },
+    );
+
+    if (res.status === 200) {
+      return res.data;
+    }
+
+    return false;
   };
 
   get_message = async (data: GetMessageRequest) => {
@@ -30,27 +42,31 @@ type GetMessageResponse = {
   messages: {
     message_id: string;
     text: string;
-    user: {
-      user_id: string;
-      name: string;
-      first_name: string;
-      last_name: string;
-      abbr: string;
-      color: string;
-    };
+    code: string;
+    // user: {
+    //   user_id: string;
+    //   name: string;
+    //   first_name: string;
+    //   last_name: string;
+    //   abbr: string;
+    //   color: string;
+    // };
+    order: number;
   }[];
 
   message: {
     message_id: string;
     text: string;
-    user: {
-      user_id: string;
-      name: string;
-      first_name: string;
-      last_name: string;
-      abbr: string;
-      color: string;
-    };
+    code: string;
+    // user: {
+    //   user_id: string;
+    //   name: string;
+    //   first_name: string;
+    //   last_name: string;
+    //   abbr: string;
+    //   color: string;
+    // };
+    order: number;
   };
 
   stream: {
@@ -60,8 +76,9 @@ type GetMessageResponse = {
 };
 
 type CreateMessageRequest = {
-  message_id?: string;
+  message_id: string | null;
   text: string;
+  code: string;
 };
 
 type CreateMessageResponse = {

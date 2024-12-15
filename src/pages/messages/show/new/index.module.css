@@ -9,12 +9,25 @@
 .image {
   width: calc(var(--yr) * 8);
   height: calc(var(--yr) * 8);
-  background: var(--theme-background-secondary-color);
+  /* background: var(--theme-background-secondary-color); */
   border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  line-height: calc(var(--yr) * 8);
+  font-size: calc(var(--yr) * 3);
+  font-weight: var(--font-bold);
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  background: var(--theme-background-secondary-color);
+  inset: 0;
+  z-index: -1;
 }
 
 .label {
-  /* font-size: calc(var(--yr) * 2.75); */
   line-height: calc(var(--yr) * 4);
   font-size: calc(var(--yr) * 3);
   font-weight: var(--font-bold);
@@ -29,7 +42,7 @@
 }
 
 .field {
-  margin: 0 0 calc(var(--yr) * 4);
+  margin: 0 0 calc(var(--yr) * 4) calc(var(--xr) / 2 * -1);
   position: relative;
 }
 

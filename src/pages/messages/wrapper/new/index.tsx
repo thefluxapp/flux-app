@@ -8,6 +8,7 @@ import { useAPI } from "../../../../contexts/api";
 import SubmitImg from "./right.svg";
 
 import s from "./index.module.css";
+import { nanoid } from "nanoid";
 
 export const MessagesNew = () => {
   const navigate = useNavigate();
@@ -36,8 +37,11 @@ export const MessagesNew = () => {
   ) => {
     e.preventDefault();
 
+    const code = nanoid();
+
     const res = await api.messages.create_message({
       text: form.text,
+      code,
     });
 
     navigate(`/messages/${res.message.message_id}`);

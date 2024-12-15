@@ -1,5 +1,5 @@
 import { useParams } from "@solidjs/router";
-import { For, Show, createEffect, onCleanup } from "solid-js";
+import { For, createEffect, onCleanup } from "solid-js";
 
 import s from "./index.module.css";
 
@@ -14,21 +14,27 @@ export const MessagesShowPage = () => {
   const { update, clean, messagesStore } = useMessages();
 
   onCleanup(() => {
+    // console.log("CLEAN UP");
     clean();
   });
 
   createEffect(async () => {
+    // console.log("UPDATE");
     await update(params.id);
   });
 
+  // console.log(messagesStore.messages);
+
+  // return <>QQ</>;
+
   return (
     <div class={s.root}>
-      <For each={messagesStore.messages}>
-        {(message) => <Message message={message} />}
+      <For each={Object.values(messagesStore.listStore)}>
+        {({ message }) => <Message message={message} />}
       </For>
 
-      {messagesStore.message !== null && authStore.isAuth && (
-        <New message={messagesStore.message} />
+      {messagesStore.rootStore !== null && authStore.isAuth && (
+        <New message={messagesStore.rootStore.message} />
       )}
     </div>
   );

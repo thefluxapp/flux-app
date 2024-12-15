@@ -3,14 +3,18 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import { useAPI } from "../../../../contexts/api";
 import { useAuth } from "../../../../contexts/auth";
 import { useI18n } from "../../../../contexts/i18n";
-import type { IMessage } from "../../../../contexts/messages";
+import {
+  IState,
+  useMessages,
+  type IMessage,
+} from "../../../../contexts/messages";
+import { nanoid } from "nanoid";
 
 export const New: Component<{ message: IMessage }> = ({ message }) => {
-  const api = useAPI();
   const { authStore } = useAuth();
+  const { append } = useMessages();
   const { t } = useI18n();
 
   const [form, setForm] = createStore({
@@ -24,16 +28,31 @@ export const New: Component<{ message: IMessage }> = ({ message }) => {
 
     if (authStore.user === null) return null;
 
-    await api.messages.create_message({
-      text: form.text,
-      message_id: message.message_id,
-    });
+    const code = nanoid();
+
+    append([
+      {
+        message_id: message.message_id,
+        text: form.text,
+        code,
+        state: IState.New,
+        order: (performance.timeOrigin + performance.now()) * 1000,
+      },
+    ]);
+
+    // await api.messages.create_message({
+    //   text: form.text,
+    //   message_id: message.message_id,
+    //   code,
+    // });
   };
 
   return (
     <div class={s.root}>
       <div>
-        <div class={s.image} />
+        <div class={s.image} style={{ background: authStore.user?.color }}>
+          {authStore.user?.abbr}
+        </div>
       </div>
 
       <div>
