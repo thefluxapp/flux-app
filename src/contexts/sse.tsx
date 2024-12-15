@@ -61,10 +61,16 @@ type IEventMessage = {
   text: string;
   code: string;
   order: number;
-  stream: IEventMessageStream;
-};
-
-type IEventMessageStream = {
-  message_id: string;
-  stream_id: string;
+  stream: {
+    message_id: string;
+    stream_id: string;
+  };
+  user: {
+    user_id: string;
+    name: string;
+    first_name: string;
+    last_name: string;
+    abbr: string;
+    color: string;
+  };
 };

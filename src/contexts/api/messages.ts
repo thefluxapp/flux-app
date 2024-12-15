@@ -43,14 +43,14 @@ type GetMessageResponse = {
     message_id: string;
     text: string;
     code: string;
-    // user: {
-    //   user_id: string;
-    //   name: string;
-    //   first_name: string;
-    //   last_name: string;
-    //   abbr: string;
-    //   color: string;
-    // };
+    user: {
+      user_id: string;
+      name: string;
+      first_name: string;
+      last_name: string;
+      abbr: string;
+      color: string;
+    };
     order: number;
   }[];
 
@@ -58,14 +58,14 @@ type GetMessageResponse = {
     message_id: string;
     text: string;
     code: string;
-    // user: {
-    //   user_id: string;
-    //   name: string;
-    //   first_name: string;
-    //   last_name: string;
-    //   abbr: string;
-    //   color: string;
-    // };
+    user: {
+      user_id: string;
+      name: string;
+      first_name: string;
+      last_name: string;
+      abbr: string;
+      color: string;
+    };
     order: number;
   };
 

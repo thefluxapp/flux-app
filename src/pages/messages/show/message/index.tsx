@@ -14,12 +14,12 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
     <>
       <div class={s.root}>
         <div>
-          {/* <div class={s.image} style={{ background: message.user.color }}>
+          <div class={s.image} style={{ background: message.user.color }}>
             {message.user.abbr}
-          </div> */}
+          </div>
         </div>
         <div>
-          {/* <div class={s.user}>{message.user.name}</div> */}
+          <div class={s.user}>{message.user.name}</div>
 
           <div class={s.text}>{message.text}</div>
 
@@ -38,10 +38,6 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
                 {t.message.reply()}
               </A>
             )}
-
-            {/* <A href={`/messages/${message.message_id}`} class={s.reply}>
-              {t.message.reply()}
-            </A> */}
 
             <div class={s.state}>{message.state}</div>
           </div>

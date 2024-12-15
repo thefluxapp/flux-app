@@ -34,6 +34,7 @@ export const New: Component = () => {
         code,
         state: IState.New,
         order: (performance.timeOrigin + performance.now()) * 1000,
+        user: authStore.user,
       },
     ]);
   };

@@ -24,6 +24,14 @@ export type IMessage = {
   text: string;
   state: IState;
   order: number;
+  user: {
+    user_id: string;
+    name: string;
+    first_name: string;
+    last_name: string;
+    abbr: string;
+    color: string;
+  };
 };
 
 export type MessageStore = IMessage;
