@@ -26,24 +26,9 @@ export const SSEProvider: ParentComponent = (props) => {
     const data: IEvent = JSON.parse(e.data);
 
     if (data.message !== null) {
-      // console.log(data.message);
-
       append([{ ...data.message, state: IState.Active }]);
     }
   };
-
-  // onMount(async () => {
-  //   const data = await api.auth.me();
-
-  //   if (data.user !== null) {
-  //     setStore(
-  //       produce((s) => {
-  //         s.isAuth = true;
-  //         s.user = data.user;
-  //       }),
-  //     );
-  //   }
-  // });
 
   return (
     <SSEContext.Provider value={{ sseStore }}>

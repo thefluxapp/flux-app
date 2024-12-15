@@ -5,16 +5,12 @@ import s from "./index.module.css";
 
 import { useAuth } from "../../../../contexts/auth";
 import { useI18n } from "../../../../contexts/i18n";
-import {
-  IState,
-  useMessages,
-  type IMessage,
-} from "../../../../contexts/messages";
+import { IState, useMessages } from "../../../../contexts/messages";
 import { nanoid } from "nanoid";
 
-export const New: Component<{ message: IMessage }> = ({ message }) => {
+export const New: Component = () => {
   const { authStore } = useAuth();
-  const { append } = useMessages();
+  const { append, messagesStore } = useMessages();
   const { t } = useI18n();
 
   const [form, setForm] = createStore({
@@ -26,25 +22,20 @@ export const New: Component<{ message: IMessage }> = ({ message }) => {
   ) => {
     e.preventDefault();
 
-    if (authStore.user === null) return null;
+    if (authStore.user === null || messagesStore.rootStore === null)
+      return null;
 
     const code = nanoid();
 
     append([
       {
-        message_id: message.message_id,
+        message_id: messagesStore.rootStore.messageStore.message_id,
         text: form.text,
         code,
         state: IState.New,
         order: (performance.timeOrigin + performance.now()) * 1000,
       },
     ]);
-
-    // await api.messages.create_message({
-    //   text: form.text,
-    //   message_id: message.message_id,
-    //   code,
-    // });
   };
 
   return (

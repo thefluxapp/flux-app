@@ -14,28 +14,20 @@ export const MessagesShowPage = () => {
   const { update, clean, messagesStore } = useMessages();
 
   onCleanup(() => {
-    // console.log("CLEAN UP");
     clean();
   });
 
   createEffect(async () => {
-    // console.log("UPDATE");
     await update(params.id);
   });
 
-  // console.log(messagesStore.messages);
-
-  // return <>QQ</>;
-
   return (
     <div class={s.root}>
-      <For each={Object.values(messagesStore.listStore)}>
-        {({ message }) => <Message message={message} />}
+      <For each={messagesStore.listStore}>
+        {({ messageStore }) => <Message message={messageStore} />}
       </For>
 
-      {messagesStore.rootStore !== null && authStore.isAuth && (
-        <New message={messagesStore.rootStore.message} />
-      )}
+      {messagesStore.rootStore !== null && authStore.isAuth && <New />}
     </div>
   );
 };

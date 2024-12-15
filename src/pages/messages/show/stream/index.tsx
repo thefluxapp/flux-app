@@ -4,11 +4,11 @@ import s from "./index.module.css";
 
 import ProgressImg from "../../index/stream/progress.svg";
 
-import type { IMessage, IStream } from "../../../../contexts/messages";
+import type { MessageStore, IStream } from "../../../../contexts/messages";
 import { useI18n } from "../../../../contexts/i18n";
 import { A } from "@solidjs/router";
 
-export const Stream: Component<{ stream: IStream; message: IMessage }> = ({
+export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
   stream,
   message,
 }) => {

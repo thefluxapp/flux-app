@@ -10,9 +10,8 @@ import { useAPI } from "./api";
 // import type { IEventMessage } from "./sse";
 
 const MessagesContext = createContext({
-  messagesStore: null as unknown as IMessages,
-  setMessagesStore: null as unknown as SetStoreFunction<IMessages>,
-
+  messagesStore: null as unknown as MessagesStore,
+  setMessagesStore: null as unknown as SetStoreFunction<MessagesStore>,
   update: null as unknown as (messageId: string) => Promise<void>,
   clean: null as unknown as () => void,
   append: null as unknown as (message: IMessage[]) => void,
@@ -27,6 +26,8 @@ export type IMessage = {
   order: number;
 };
 
+export type MessageStore = IMessage;
+
 export enum IState {
   New = "new",
   Processing = "processing",
@@ -34,20 +35,21 @@ export enum IState {
   Failed = "failed",
 }
 
-type IMessageStore = {
-  message: IMessage;
-  setMessage: SetStoreFunction<IMessage>;
-};
-
-type IMessages = {
-  listStore: IMessageStore[];
-  rootStore: IMessageStore | null;
+type MessagesStore = {
+  listStore: {
+    messageStore: MessageStore;
+    setMessageStore: SetStoreFunction<MessageStore>;
+  }[];
+  rootStore: {
+    messageStore: MessageStore;
+    setMessageStore: SetStoreFunction<MessageStore>;
+  } | null;
 };
 
 export const MessagesProvider: ParentComponent = (props) => {
   const api = useAPI();
 
-  const [messages, setMessagesStore] = createStore<IMessages>({
+  const [messagesStore, setMessagesStore] = createStore<MessagesStore>({
     listStore: [],
     rootStore: null,
   });
@@ -57,18 +59,29 @@ export const MessagesProvider: ParentComponent = (props) => {
       message_id,
     });
 
-    const [rootMessage, setRootMessage] = createStore<IMessage>({
+    const [rootStore, setRootStore] = createStore<MessageStore>({
       ...data.message,
       state: IState.Active,
     });
 
     setMessagesStore("rootStore", {
-      message: rootMessage,
-      setMessage: setRootMessage,
+      messageStore: rootStore,
+      setMessageStore: setRootStore,
     });
 
-    append(
-      data.messages.map((message) => ({ ...message, state: IState.Active })),
+    setMessagesStore(
+      "listStore",
+      data.messages.map((payload) => {
+        const [message, setMessage] = createStore<MessageStore>({
+          ...payload,
+          state: IState.Active,
+        });
+
+        return {
+          messageStore: message,
+          setMessageStore: setMessage,
+        };
+      }),
     );
   };
 
@@ -86,18 +99,18 @@ export const MessagesProvider: ParentComponent = (props) => {
           // console.log(message);
 
           const rr = store.listStore.find(
-            (v) => v.message.code === message.code,
+            ({ messageStore }) => messageStore.code === message.code,
           );
 
           if (rr !== undefined) {
-            rr.setMessage(reconcile(message));
+            rr.setMessageStore(reconcile(message));
           } else {
             const [messageStore, setMessageStore] =
               createStore<IMessage>(message);
 
             store.listStore.push({
-              message: messageStore,
-              setMessage: setMessageStore,
+              messageStore,
+              setMessageStore,
             });
 
             if (messageStore.state === IState.New) {
@@ -107,20 +120,24 @@ export const MessagesProvider: ParentComponent = (props) => {
         }
 
         store.listStore = [
-          ...store.listStore.sort((a, b) => a.message.order - b.message.order),
+          ...store.listStore.sort(
+            (a, b) => a.messageStore.order - b.messageStore.order,
+          ),
         ];
       }),
     );
   };
 
   const save = async (
-    message: IMessage,
-    setMessage: SetStoreFunction<IMessage>,
+    messageStore: MessageStore,
+    setMessageStore: SetStoreFunction<MessageStore>,
   ) => {
-    const data = await api.messages.create_message(message);
+    setMessageStore("state", IState.Processing);
+
+    const data = await api.messages.create_message(messageStore);
 
     if (data === false) {
-      setMessage("state", IState.Failed);
+      setMessageStore("state", IState.Failed);
     } else {
       // setMessage("state", IState.Failed);
     }
@@ -131,7 +148,7 @@ export const MessagesProvider: ParentComponent = (props) => {
   return (
     <MessagesContext.Provider
       value={{
-        messagesStore: messages,
+        messagesStore,
         setMessagesStore,
         update,
         clean,

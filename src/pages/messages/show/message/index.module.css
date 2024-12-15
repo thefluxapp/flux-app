@@ -48,8 +48,8 @@
   margin-right: var(--xr);
 }
 
-.reply {
-  margin-right: auto;
+.state {
+  margin-left: auto;
 }
 
 .date,

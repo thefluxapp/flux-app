@@ -3,10 +3,10 @@ import { A } from "@solidjs/router";
 
 import s from "./index.module.css";
 
-import { useMessages, type IMessage } from "../../../../contexts/messages";
+import { useMessages, type MessageStore } from "../../../../contexts/messages";
 import { useI18n } from "../../../../contexts/i18n";
 
-export const Message: Component<{ message: IMessage }> = ({ message }) => {
+export const Message: Component<{ message: MessageStore }> = ({ message }) => {
   const { t } = useI18n();
   const { messagesStore } = useMessages();
 
@@ -32,7 +32,7 @@ export const Message: Component<{ message: IMessage }> = ({ message }) => {
 
             <div class={s.like}>{t.message.like()}</div>
 
-            {messagesStore.rootStore?.message.message_id !==
+            {messagesStore.rootStore?.messageStore.message_id !==
               message.message_id && (
               <A href={`/messages/${message.message_id}`} class={s.reply}>
                 {t.message.reply()}
