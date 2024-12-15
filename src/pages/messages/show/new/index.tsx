@@ -27,6 +27,8 @@ export const New: Component = () => {
 
     const code = nanoid();
 
+    // e.target.innerHTML = "";
+
     append([
       {
         message_id: messagesStore.rootStore.messageStore.message_id,
@@ -51,10 +53,15 @@ export const New: Component = () => {
         <div class={s.field}>
           <div class={s.label}>{authStore.user?.name}</div>
 
-          <div
+          <textarea
             contenteditable={true}
             class={s.input}
-            onInput={(e) => setForm("text", e.target.textContent || "")}
+            // textContent={form.text}
+            value={"QQQ"}
+            onInput={(e) => {
+              e.preventDefault();
+              setForm("text", e.target.textContent || "");
+            }}
           />
         </div>
 

@@ -7,7 +7,6 @@ import {
 } from "solid-js/store";
 
 import { useAPI } from "./api";
-// import type { IEventMessage } from "./sse";
 
 const MessagesContext = createContext({
   messagesStore: null as unknown as MessagesStore,
@@ -15,7 +14,6 @@ const MessagesContext = createContext({
   update: null as unknown as (messageId: string) => Promise<void>,
   clean: null as unknown as () => void,
   append: null as unknown as (message: IMessage[]) => void,
-  // process: null as unknown as (message: IMessage) => void,
 });
 
 export type IMessage = {
