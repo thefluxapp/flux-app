@@ -1,6 +1,6 @@
+import { EventSource } from "eventsource";
 import { type ParentComponent, createContext, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
-import { EventSource } from "eventsource";
 
 import { IState, useMessages } from "./messages";
 

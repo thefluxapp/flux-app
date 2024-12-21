@@ -1,12 +1,12 @@
-import { createContext, type ParentComponent, useContext } from "solid-js";
-import { createStore } from "solid-js/store";
 import {
-  translator,
-  proxyTranslator,
   type ChainedTranslator,
   flatten,
+  proxyTranslator,
   resolveTemplate,
+  translator,
 } from "@solid-primitives/i18n";
+import { type ParentComponent, createContext, useContext } from "solid-js";
+import { createStore } from "solid-js/store";
 
 import type { Dict } from "../i18n";
 import { dict as en } from "../i18n/en";

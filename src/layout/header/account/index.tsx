@@ -1,5 +1,5 @@
-import type { Component } from "solid-js";
 import { A } from "@solidjs/router";
+import type { Component } from "solid-js";
 
 import { useAuth } from "../../../contexts/auth";
 

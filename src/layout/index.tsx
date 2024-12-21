@@ -3,12 +3,12 @@ import { type ParentComponent, Show } from "solid-js";
 
 import { APIProvider } from "../contexts/api";
 import { AuthProvider } from "../contexts/auth";
-import { useRoot } from "../contexts/root";
+import { I18nProvider } from "../contexts/i18n";
 import { MessagesProvider } from "../contexts/messages";
+import { useRoot } from "../contexts/root";
+import { SSEProvider } from "../contexts/sse";
 import { StreamsProvider } from "../contexts/streams";
 import { Header } from "./header";
-import { I18nProvider } from "../contexts/i18n";
-import { SSEProvider } from "../contexts/sse";
 
 export const Layout: ParentComponent = (props) => {
   const { rootStore: store } = useRoot();

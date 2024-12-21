@@ -7,7 +7,8 @@
     "build": "farm build",
     "preview": "farm preview",
     "clean": "farm clean",
-    "ci": "biome ci ."
+    "ci": "biome ci .",
+    "check": "biome check . --write"
   },
   "dependencies": {
     "@github/webauthn-json": "^2.1.1",

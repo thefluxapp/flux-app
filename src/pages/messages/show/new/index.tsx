@@ -1,9 +1,9 @@
-import { onMount, type Component, type JSX } from "solid-js";
-import { createStore } from "solid-js/store";
-import { nanoid } from "nanoid";
+import { registerPlainText } from "@lexical/plain-text";
 import { $rootTextContent } from "@lexical/text";
 import { $getRoot, createEditor } from "lexical";
-import { registerPlainText } from "@lexical/plain-text";
+import { nanoid } from "nanoid";
+import { type Component, type JSX, onMount } from "solid-js";
+import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 

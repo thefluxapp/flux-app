@@ -1,10 +1,10 @@
 import { A, useMatch } from "@solidjs/router";
-import { Show, type ParentComponent } from "solid-js";
+import { type ParentComponent, Show } from "solid-js";
 
 import s from "./index.module.css";
 
-import { MessagesNew } from "./new";
 import { useI18n } from "../../../contexts/i18n";
+import { MessagesNew } from "./new";
 
 export const MessagesWrapper: ParentComponent = (props) => {
   const isStreamsNew = useMatch(() => "/messages/new");

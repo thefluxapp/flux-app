@@ -9,9 +9,9 @@ import { AccountPage } from "./pages/account";
 import { AuthPage } from "./pages/auth";
 import { HomePage } from "./pages/home";
 import { MessagesIndexPage } from "./pages/messages/index";
+import { MessagesNewPage } from "./pages/messages/new";
 import { MessagesShowPage } from "./pages/messages/show";
 import { MessagesWrapper } from "./pages/messages/wrapper";
-import { MessagesNewPage } from "./pages/messages/new";
 
 const root = document.getElementById("root");
 

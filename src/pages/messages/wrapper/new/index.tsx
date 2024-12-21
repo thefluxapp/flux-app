@@ -1,17 +1,17 @@
 import { useMatch, useNavigate } from "@solidjs/router";
-import { createEffect, onMount, Show, type JSX } from "solid-js";
+import { type JSX, Show, createEffect, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { useAuth } from "../../../../contexts/auth";
 import { useAPI } from "../../../../contexts/api";
+import { useAuth } from "../../../../contexts/auth";
 
 import SubmitImg from "./right.svg";
 
-import s from "./index.module.css";
-import { nanoid } from "nanoid";
-import { $getRoot, $setSelection, createEditor } from "lexical";
 import { registerPlainText } from "@lexical/plain-text";
 import { $rootTextContent } from "@lexical/text";
+import { $getRoot, $setSelection, createEditor } from "lexical";
+import { nanoid } from "nanoid";
+import s from "./index.module.css";
 
 export const MessagesNew = () => {
   const navigate = useNavigate();

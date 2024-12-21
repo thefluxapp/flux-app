@@ -1,12 +1,12 @@
-import { For, type Component } from "solid-js";
+import { type Component, For } from "solid-js";
 
 import s from "./index.module.css";
 
 import ProgressImg from "../../index/stream/progress.svg";
 
-import type { MessageStore, IStream } from "../../../../contexts/messages";
-import { useI18n } from "../../../../contexts/i18n";
 import { A } from "@solidjs/router";
+import { useI18n } from "../../../../contexts/i18n";
+import type { IStream, MessageStore } from "../../../../contexts/messages";
 
 export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
   stream,

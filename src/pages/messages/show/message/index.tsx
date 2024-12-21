@@ -1,10 +1,10 @@
-import type { Component } from "solid-js";
 import { A } from "@solidjs/router";
+import type { Component } from "solid-js";
 
 import s from "./index.module.css";
 
-import { useMessages, type MessageStore } from "../../../../contexts/messages";
 import { useI18n } from "../../../../contexts/i18n";
+import { type MessageStore, useMessages } from "../../../../contexts/messages";
 
 export const Message: Component<{ message: MessageStore }> = ({ message }) => {
   const { t } = useI18n();
