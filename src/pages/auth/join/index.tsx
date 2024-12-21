@@ -4,8 +4,8 @@ import { createStore } from "solid-js/store";
 import s from "./index.module.css";
 
 import { useAPI } from "../../../contexts/api";
-import type { CredentialOptions } from "../entities";
 import { useI18n } from "../../../contexts/i18n";
+import type { CredentialOptions } from "../entities";
 
 export const Join = ({
   setCredentialOptions,

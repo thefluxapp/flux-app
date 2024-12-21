@@ -1,10 +1,10 @@
-import { useMatch, useNavigate } from "@solidjs/router";
-import { type JSX, createEffect, onMount } from "solid-js";
-import { createStore } from "solid-js/store";
 import { registerPlainText } from "@lexical/plain-text";
 import { $rootTextContent } from "@lexical/text";
+import { useMatch, useNavigate } from "@solidjs/router";
 import { $getRoot, $setSelection, createEditor } from "lexical";
 import { nanoid } from "nanoid";
+import { type JSX, createEffect, onMount } from "solid-js";
+import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
