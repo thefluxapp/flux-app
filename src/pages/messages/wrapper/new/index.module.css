@@ -4,12 +4,12 @@
 }
 
 .input {
-  background: var(--theme-background-secondary-color-inactive);
+  background: var(--theme-form-background-color);
   outline: none;
   border-radius: var(--yr);
   padding: calc(var(--yr) * 3) calc(var(--xr) / 2);
   line-height: calc(var(--yr) * 4);
-  transition: background 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
 }
 
 .input p {
@@ -17,7 +17,7 @@
 }
 
 .input:focus {
-  background: var(--theme-background-secondary-color);
+  background: var(--theme-form-background-color--active);
 }
 
 /* .input::before {

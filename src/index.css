@@ -17,18 +17,32 @@
   --font-normal: 400;
   --font-bold: 550;
 
-  --theme-text-primary-color: lch(2% 0 0);
-  --theme-text-secondary-color: lch(
-    from var(--theme-text-primary-color) calc(l + 50) c h
-  );
+  --font-cond: 90;
 
+  --theme-text-primary-color: lch(2% 0 0);
+  --theme-accent-color: lch(45% 100 305);
   --theme-background-primary-color: lch(98 0 0);
-  --theme-background-secondary-color: lch(
+
+  --theme-form-background-color: lch(
     from var(--theme-background-primary-color) calc(l - 5) c h
   );
-  --theme-background-secondary-color-inactive: lch(
-    from var(--theme-background-secondary-color) calc(l - 3) c h
+  --theme-form-background-color--active: lch(
+    from var(--theme-form-background-color) calc(l - 5) c h
   );
+
+  /* FORMS */
+  --theme-form-button-color: lch(from var(--theme-accent-color) l c h);
+  --theme-form-button-color--active: lch(
+    from var(--theme-form-button-color) calc(l - 5) c h
+  );
+  --theme-form-button-text-color: lch(88% 0 0);
+
+  /* --theme-background-secondary-color: lch(
+    from var(--theme-background-primary-color) calc(l - 5) c h
+  ); */
+  /* --theme-background-secondary-color-inactive: lch(
+    from var(--theme-background-secondary-color) calc(l - 3) c h
+  ); */
 
   /* --theme-button-primary-color: lch(33.52% 50 284.77); */
 }
@@ -52,7 +66,17 @@ button,
 input,
 textarea {
   font-size: inherit;
-  line-height: inherit;
+  font-family: inherit;
+  line-height: calc(var(--yr) * 4);
+}
+
+button {
+  /* font-variation-settings: "wdth" var(--font-cond); */
+  border: 0;
+  cursor: pointer;
+  transition-property: background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
 }
 
 #root {
@@ -63,14 +87,23 @@ textarea {
 @media (prefers-color-scheme: dark) {
   :root {
     --theme-text-primary-color: lch(88% 0 0);
-    --theme-text-secondary-color: lch(
+    /* --theme-text-secondary-color: lch(
       from var(--theme-text-primary-color) calc(l - 20) c h
-    );
+    ); */
 
     --theme-background-primary-color: lch(10% 0 0);
-    --theme-background-secondary-color: lch(
+
+    /* FORMS */
+    --theme-form-background-color: lch(
       from var(--theme-background-primary-color) calc(l + 5) c h
     );
+    --theme-form-background-color--active: lch(
+      from var(--theme-form-background-color) calc(l + 5) c h
+    );
+
+    /* --theme-background-secondary-color: lch(
+      from var(--theme-background-primary-color) calc(l + 5) c h
+    ); */
 
     /* --theme-text-primary-color: lch(2% 0 0); */
     /* --theme-background-primary-color: rgb(30 30 30); */

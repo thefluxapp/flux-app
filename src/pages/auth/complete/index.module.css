@@ -5,10 +5,11 @@
 }
 
 .title {
-  margin: 0 0 calc(var(--yr) * 2);
+  margin: 0 0 calc(var(--yr) * 4);
   font-weight: var(--font-bold);
-  font-size: calc(var(--yr) * 5);
-  line-height: calc(var(--yr) * 7);
+  font-size: calc(var(--yr) * 10);
+  line-height: calc(var(--yr) * 10);
+  font-variation-settings: "wdth" var(--font-cond);
 }
 
 .desc {
@@ -17,16 +18,20 @@
   line-height: calc(var(--yr) * 6);
 }
 
+.hint {
+  margin: 0 0 calc(var(--yr) * 4);
+}
+
 .label {
-  font-size: calc(var(--yr) * 2.75);
   line-height: calc(var(--yr) * 4);
+  font-size: calc(var(--yr) * 3);
+  font-weight: var(--font-bold);
   margin: 0;
   display: block;
   position: absolute;
   left: 0;
   top: 0;
-  padding: var(--yr) var(--xr) 0;
-  text-transform: uppercase;
+  padding: var(--yr) calc(var(--xr) / 2);
 }
 
 .field {
@@ -35,35 +40,36 @@
 }
 
 .input {
-  font-size: calc(var(--yr) * 4);
-  line-height: calc(var(--yr) * 6);
-  background: var(--theme-background-secondary-color);
+  font-size: inherit;
+  line-height: calc(var(--yr) * 4);
   display: block;
   width: 100%;
   border: 0;
   margin: 0;
   outline: none;
   border-radius: var(--yr);
-  padding: calc(var(--yr) * 6) var(--xr) calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 6) calc(var(--xr) / 2) calc(var(--yr) * 2);
+  background: var(--theme-form-background-color);
+  transition: background-color 0.2s ease-out;
+}
+
+.input:focus {
+  background: var(--theme-form-background-color--active);
 }
 
 .button {
+  color: var(--theme-form-button-text-color);
   display: block;
   border-radius: var(--yr);
-  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
-  border: 0;
-  cursor: pointer;
-  background: var(--theme-button-primary-color);
-  color: white;
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
+  background: var(--theme-form-button-color);
   font-weight: var(--font-bold);
-  transition: 0.3s;
-  margin: 0 0 0 auto;
 }
 
 .button:disabled {
-  /* background: oklch(from var(--theme-button-primary-color) calc(l + 0.2) c h); */
+  opacity: 0.5;
 }
 
 .button:not(:disabled):hover {
-  /* background: oklch(from var(--theme-button-primary-color) calc(l - 0.1) c h); */
+  background: var(--theme-form-button-color--active);
 }

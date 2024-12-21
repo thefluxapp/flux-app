@@ -20,7 +20,7 @@ export const Login = ({
 
     const data = await api.auth.login({ credential });
     updateToken(data.jwt);
-    navigate("/streams");
+    navigate("/messages");
   };
 
   onMount(async () => {

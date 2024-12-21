@@ -1,5 +1,5 @@
 import { useMatch, useNavigate } from "@solidjs/router";
-import { type JSX, Show, createEffect, onMount } from "solid-js";
+import { type JSX, createEffect, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import { useAPI } from "../../../../contexts/api";
@@ -83,18 +83,16 @@ export const MessagesNew = () => {
         ref={editorRef}
       />
 
-      <Show when={authStore.user !== null}>
-        <div class={s.submit}>
-          <button
-            class={s.button}
-            type="button"
-            disabled={form.text.length < 3}
-            onClick={handleSubmit}
-          >
-            <SubmitImg />
-          </button>
-        </div>
-      </Show>
+      <div class={s.submit}>
+        <button
+          class={s.button}
+          type="button"
+          disabled={form.text.length < 3 || authStore.user === null}
+          onClick={handleSubmit}
+        >
+          <SubmitImg />
+        </button>
+      </div>
     </div>
   );
 };

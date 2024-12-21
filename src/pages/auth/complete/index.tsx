@@ -4,16 +4,18 @@ import { useNavigate } from "@solidjs/router";
 import type { JSX } from "solid-js";
 import { createStore } from "solid-js/store";
 
+import s from "./index.module.css";
+
 import { useAPI } from "../../../contexts/api";
 import { useRoot } from "../../../contexts/root";
-
-import s from "./index.module.css";
+import { useI18n } from "../../../contexts/i18n";
 
 export const Complete = ({
   creation,
 }: { creation: CredentialCreationOptionsJSON }) => {
   const { updateToken } = useRoot();
   const api = useAPI();
+  const { t } = useI18n();
   const navigate = useNavigate();
 
   const [form, setForm] = createStore({
@@ -45,26 +47,20 @@ export const Complete = ({
       });
 
       updateToken(data.jwt);
-      navigate("/streams");
+      navigate("/messages");
     }
   };
 
   return (
     <div class={s.root}>
-      <div class={s.title}>
-        Нет аккаунта с такой почтой, нужно завершить регистрацию
-      </div>
+      <div class={s.title}>{t.complete.title()}</div>
 
-      <div class={s.desc}>
-        Имя и фамилия используются нейросетью, поэтому их обязательно нужно
-        заполнить, а если указать ненастоящие, то возможно алгоритмы будут хуже
-        работать.
-      </div>
+      <div class={s.desc}>{t.complete.desc()}</div>
 
       <form class={s.form} onSubmit={handleSubmit}>
         <div class={s.field}>
           <label class={s.label} for="first_name">
-            Имя
+            {t.complete.first_name()}
           </label>
 
           <input
@@ -80,7 +76,7 @@ export const Complete = ({
 
         <div class={s.field}>
           <label class={s.label} for="last_name">
-            Фамилия
+            {t.complete.last_name()}
           </label>
 
           <input
@@ -95,8 +91,12 @@ export const Complete = ({
         </div>
 
         <div class={s.submit}>
-          <button class={s.button} type="submit">
-            Войти
+          <button
+            class={s.button}
+            type="submit"
+            disabled={form.first_name.length < 3 || form.last_name.length < 3}
+          >
+            {t.complete.button()}
           </button>
         </div>
       </form>

@@ -1,17 +1,17 @@
 import type { JSX, Setter } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { useAPI } from "../../../contexts/api";
-// import { useRoot } from "../../../contexts/root";
-import type { CredentialOptions } from "../entities";
-
 import s from "./index.module.css";
+
+import { useAPI } from "../../../contexts/api";
+import type { CredentialOptions } from "../entities";
+import { useI18n } from "../../../contexts/i18n";
 
 export const Join = ({
   setCredentialOptions,
 }: { setCredentialOptions: Setter<CredentialOptions> }) => {
-  // const { rootStore, updateToken } = useRoot();
   const api = useAPI();
+  const { t } = useI18n();
 
   const [form, setForm] = createStore({
     email: "",
@@ -36,14 +36,8 @@ export const Join = ({
 
   return (
     <div class={s.root}>
-      <div class={s.title}>
-        Войти и зарегаться можно через Passkey (Face ID или отпечаток пальца)
-      </div>
-
-      <div class={s.desc}>
-        Почта используется как идентификатор и чтобы можно было восстановить
-        потом доступ. Никаких кодов подтверждения отсылаться не будет.
-      </div>
+      <div class={s.title}>{t.login.title()}</div>
+      <div class={s.desc}>{t.login.desc()}</div>
 
       <form class={s.form} onSubmit={handleSubmit}>
         <div class={s.field}>
@@ -62,16 +56,21 @@ export const Join = ({
           />
         </div>
 
+        <div class={s.hint}>{t.login.hint()}</div>
+
         <div class={s.submit}>
           <button
             class={s.button}
             type="submit"
             disabled={form.email.length < 3}
           >
-            Войти
+            {t.login.button()}
           </button>
         </div>
       </form>
     </div>
   );
 };
+
+// Почта используется как идентификатор и чтобы можно было восстановить
+// потом доступ. Никаких кодов подтверждения отсылаться не будет.
