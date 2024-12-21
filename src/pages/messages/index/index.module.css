@@ -1,0 +1,5 @@
+.root {
+  padding: 0 var(--xr);
+  max-width: 40rem;
+  margin: 0 auto;
+}

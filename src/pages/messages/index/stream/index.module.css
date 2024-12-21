@@ -1,0 +1,53 @@
+.root {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+
+  /* padding: 0 0 0 calc(var(--xr) / 2);
+  border-left: var(--yr) solid var(--theme-background-secondary-color);
+  margin: calc(var(--yr) * 2) 0; */
+}
+
+.root:not(:last-child) {
+  margin: 0 0 calc(var(--yr) * 6);
+}
+
+.users {
+  display: flex;
+  margin: calc(var(--yr) * 1) 0 0;
+}
+
+.images {
+  display: flex;
+  margin-right: var(--yr);
+}
+
+.image {
+  width: calc(var(--yr) * 6);
+  height: calc(var(--yr) * 6);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  line-height: calc(var(--yr) * 6);
+  font-size: calc(var(--yr) * 2.5);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+}
+
+.image:not(:first-child) {
+  margin-inline-start: calc(var(--yr) * -2);
+  mask: radial-gradient(
+    circle calc(var(--yr) * 3) at calc(0% - var(--yr) * 0.5) 50%,
+    transparent 99%,
+    #fff 100%
+  );
+}
+
+.names {
+  font-size: calc(var(--yr) * 3);
+  line-height: calc(var(--yr) * 4);
+  font-weight: var(--font-bold);
+  white-space: nowrap;
+  align-self: center;
+}

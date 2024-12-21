@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@93.7,372&display=swap'); */
+
+:root {
+  color-scheme: light dark;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --yr: 0.25rem;
+  --xr: 0.75rem;
+
+  --font-normal: 400;
+  --font-bold: 550;
+
+  --font-cond: 90;
+
+  --theme-text-primary-color: lch(2% 0 0);
+  --theme-accent-color: lch(45% 100 305);
+  --theme-background-primary-color: lch(98 0 0);
+
+  --theme-form-background-color: lch(
+    from var(--theme-background-primary-color) calc(l - 5) c h
+  );
+  --theme-form-background-color--active: lch(
+    from var(--theme-form-background-color) calc(l - 5) c h
+  );
+
+  /* FORMS */
+  --theme-form-button-color: lch(from var(--theme-accent-color) l c h);
+  --theme-form-button-color--active: lch(
+    from var(--theme-form-button-color) calc(l - 5) c h
+  );
+  --theme-form-button-text-color: lch(88% 0 0);
+
+  /* STREAMS */
+  --theme-stream-border-color: lch(
+    from var(--theme-background-primary-color) calc(l - 15) c h
+  );
+
+  /* --theme-background-secondary-color: lch(
+    from var(--theme-background-primary-color) calc(l - 5) c h
+  ); */
+  /* --theme-background-secondary-color-inactive: lch(
+    from var(--theme-background-secondary-color) calc(l - 3) c h
+  ); */
+
+  /* --theme-button-primary-color: lch(33.52% 50 284.77); */
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: calc(var(--yr) * 3.5);
+  line-height: calc(var(--yr) * 4.5);
+  font-weight: var(--font-normal);
+  margin: 0;
+  color: var(--theme-text-primary-color);
+  background: var(--theme-background-primary-color);
+}
+
+button,
+input,
+textarea {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: calc(var(--yr) * 4);
+}
+
+button {
+  /* font-variation-settings: "wdth" var(--font-cond); */
+  border: 0;
+  cursor: pointer;
+  transition-property: background-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+#root {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-text-primary-color: lch(88% 0 0);
+    /* --theme-text-secondary-color: lch(
+      from var(--theme-text-primary-color) calc(l - 20) c h
+    ); */
+
+    --theme-background-primary-color: lch(10% 0 0);
+
+    /* FORMS */
+    --theme-form-background-color: lch(
+      from var(--theme-background-primary-color) calc(l + 5) c h
+    );
+    --theme-form-background-color--active: lch(
+      from var(--theme-form-background-color) calc(l + 5) c h
+    );
+
+    /* STREAMS */
+    --theme-stream-border-color: lch(
+      from var(--theme-background-primary-color) calc(l + 15) c h
+    );
+
+    /* --theme-background-secondary-color: lch(
+      from var(--theme-background-primary-color) calc(l + 5) c h
+    ); */
+
+    /* --theme-text-primary-color: lch(2% 0 0); */
+    /* --theme-background-primary-color: rgb(30 30 30); */
+    /* --theme-background-secondary-color: rgb(30 30 30); */
+  }
+
+  /* :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  } */
+}
