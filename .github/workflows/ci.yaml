@@ -21,5 +21,8 @@ jobs:
       - name: Format
         run: bun biome ci .
 
+      - name: Install TypeScript
+        run: bun install -g typescript
+
       - name: TypeScript
         run: bun tsc --noEmit
