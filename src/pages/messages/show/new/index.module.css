@@ -26,6 +26,10 @@
   z-index: -1;
 }
 
+.main {
+  position: relative;
+}
+
 .label {
   line-height: calc(var(--yr) * 4);
   font-size: calc(var(--yr) * 3);
@@ -40,14 +44,13 @@
 }
 
 .field {
-  margin: 0 0 calc(var(--yr) * 4) calc(var(--yr) * -1);
+  margin: 0 0 0 calc(var(--yr) * -1);
   position: relative;
 }
 
 .input {
   color: inherit;
   font-size: inherit;
-  background: var(--theme-background-secondary-color-inactive);
   display: block;
   width: 100%;
   border: 0;
@@ -57,12 +60,40 @@
   padding: calc(var(--yr) * 6) var(--yr) calc(var(--yr) * 2);
   resize: vertical;
   field-sizing: content;
+  background: var(--theme-form-background-color);
+  transition: background-color 0.2s ease-out;
 }
 
 .input:focus {
-  background: var(--theme-background-secondary-color);
+  background: var(--theme-form-background-color--active);
 }
 
 .input p {
   margin: 0;
+}
+
+.button {
+  appearance: none;
+  display: block;
+  background: none;
+  padding: 0;
+  height: 100%;
+  border: 0;
+  cursor: pointer;
+}
+
+.button svg {
+  display: block;
+  height: 100%;
+  padding: calc(var(--yr) * 2);
+}
+
+.submit {
+  margin: 0;
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(var(--yr) * 10);
+  height: calc(var(--yr) * 10);
 }

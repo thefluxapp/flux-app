@@ -51,6 +51,18 @@ type GetMessageResponse = {
       abbr: string;
       color: string;
     };
+    stream: {
+      stream_id: string;
+      text: string;
+      users: {
+        user_id: string;
+        name: string;
+        first_name: string;
+        last_name: string;
+        abbr: string;
+        color: string;
+      }[];
+    } | null;
     order: number;
   }[];
 
@@ -66,13 +78,20 @@ type GetMessageResponse = {
       abbr: string;
       color: string;
     };
+    stream: {
+      stream_id: string;
+      text: string;
+      users: {
+        user_id: string;
+        name: string;
+        first_name: string;
+        last_name: string;
+        abbr: string;
+        color: string;
+      }[];
+    } | null;
     order: number;
   };
-
-  stream: {
-    stream_id: string;
-    text: string | null;
-  } | null;
 };
 
 type CreateMessageRequest = {

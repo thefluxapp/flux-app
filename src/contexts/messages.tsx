@@ -22,6 +22,7 @@ export type IMessage = {
   text: string;
   state: IState;
   order: number;
+  stream: IStream | null;
   user: {
     user_id: string;
     name: string;
@@ -30,6 +31,19 @@ export type IMessage = {
     abbr: string;
     color: string;
   };
+};
+
+export type IStream = {
+  stream_id: string;
+  text: string;
+  users: {
+    user_id: string;
+    name: string;
+    first_name: string;
+    last_name: string;
+    abbr: string;
+    color: string;
+  }[];
 };
 
 export type MessageStore = IMessage;

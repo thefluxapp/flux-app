@@ -35,7 +35,7 @@ export const Complete = ({
     if (public_key != null && public_key_algorithm != null) {
       const data = await api.auth.complete({
         first_name: form.first_name,
-        last_name: form.first_name,
+        last_name: form.last_name,
         credential: {
           ...credential,
           response: {

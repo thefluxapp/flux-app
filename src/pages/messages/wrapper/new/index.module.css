@@ -20,12 +20,6 @@
   background: var(--theme-form-background-color--active);
 }
 
-/* .input::before {
-  content: attr(title);
-  pointer-events: none;
-  display: block;
-} */
-
 .button {
   appearance: none;
   display: block;
@@ -48,7 +42,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  /* opacity: 0; */
   width: calc(var(--yr) * 10);
   height: calc(var(--yr) * 10);
 }
