@@ -24,6 +24,7 @@
   line-height: calc(var(--yr) * 8);
   font-size: calc(var(--yr) * 3);
   font-weight: var(--font-bold);
+  text-transform: uppercase;
 }
 
 .image::after {

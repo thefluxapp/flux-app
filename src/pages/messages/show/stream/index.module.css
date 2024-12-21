@@ -1,10 +1,12 @@
 .root {
-  padding: 0 0 0 calc(var(--xr) / 2);
-  border-left: var(--yr) solid var(--theme-accent-color);
-  margin: calc(var(--yr) * 2) 0;
+  padding: calc(var(--yr) * 2);
+  /* border-left: var(--yr) solid var(--theme-accent-color); */
+  margin: calc(var(--yr) * 2) 0 calc(var(--yr) * 1);
   color: inherit;
   text-decoration: none;
   display: block;
+  border-radius: var(--yr);
+  box-shadow: 0 0 0 1px var(--theme-stream-border-color);
 }
 
 .users {
@@ -17,14 +19,6 @@
   margin-right: var(--yr);
 }
 
-.image::after {
-  content: "";
-  position: absolute;
-  background: var(--theme-background-secondary-color);
-  inset: 0;
-  z-index: -1;
-}
-
 .image {
   width: calc(var(--yr) * 6);
   height: calc(var(--yr) * 6);
@@ -35,13 +29,16 @@
   line-height: calc(var(--yr) * 6);
   font-size: calc(var(--yr) * 2.5);
   font-weight: var(--font-bold);
-
-  /* TODO: Make it outset */
-  box-shadow: 0 0 0 1px inset var(--theme-background-primary-color);
+  text-transform: uppercase;
 }
 
 .image:not(:first-child) {
-  margin-left: calc(var(--yr) * -4);
+  margin-inline-start: calc(var(--yr) * -2);
+  mask: radial-gradient(
+    circle calc(var(--yr) * 3) at calc(0% - var(--yr) * 0.5) 50%,
+    transparent 99%,
+    #fff 100%
+  );
 }
 
 .names {

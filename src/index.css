@@ -37,6 +37,11 @@
   );
   --theme-form-button-text-color: lch(88% 0 0);
 
+  /* STREAMS */
+  --theme-stream-border-color: lch(
+    from var(--theme-background-primary-color) calc(l - 15) c h
+  );
+
   /* --theme-background-secondary-color: lch(
     from var(--theme-background-primary-color) calc(l - 5) c h
   ); */
@@ -99,6 +104,11 @@ button {
     );
     --theme-form-background-color--active: lch(
       from var(--theme-form-background-color) calc(l + 5) c h
+    );
+
+    /* STREAMS */
+    --theme-stream-border-color: lch(
+      from var(--theme-background-primary-color) calc(l + 15) c h
     );
 
     /* --theme-background-secondary-color: lch(

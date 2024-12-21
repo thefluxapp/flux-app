@@ -28,4 +28,5 @@
 
 .active {
   background-color: var(--theme-accent-color);
+  color: #fff;
 }
