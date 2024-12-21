@@ -24,7 +24,7 @@ type GetStreamsResponse = {
   streams: {
     stream_id: string;
     message_id: string;
-    text: string | null;
+    text: string;
     users: {
       user_id: string;
       name: string;

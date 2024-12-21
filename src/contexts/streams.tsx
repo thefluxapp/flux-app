@@ -32,7 +32,7 @@ export const StreamsProvider: ParentComponent = (props) => {
 };
 
 class StreamsStore {
-  streams: Stream[] | null = null;
+  streams: IStream[] | null = null;
 
   static initialize(): StreamsStore {
     return new StreamsStore();
@@ -41,10 +41,10 @@ class StreamsStore {
 
 export const useStreams = () => useContext(StreamsContext);
 
-type Stream = {
+export type IStream = {
   stream_id: string;
   message_id: string;
-  text: string | null;
+  text: string;
   users: {
     user_id: string;
     name: string;

@@ -26,7 +26,7 @@ export const SSEProvider: ParentComponent = (props) => {
         messagesStore.rootStore?.messageStore.message_id ===
         data.message.stream.message_id
       ) {
-        append([{ ...data.message, state: IState.Active }]);
+        append([{ ...data.message, state: IState.Active, stream: null }]);
       }
     }
   };

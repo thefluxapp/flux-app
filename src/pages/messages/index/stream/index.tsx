@@ -6,7 +6,7 @@ import s from "./index.module.css";
 import ProgressImg from "./progress.svg";
 
 import { useI18n } from "../../../../contexts/i18n";
-import type { IStream } from "../../../../contexts/messages";
+import type { IStream } from "../../../../contexts/streams";
 
 export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
   const { t } = useI18n();
