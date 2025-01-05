@@ -8,14 +8,16 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
+import SubmitImg from "./right.svg";
+
 import { useAPI } from "../../../../contexts/api";
 import { useAuth } from "../../../../contexts/auth";
-
-import SubmitImg from "./right.svg";
+import { useI18n } from "../../../../contexts/i18n";
 
 export const MessagesNew = () => {
   const navigate = useNavigate();
   const { authStore } = useAuth();
+  const { t } = useI18n();
   const api = useAPI();
   const isNew = useMatch(() => "/messages/new");
 
@@ -80,6 +82,7 @@ export const MessagesNew = () => {
         class={s.input}
         onFocus={handleFocus}
         contentEditable="plaintext-only"
+        data-placeholder={t.new.placeholder()}
         ref={editorRef}
       />
 

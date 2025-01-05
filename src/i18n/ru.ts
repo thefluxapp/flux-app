@@ -12,6 +12,10 @@ export const dict: Dict = {
     submit: "Отравить",
   },
 
+  new: {
+    placeholder: "Начни новый поток...",
+  },
+
   stream: {
     summarizing: "Сокращаем текст.. через пару секунд будет готово..",
     more: "и ещё {{count}}",

@@ -31,6 +31,13 @@
   margin: 0;
 }
 
+.input:empty:before {
+  content: attr(data-placeholder);
+  pointer-events: none;
+  display: block;
+  color: var(--theme-form-border-color--active);
+}
+
 .button {
   appearance: none;
   display: block;

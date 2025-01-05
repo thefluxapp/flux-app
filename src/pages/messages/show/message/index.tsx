@@ -11,6 +11,10 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
   const { t } = useI18n();
   const { messagesStore } = useMessages();
 
+  const createdAt = Intl.DateTimeFormat().format(
+    new Date(message.order / 1000),
+  );
+
   return (
     <>
       <div class={s.root}>
@@ -26,7 +30,7 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
           <div class={s.text}>{message.text}</div>
 
           <div class={s.actions}>
-            <div class={s.date}>21:50</div>
+            <div class={s.date}>{createdAt}</div>
 
             <div class={s.like}>{t.message.like()}</div>
 

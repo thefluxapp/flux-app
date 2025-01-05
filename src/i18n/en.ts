@@ -10,6 +10,10 @@ export const dict = {
     submit: "Send",
   },
 
+  new: {
+    placeholder: "Start a new stream...",
+  },
+
   stream: {
     summarizing: "Summarizing in progress..",
     more: "and {{count}} more",
