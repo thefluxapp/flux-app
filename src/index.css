@@ -110,6 +110,9 @@ button {
 @media (prefers-color-scheme: dark) {
   :root {
     --theme-text-primary-color: lch(88% 0 0);
+    --theme-text-secondary-color: lch(
+      from var(--theme-text-primary-color) calc(l - 30) c h
+    );
 
     --theme-background-primary-color: lch(10% 0 0);
     --theme-background-secondary-color: lch(
