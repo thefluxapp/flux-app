@@ -1,7 +1,7 @@
 .new {
   padding: 0 var(--xr);
   max-width: 40rem;
-  margin: 0 auto calc(var(--yr) * 4);
+  margin: calc(var(--yr) * 2) auto calc(var(--yr) * 4);
 }
 
 .tabs {
@@ -20,6 +20,9 @@
   font-weight: var(--font-bold);
   padding: calc(var(--yr) * 1) var(--xr);
   border-radius: calc(var(--yr) * 10);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .tab:not(:last-child) {
