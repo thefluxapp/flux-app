@@ -64,40 +64,19 @@ export const New: Component = () => {
 
   return (
     <div class={s.root}>
-      <div>
-        <div class={s.image} style={{ background: authStore.user?.color }}>
-          {authStore.user?.abbr}
-        </div>
+      <div class={s.field}>
+        <div class={s.input} contenteditable={true} ref={editorRef} />
       </div>
 
-      <div class={s.main}>
-        <div class={s.field}>
-          <div class={s.label}>{authStore.user?.name}</div>
-
-          <div class={s.input} contenteditable={true} ref={editorRef} />
-        </div>
-
-        <div class={s.submit}>
-          <button
-            class={s.button}
-            type="button"
-            disabled={form.text.length < 3 || authStore.user === null}
-            onClick={handleSubmit}
-          >
-            <SubmitImg />
-          </button>
-        </div>
-
-        {/* <div class={s.submit}>
-          <button
-            class={s.button}
-            type="button"
-            onClick={handleSubmit}
-            disabled={form.text.length < 3}
-          >
-            {t.message.submit()}
-          </button>
-        </div> */}
+      <div class={s.submit}>
+        <button
+          class={s.button}
+          type="button"
+          disabled={form.text.length < 3 || authStore.user === null}
+          onClick={handleSubmit}
+        >
+          <SubmitImg />
+        </button>
       </div>
     </div>
   );

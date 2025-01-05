@@ -7,7 +7,7 @@
 .tabs {
   padding: 0 var(--xr);
   max-width: 40rem;
-  margin: calc(var(--yr) * 4) auto;
+  margin: calc(var(--yr) * 4) auto calc(var(--yr) * 2);
   display: flex;
   font-weight: var(--fw-bold);
   justify-content: center;

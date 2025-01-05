@@ -19,14 +19,11 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
             {message.user.abbr}
           </div>
         </div>
-        <div>
+
+        <div class={s.message}>
           <div class={s.user}>{message.user.name}</div>
 
           <div class={s.text}>{message.text}</div>
-
-          {message.stream && (
-            <Stream stream={message.stream} message={message} />
-          )}
 
           <div class={s.actions}>
             <div class={s.date}>21:50</div>
@@ -42,6 +39,12 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
 
             <div class={s.state}>{message.state}</div>
           </div>
+
+          {message.stream && (
+            <div class={s.stream}>
+              <Stream stream={message.stream} message={message} />
+            </div>
+          )}
         </div>
       </div>
     </>

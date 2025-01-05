@@ -3,8 +3,6 @@ import { type Component, For } from "solid-js";
 
 import s from "./index.module.css";
 
-import ProgressImg from "./progress.svg";
-
 import { useI18n } from "../../../../contexts/i18n";
 import type { IStream } from "../../../../contexts/streams";
 
@@ -16,14 +14,7 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
 
   return (
     <A href={`/messages/${stream.message_id}`} class={s.root}>
-      {stream.text === null && (
-        <div class={s.shimmer}>
-          <ProgressImg />
-          <div>{t.stream.summarizing()}</div>
-        </div>
-      )}
-
-      {stream.text !== null && <div class={s.text}>{stream.text}</div>}
+      <div class={s.text}>{stream.text}</div>
 
       <div class={s.users}>
         <div class={s.images}>

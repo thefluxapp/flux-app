@@ -19,27 +19,45 @@
 
   --font-cond: 90;
 
-  --theme-text-primary-color: lch(2% 0 0);
   --theme-accent-color: lch(45% 100 305);
-  --theme-background-primary-color: lch(98 0 0);
 
-  --theme-form-background-color: lch(
+  --theme-text-primary-color: lch(2% 0 0);
+  --theme-text-secondary-color: lch(
+    from var(--theme-text-primary-color) calc(l + 50) c h
+  );
+  --theme-background-primary-color: lch(98 0 0);
+  --theme-background-secondary-color: lch(
     from var(--theme-background-primary-color) calc(l - 5) c h
   );
-  --theme-form-background-color--active: lch(
+
+  /* --theme-form-background-color: lch(
+    from var(--theme-background-primary-color) calc(l - 5) c h
+  ); */
+  /* --theme-form-background-color--active: lch(
     from var(--theme-form-background-color) calc(l - 5) c h
   );
 
+  --theme-form-background-color--active: lch(
+    from var(--theme-form-background-color) calc(l - 5) c h
+  ); */
+
   /* FORMS */
-  --theme-form-button-color: lch(from var(--theme-accent-color) l c h);
-  --theme-form-button-color--active: lch(
-    from var(--theme-form-button-color) calc(l - 5) c h
+  --theme-form-border-color: lch(
+    from var(--theme-background-primary-color) calc(l - 15) c h
   );
+  --theme-form-border-color--active: lch(
+    from var(--theme-form-border-color) calc(l - 15) c h
+  );
+
+  --theme-form-button-color: lch(from var(--theme-accent-color) l c h);
+  /* --theme-form-button-color--active: lch(
+    from var(--theme-form-button-color) calc(l - 5) c h
+  ); */
   --theme-form-button-text-color: lch(88% 0 0);
 
   /* STREAMS */
   --theme-stream-border-color: lch(
-    from var(--theme-background-primary-color) calc(l - 15) c h
+    from var(--theme-background-primary-color) calc(l - 10) c h
   );
 
   /* --theme-background-secondary-color: lch(
@@ -92,18 +110,25 @@ button {
 @media (prefers-color-scheme: dark) {
   :root {
     --theme-text-primary-color: lch(88% 0 0);
-    /* --theme-text-secondary-color: lch(
-      from var(--theme-text-primary-color) calc(l - 20) c h
-    ); */
 
     --theme-background-primary-color: lch(10% 0 0);
+    --theme-background-secondary-color: lch(
+      from var(--theme-background-primary-color) calc(l + 5) c h
+    );
 
     /* FORMS */
-    --theme-form-background-color: lch(
+    /* --theme-form-background-color: lch(
       from var(--theme-background-primary-color) calc(l + 5) c h
     );
     --theme-form-background-color--active: lch(
       from var(--theme-form-background-color) calc(l + 5) c h
+    ); */
+
+    --theme-form-border-color: lch(
+      from var(--theme-background-primary-color) calc(l + 25) c h
+    );
+    --theme-form-border-color--active: lch(
+      from var(--theme-form-border-color) calc(l + 20) c h
     );
 
     /* STREAMS */
