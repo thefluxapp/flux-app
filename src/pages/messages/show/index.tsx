@@ -7,6 +7,7 @@ import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
 import { Message } from "./message";
 import { New } from "./new";
+import { Stream } from "./stream";
 
 export const MessagesShowPage = () => {
   const params = useParams();
@@ -23,6 +24,16 @@ export const MessagesShowPage = () => {
 
   return (
     <div class={s.root}>
+      {messagesStore.rootStore &&
+        messagesStore.rootStore.messageStore.stream !== null && (
+          <div class={s.stream}>
+            <Stream
+              stream={messagesStore.rootStore.messageStore.stream}
+              message={messagesStore.rootStore.messageStore}
+            />
+          </div>
+        )}
+
       <For each={messagesStore.listStore}>
         {({ messageStore }) => <Message message={messageStore} />}
       </For>

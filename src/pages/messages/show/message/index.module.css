@@ -1,6 +1,6 @@
 .root {
   margin: 0 0 calc(var(--yr) * 4);
-  padding: 0 calc(var(--xr) / 2);
+  padding: 0;
   display: grid;
   grid-template-columns: calc(var(--yr) * 10) 1fr;
 }
@@ -70,11 +70,4 @@
 
 .stream {
   margin: calc(var(--yr) * 2) 0;
-  background: var(--theme-background-secondary-color);
-  padding: calc(var(--yr) * 2) var(--xr);
-  border-radius: calc(var(--yr) * 2);
-
-  /* margin: 0 0 calc(var(--yr) * 2); */
-  /* display: none; */
-  /* border-top: 1px solid gray; */
 }

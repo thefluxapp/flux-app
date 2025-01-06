@@ -1,5 +1,5 @@
 .root {
-  padding: 0 calc(var(--xr) / 2);
+  padding: 0;
   position: relative;
 }
 

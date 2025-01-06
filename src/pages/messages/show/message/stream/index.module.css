@@ -1,10 +1,11 @@
 .root {
   color: inherit;
-  display: block;
   text-decoration: none;
+  display: block;
   background: var(--theme-background-secondary-color);
+  padding: calc(var(--yr) * 2) calc(var(--yr) * 10) calc(var(--yr) * 2)
+    var(--xr);
   border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 4) calc(var(--yr) * 10);
   position: relative;
 }
 
@@ -22,7 +23,7 @@
   z-index: -1;
 }
 
-/* .root::after {
+.root::after {
   --bg: lch(from var(--theme-background-secondary-color) calc(l + 4) c h);
 
   content: "";
@@ -32,18 +33,18 @@
   left: calc(var(--yr) * 2);
   right: calc(var(--xr) * 2);
   bottom: calc(var(--yr) * -2);
-  border-radius: calc(var(--yr) * 2);
+  border-radius: calc(var(--yr) * 4);
   z-index: -2;
-} */
+}
 
 @media (prefers-color-scheme: dark) {
   .root::before {
     --bg: lch(from var(--theme-background-secondary-color) calc(l - 2) c h);
   }
 
-  /* .root::after {
+  .root::after {
     --bg: lch(from var(--theme-background-secondary-color) calc(l - 4) c h);
-  } */
+  }
 }
 
 .text {
@@ -90,16 +91,16 @@
   align-self: center;
 }
 
-.left {
+.right {
   color: var(--theme-text-secondary-color);
   position: absolute;
-  left: 0;
-  top: calc(var(--yr) * 2);
+  right: 0;
+  bottom: 0;
   width: calc(var(--yr) * 10);
   height: calc(var(--yr) * 10);
   padding: calc(var(--yr) * 2);
 }
 
-.left svg {
+.right svg {
   display: block;
 }

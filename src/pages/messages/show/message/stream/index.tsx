@@ -3,10 +3,10 @@ import { type Component, For } from "solid-js";
 
 import s from "./index.module.css";
 
-import LeftImg from "./left.svg";
+import RightImg from "./right.svg";
 
-import { useI18n } from "../../../../contexts/i18n";
-import type { IStream, MessageStore } from "../../../../contexts/messages";
+import { useI18n } from "../../../../../contexts/i18n";
+import type { IStream, MessageStore } from "../../../../../contexts/messages";
 
 export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
   stream,
@@ -19,8 +19,8 @@ export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
 
   return (
     <A href={`/messages/${message.message_id}`} class={s.root}>
-      <div class={s.left}>
-        <LeftImg />
+      <div class={s.right}>
+        <RightImg />
       </div>
 
       <div class={s.text}>{stream.text}</div>
