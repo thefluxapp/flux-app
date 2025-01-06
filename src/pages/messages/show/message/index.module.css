@@ -67,7 +67,3 @@
 .reply {
   font-weight: var(--font-bold);
 }
-
-.stream {
-  margin: calc(var(--yr) * 2) 0;
-}

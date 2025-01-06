@@ -18,30 +18,32 @@ export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
   const hidden = stream.users.slice(3);
 
   return (
-    <A href={`/messages/${message.message_id}`} class={s.root}>
-      <div class={s.left}>
+    <div class={s.root}>
+      <A class={s.left} href={`/messages/${message.message_id}`}>
         <LeftImg />
-      </div>
+      </A>
 
-      <div class={s.text}>{stream.text}</div>
+      <div class={s.stream}>
+        <div class={s.text}>{stream.text}</div>
 
-      <div class={s.users}>
-        <div class={s.images}>
-          <For each={visible}>
-            {(user) => (
-              <div class={s.image} style={{ background: user.color }}>
-                {user.abbr}
-              </div>
-            )}
-          </For>
+        <div class={s.users}>
+          <div class={s.images}>
+            <For each={visible}>
+              {(user) => (
+                <div class={s.image} style={{ background: user.color }}>
+                  {user.abbr}
+                </div>
+              )}
+            </For>
+          </div>
+
+          <div class={s.names}>
+            {`${visible.map((user) => user.first_name).join(", ")} `}
+
+            {hidden.length > 0 && t.stream.more({ count: hidden.length })}
+          </div>
         </div>
-
-        <div class={s.names}>
-          {`${visible.map((user) => user.first_name).join(", ")} `}
-
-          {hidden.length > 0 && t.stream.more({ count: hidden.length })}
-        </div>
       </div>
-    </A>
+    </div>
   );
 };

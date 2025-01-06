@@ -1,49 +1,20 @@
 .root {
+  /* padding: calc(var(--yr) * 4) calc(var(--yr) * 10); */
+  padding: 0;
+  display: grid;
+  grid-template-columns: calc(var(--yr) * 10) 1fr;
+  /* position: relative; */
+}
+
+.left {
   color: inherit;
   display: block;
   text-decoration: none;
-  background: var(--theme-background-secondary-color);
-  border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 4) calc(var(--yr) * 10);
-  position: relative;
 }
 
-.root::before {
-  --bg: lch(from var(--theme-background-secondary-color) calc(l + 2) c h);
-
-  content: "";
-  position: absolute;
-  background: var(--bg);
-  height: calc(var(--yr) * 10);
-  left: calc(var(--yr));
-  right: calc(var(--xr));
-  bottom: calc(var(--yr) * -1);
-  border-radius: calc(var(--yr) * 3);
-  z-index: -1;
-}
-
-/* .root::after {
-  --bg: lch(from var(--theme-background-secondary-color) calc(l + 4) c h);
-
-  content: "";
-  position: absolute;
-  background: var(--bg);
-  height: calc(var(--yr) * 10);
-  left: calc(var(--yr) * 2);
-  right: calc(var(--xr) * 2);
-  bottom: calc(var(--yr) * -2);
-  border-radius: calc(var(--yr) * 2);
-  z-index: -2;
-} */
-
-@media (prefers-color-scheme: dark) {
-  .root::before {
-    --bg: lch(from var(--theme-background-secondary-color) calc(l - 2) c h);
-  }
-
-  /* .root::after {
-    --bg: lch(from var(--theme-background-secondary-color) calc(l - 4) c h);
-  } */
+.stream {
+  border-bottom: 1px solid var(--theme-stream-border-color);
+  padding: 0 0 calc(var(--yr) * 4) 0;
 }
 
 .text {
@@ -52,7 +23,7 @@
 
 .users {
   display: flex;
-  margin: 0 0 calc(var(--yr) * 1);
+  /* margin: 0 0 calc(var(--yr) * 1); */
 }
 
 .images {
@@ -92,11 +63,11 @@
 
 .left {
   color: var(--theme-text-secondary-color);
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  top: calc(var(--yr) * 2);
-  width: calc(var(--yr) * 10);
-  height: calc(var(--yr) * 10);
+  top: calc(var(--yr) * 1); */
+  width: calc(var(--yr) * 8);
+  height: calc(var(--yr) * 8);
   padding: calc(var(--yr) * 2);
 }
 
