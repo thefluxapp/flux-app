@@ -62,6 +62,6 @@
   width: calc(var(--yr) * 10);
   height: calc(var(--yr) * 10);
   bottom: 0;
-  right: calc(var(--xr) / 2);
+  right: 0;
   padding: calc(var(--yr) * 1.5);
 }
