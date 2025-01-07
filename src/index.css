@@ -28,7 +28,7 @@
 
   --theme-background-edge-color: lch(100 0 0);
   --theme-background-primary-color: lch(
-    from var(--theme-background-edge-color) calc(l - 3) c h
+    from var(--theme-background-edge-color) calc(l - 1) c h
   );
   --theme-background-secondary-color: lch(
     from var(--theme-background-primary-color) calc(l - 5) c h

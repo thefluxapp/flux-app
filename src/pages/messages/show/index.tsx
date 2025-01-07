@@ -8,6 +8,7 @@ import { useMessages } from "../../../contexts/messages";
 import { Message } from "./message";
 import { New } from "./new";
 import { Stream } from "./stream";
+import { Loader } from "./loader";
 
 export const MessagesShowPage = () => {
   const params = useParams();
@@ -33,6 +34,10 @@ export const MessagesShowPage = () => {
             />
           </div>
         )}
+
+      <div class={s.loader}>
+        <Loader />
+      </div>
 
       <For each={messagesStore.listStore}>
         {({ messageStore }) => <Message message={messageStore} />}
