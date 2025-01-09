@@ -10,6 +10,10 @@ export const dict = {
     submit: "Send",
   },
 
+  new: {
+    placeholder: "Start a new stream...",
+  },
+
   stream: {
     summarizing: "Summarizing in progress..",
     more: "and {{count}} more",
@@ -28,5 +32,11 @@ export const dict = {
     first_name: "First name",
     last_name: "Last name",
     button: "Sign up",
+  },
+
+  loader: {
+    desc: "The stream shows the last 5 messages, the rest are summarized to a couple of sentences, which can be manually scaled and discover only the necessary.",
+    unread: "XXX-unread",
+    button: "Load more past messages",
   },
 };

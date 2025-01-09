@@ -35,6 +35,7 @@ export type IMessage = {
 
 export type IStream = {
   stream_id: string;
+  message_id: string;
   text: string;
   users: {
     user_id: string;
@@ -56,6 +57,7 @@ export enum IState {
 }
 
 type MessagesStore = {
+  cursor: string | null;
   listStore: {
     messageStore: MessageStore;
     setMessageStore: SetStoreFunction<MessageStore>;
@@ -70,6 +72,7 @@ export const MessagesProvider: ParentComponent = (props) => {
   const api = useAPI();
 
   const [messagesStore, setMessagesStore] = createStore<MessagesStore>({
+    cursor: null,
     listStore: [],
     rootStore: null,
   });
@@ -77,6 +80,7 @@ export const MessagesProvider: ParentComponent = (props) => {
   const update = async (message_id: string) => {
     const data = await api.messages.get_message({
       message_id,
+      cursor_message_id: messagesStore.cursor,
     });
 
     const [rootStore, setRootStore] = createStore<MessageStore>({
@@ -89,9 +93,10 @@ export const MessagesProvider: ParentComponent = (props) => {
       setMessageStore: setRootStore,
     });
 
-    setMessagesStore(
-      "listStore",
-      data.messages.map((payload) => {
+    setMessagesStore("cursor", data.cursor_message_id);
+
+    setMessagesStore("listStore", [
+      ...data.messages.map((payload) => {
         const [message, setMessage] = createStore<MessageStore>({
           ...payload,
           state: IState.Active,
@@ -102,11 +107,13 @@ export const MessagesProvider: ParentComponent = (props) => {
           setMessageStore: setMessage,
         };
       }),
-    );
+      ...messagesStore.listStore,
+    ]);
   };
 
   const clean = () => {
     setMessagesStore({
+      cursor: null,
       listStore: [],
       rootStore: null,
     });

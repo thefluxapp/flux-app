@@ -1,12 +1,14 @@
 import { useParams } from "@solidjs/router";
-import { For, createEffect, onCleanup } from "solid-js";
+import { For, createEffect, on, onCleanup } from "solid-js";
 
 import s from "./index.module.css";
 
 import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
+import { Loader } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
+import { Stream } from "./stream";
 
 export const MessagesShowPage = () => {
   const params = useParams();
@@ -17,12 +19,31 @@ export const MessagesShowPage = () => {
     clean();
   });
 
-  createEffect(async () => {
-    await update(params.id);
-  });
+  createEffect(
+    on(
+      () => params.id,
+      async () => {
+        clean();
+        await update(params.id);
+      },
+    ),
+  );
 
   return (
     <div class={s.root}>
+      {messagesStore.rootStore &&
+        messagesStore.rootStore.messageStore.stream !== null && (
+          <div class={s.stream}>
+            <Stream stream={messagesStore.rootStore.messageStore.stream} />
+          </div>
+        )}
+
+      {messagesStore.cursor !== null && (
+        <div class={s.loader}>
+          <Loader messageId={params.id} />
+        </div>
+      )}
+
       <For each={messagesStore.listStore}>
         {({ messageStore }) => <Message message={messageStore} />}
       </For>

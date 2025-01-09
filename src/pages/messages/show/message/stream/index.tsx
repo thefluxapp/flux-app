@@ -3,8 +3,10 @@ import { type Component, For } from "solid-js";
 
 import s from "./index.module.css";
 
-import { useI18n } from "../../../../contexts/i18n";
-import type { IStream } from "../../../../contexts/streams";
+import RightImg from "./right.svg";
+
+import { useI18n } from "../../../../../contexts/i18n";
+import type { IStream } from "../../../../../contexts/messages";
 
 export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
   const { t } = useI18n();
@@ -14,6 +16,10 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
 
   return (
     <A href={`/messages/${stream.message_id}`} class={s.root}>
+      <div class={s.right}>
+        <RightImg />
+      </div>
+
       <div class={s.text}>{stream.text}</div>
 
       <div class={s.users}>

@@ -1,51 +1,5 @@
 .root {
-  margin: 0 0 calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 1) calc(var(--xr) / 2) calc(var(--yr) * 2);
-
-  display: grid;
-  grid-template-columns: calc(var(--yr) * 10) 1fr;
-}
-
-.image {
-  width: calc(var(--yr) * 8);
-  height: calc(var(--yr) * 8);
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  line-height: calc(var(--yr) * 8);
-  font-size: calc(var(--yr) * 3);
-  font-weight: var(--font-bold);
-  text-transform: uppercase;
-}
-
-.image::after {
-  content: "";
-  position: absolute;
-  background: var(--theme-background-secondary-color);
-  inset: 0;
-  z-index: -1;
-}
-
-.main {
-  position: relative;
-}
-
-.label {
-  line-height: calc(var(--yr) * 4);
-  font-size: calc(var(--yr) * 3);
-  font-weight: var(--font-bold);
-  margin: 0;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: var(--yr);
-  user-select: none;
-}
-
-.field {
-  margin: 0 0 0 calc(var(--yr) * -1);
+  padding: 0;
   position: relative;
 }
 
@@ -57,16 +11,20 @@
   border: 0;
   margin: 0;
   outline: none;
-  border-radius: var(--yr);
-  padding: calc(var(--yr) * 6) var(--yr) calc(var(--yr) * 2);
-  resize: vertical;
-  field-sizing: content;
-  background: var(--theme-form-background-color);
-  transition: background-color 0.2s ease-out;
+  border-radius: calc(var(--yr) * 5);
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 4) calc(var(--yr) * 3) var(--xr);
+  box-shadow: 0 0 0 2px inset var(--theme-form-border-color);
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+
+  /* TODO: sync with body, maybe or maybe not */
+  /* line-height: inherit; */
+  line-height: calc(var(--yr) * 4);
 }
 
 .input:focus {
-  background: var(--theme-form-background-color--active);
+  box-shadow: 0 0 0 2px inset var(--theme-form-border-color--active);
 }
 
 .input p {
@@ -81,20 +39,29 @@
   height: 100%;
   border: 0;
   cursor: pointer;
+  padding: 0;
+  background: var(--theme-form-button-color);
+  color: var(--theme-form-button-text-color);
+  border-radius: 50%;
+}
+
+.button:disabled {
+  opacity: 0.3;
 }
 
 .button svg {
   display: block;
   height: 100%;
-  padding: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 0.5);
 }
 
 .submit {
   margin: 0;
   display: block;
   position: absolute;
-  right: 0;
-  bottom: 0;
   width: calc(var(--yr) * 10);
   height: calc(var(--yr) * 10);
+  bottom: 0;
+  right: 0;
+  padding: calc(var(--yr) * 1.5);
 }

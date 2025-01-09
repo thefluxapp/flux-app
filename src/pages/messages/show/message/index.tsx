@@ -5,11 +5,15 @@ import s from "./index.module.css";
 
 import { useI18n } from "../../../../contexts/i18n";
 import { type MessageStore, useMessages } from "../../../../contexts/messages";
-import { Stream } from "../stream";
+import { Stream } from "./stream";
 
 export const Message: Component<{ message: MessageStore }> = ({ message }) => {
   const { t } = useI18n();
   const { messagesStore } = useMessages();
+
+  const createdAt = Intl.DateTimeFormat().format(
+    new Date(message.order / 1000),
+  );
 
   return (
     <>
@@ -19,17 +23,14 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
             {message.user.abbr}
           </div>
         </div>
-        <div>
+
+        <div class={s.message}>
           <div class={s.user}>{message.user.name}</div>
 
           <div class={s.text}>{message.text}</div>
 
-          {message.stream && (
-            <Stream stream={message.stream} message={message} />
-          )}
-
           <div class={s.actions}>
-            <div class={s.date}>21:50</div>
+            <div class={s.date}>{createdAt}</div>
 
             <div class={s.like}>{t.message.like()}</div>
 
@@ -42,6 +43,12 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
 
             <div class={s.state}>{message.state}</div>
           </div>
+
+          {message.stream && (
+            <div class={s.stream}>
+              <Stream stream={message.stream} />
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -26,9 +26,14 @@ export class MessagesAPI {
   };
 
   get_message = async (data: GetMessageRequest) => {
+    const { message_id, ...params } = data;
+
     return (
       await this.api.client.get<GetMessageResponse>(
-        `/api/messages/${data.message_id}`,
+        `/api/messages/${message_id}`,
+        {
+          params,
+        },
       )
     ).data;
   };
@@ -36,9 +41,11 @@ export class MessagesAPI {
 
 type GetMessageRequest = {
   message_id: string;
+  cursor_message_id: string | null;
 };
 
 type GetMessageResponse = {
+  cursor_message_id: string | null;
   messages: {
     message_id: string;
     text: string;
@@ -53,6 +60,7 @@ type GetMessageResponse = {
     };
     stream: {
       stream_id: string;
+      message_id: string;
       text: string;
       users: {
         user_id: string;
@@ -80,6 +88,7 @@ type GetMessageResponse = {
     };
     stream: {
       stream_id: string;
+      message_id: string;
       text: string;
       users: {
         user_id: string;
