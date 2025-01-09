@@ -46,7 +46,7 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
 
           {message.stream && (
             <div class={s.stream}>
-              <Stream stream={message.stream} message={message} />
+              <Stream stream={message.stream} />
             </div>
           )}
         </div>

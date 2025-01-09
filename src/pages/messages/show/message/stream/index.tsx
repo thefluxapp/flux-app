@@ -6,19 +6,16 @@ import s from "./index.module.css";
 import RightImg from "./right.svg";
 
 import { useI18n } from "../../../../../contexts/i18n";
-import type { IStream, MessageStore } from "../../../../../contexts/messages";
+import type { IStream } from "../../../../../contexts/messages";
 
-export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
-  stream,
-  message,
-}) => {
+export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
   const { t } = useI18n();
 
   const visible = stream.users.slice(0, 3);
   const hidden = stream.users.slice(3);
 
   return (
-    <A href={`/messages/${message.message_id}`} class={s.root}>
+    <A href={`/messages/${stream.message_id}`} class={s.root}>
       <div class={s.right}>
         <RightImg />
       </div>

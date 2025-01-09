@@ -6,12 +6,9 @@ import s from "./index.module.css";
 import LeftImg from "./left.svg";
 
 import { useI18n } from "../../../../contexts/i18n";
-import type { IStream, MessageStore } from "../../../../contexts/messages";
+import type { IStream } from "../../../../contexts/messages";
 
-export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
-  stream,
-  message,
-}) => {
+export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
   const { t } = useI18n();
 
   const visible = stream.users.slice(0, 3);
@@ -19,7 +16,7 @@ export const Stream: Component<{ stream: IStream; message: MessageStore }> = ({
 
   return (
     <div class={s.root}>
-      <A class={s.left} href={`/messages/${message.message_id}`}>
+      <A class={s.left} href={`/messages/${stream.message_id}`}>
         <LeftImg />
       </A>
 
