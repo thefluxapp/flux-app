@@ -5,10 +5,10 @@ import s from "./index.module.css";
 
 import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
+import { Loader } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
 import { Stream } from "./stream";
-import { Loader } from "./loader";
 
 export const MessagesShowPage = () => {
   const params = useParams();
