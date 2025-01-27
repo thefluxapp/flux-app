@@ -12,6 +12,7 @@ import { MessagesIndexPage } from "./pages/messages/index";
 import { MessagesNewPage } from "./pages/messages/new";
 import { MessagesShowPage } from "./pages/messages/show";
 import { MessagesWrapper } from "./pages/messages/wrapper";
+import { NotifyPage } from "./pages/notify";
 
 const root = document.getElementById("root");
 
@@ -26,6 +27,7 @@ render(
         <Route path="/" component={HomePage} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/account" component={AccountPage} />
+        <Route path="/notify" component={NotifyPage} />
         <Route path="/messages" component={MessagesWrapper}>
           <Route path={["/", "/my"]} component={MessagesIndexPage} />
           <Route path="/new" component={MessagesNewPage} />
@@ -35,5 +37,5 @@ render(
       </Router>
     </RootProvider>
   ),
-  root,
+  root
 );

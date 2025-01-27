@@ -1,0 +1,26 @@
+.root {
+  padding: calc(var(--yr) * 10) var(--xr);
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 calc(var(--yr) * 2);
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 7);
+}
+
+.desc,
+.error {
+  margin: 0 0 calc(var(--yr) * 4);
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+}
+
+.button {
+  background: var(--theme-form-button-color);
+  color: var(--theme-form-button-text-color);
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
+  border-radius: 10rem;
+}

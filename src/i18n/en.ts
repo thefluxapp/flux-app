@@ -1,7 +1,14 @@
 export const dict = {
+  meta: {
+    title: "Flux",
+  },
+
   streams: {
     all: "All streams",
     my: "Only my",
+    meta: {
+      title: "Streams",
+    },
   },
 
   message: {
@@ -15,7 +22,6 @@ export const dict = {
   },
 
   stream: {
-    summarizing: "Summarizing in progress..",
     more: "and {{count}} more",
   },
 
@@ -38,5 +44,15 @@ export const dict = {
     desc: "The stream shows the last 5 messages, the rest are summarized to a couple of sentences, which can be manually scaled and discover only the necessary.",
     unread: "XXX-unread",
     button: "Load more past messages",
+  },
+
+  notify: {
+    title: "Notifications",
+    desc: "Bla-bla",
+    button: "Allow notifications",
+    error: "Can't send notifications, try to add webapp to main screen",
+    meta: {
+      title: "Notifications",
+    },
   },
 };
