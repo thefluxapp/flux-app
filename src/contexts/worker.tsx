@@ -1,51 +1,48 @@
-import {
-  type ParentComponent,
-  createContext,
-  onMount,
-  useContext,
-} from "solid-js";
+import { type ParentComponent, createContext, useContext } from "solid-js";
+import { createStore } from "solid-js/store";
 
-// import WORKER_PATH from "./../worker?worker&url";
+import WORKER_PATH from "./../worker?worker&url";
 
-const WorkerContext = createContext({
-  // sseStore: null as unknown as SSEStore,
-});
+const WorkerContext = createContext<WorkerStore>();
 
 export const WorkerProvider: ParentComponent = (props) => {
-  onMount(async () => {
-    // const qq = new URL("../worker.ts", import.meta.url);
-
-    const qq = import.meta.glob("../worker.ts");
-
-    console.log(qq);
-
-    // let registration = await navigator.serviceWorker.getRegistration(qq);
-
-    // if (!registration) {
-    //   registration = await navigator.serviceWorker.register(qq, {
-    //     type: "module",
-    //   });
-    // }
-
-    // console.log(registration);
-    // console.log(WORKER_PATH);
-  });
+  const [workerStore] = createStore(new WorkerStore(WORKER_PATH));
 
   return (
-    <WorkerContext.Provider value={{}}>{props.children}</WorkerContext.Provider>
+    <WorkerContext.Provider value={workerStore}>
+      {props.children}
+    </WorkerContext.Provider>
   );
 };
 
-// class SSEStore {
-//   es: EventSource;
+class WorkerStore {
+  registration: Promise<ServiceWorkerRegistration | undefined>;
 
-//   constructor(es: EventSource) {
-//     this.es = es;
-//   }
+  constructor(clientURL: string) {
+    if (!("serviceWorker" in navigator)) {
+      this.registration = new Promise(() => undefined);
+    } else {
+      this.registration = navigator.serviceWorker
+        .getRegistration(clientURL)
+        .then((reg) => {
+          if (!reg) {
+            return navigator.serviceWorker.register(clientURL, {
+              type: "module",
+            });
+          }
 
-//   static initialize(es: EventSource): SSEStore {
-//     return new SSEStore(es);
-//   }
-// }
+          return reg;
+        });
+    }
+  }
+}
 
-export const useWorker = () => useContext(WorkerContext);
+export const useWorker = () => {
+  const context = useContext(WorkerContext);
+
+  if (context === undefined) {
+    throw "!!!";
+  }
+
+  return context;
+};

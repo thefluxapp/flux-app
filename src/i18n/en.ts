@@ -28,6 +28,7 @@ export const dict = {
   login: {
     title: "Sign in with a passkeys",
     desc: "You can use a fingerprint, face scan or screen lock instead of a password",
+    email: "Email",
     hint: "Email is used only as an ID and for recovery, no notifications or codes are sent",
     button: "Login",
   },

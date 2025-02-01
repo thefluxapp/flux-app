@@ -1,20 +1,29 @@
 import { Title } from "@solidjs/meta";
-import { createMemo } from "solid-js";
+import { createMemo, createResource, createSignal } from "solid-js";
 
 import s from "./index.module.css";
 
 import { useI18n } from "../../contexts/i18n";
 import { useAPI } from "../../contexts/api";
+import { useWorker } from "../../contexts/worker";
 
 export const NotifyPage = () => {
   const { t } = useI18n();
   const api = useAPI();
+  const workerStore = useWorker();
 
-  // const [nofity, setNotify] = createMemo<NotificationPermission>();
+  const [permission, { mutate }] = createResource<
+    NotificationPermission | undefined
+  >(() => {
+    if ("Notification" in window) {
+      return Notification.permission;
+    }
 
-  const notification = createMemo(() => "Notification" in window);
+    return undefined;
+  });
+  // const notification = createMemo(() => );
 
-  // console.log(Notification.requestPermission());
+  console.log(permission());
 
   // const notify = () => {
   //   if () {
@@ -32,9 +41,26 @@ export const NotifyPage = () => {
 
   const handleClick = async () => {
     const { public_key } = await api.push.get_vapid();
+    const registration = await workerStore.registration;
 
-    console.log(public_key);
-    console.log("handleClick");
+    // console.log(await workerStore.registration);
+
+    if (permission() === "default") {
+      mutate(await Notification.requestPermission());
+    }
+
+    if (permission() === "granted" && registration) {
+      const subscription = (
+        await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: public_key,
+        })
+      ).toJSON();
+
+      console.log(subscription);
+    }
+
+    // console.log("handleClick");
   };
 
   return (
@@ -43,7 +69,7 @@ export const NotifyPage = () => {
 
       <div class={s.root}>
         <div class={s.title}>{t.notify.title()}</div>
-        {notification() && (
+        {permission() && (
           <>
             <div class={s.desc}>{t.notify.desc()}</div>
             <div class={s.submit}>
@@ -53,7 +79,7 @@ export const NotifyPage = () => {
             </div>
           </>
         )}
-        {!notification() && <div class={s.desc}>{t.notify.error()}</div>}
+        {!permission() && <div class={s.desc}>{t.notify.error()}</div>}
       </div>
     </>
   );

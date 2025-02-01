@@ -42,7 +42,7 @@ export const Join = ({
       <form class={s.form} onSubmit={handleSubmit}>
         <div class={s.field}>
           <label class={s.label} for="email">
-            Email
+            {t.login.email()}
           </label>
 
           <input

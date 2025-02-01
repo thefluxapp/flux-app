@@ -27,40 +27,18 @@
     from var(--theme-text-primary-color) calc(l + 50) c h
   );
 
-  --theme-background-edge-color: lch(100 0 0);
-  --theme-background-primary-color: lch(
-    from var(--theme-background-edge-color) calc(l - 1) c h
-  );
-  --theme-background-secondary-color: lch(
-    from var(--theme-background-primary-color) calc(l - 5) c h
-  );
+  --thm-bg-clr: lch(100 0 0);
+  --thm-bg-ivt-clr: lch(0 0 0);
+  --thm-bg-prm-clr: lch(from var(--thm-bg-clr) calc(l - 1) c h);
+  --tmh-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 5) c h);
 
-  /* --theme-form-background-color: lch(
-    from var(--theme-background-primary-color) calc(l - 5) c h
-  ); */
-  /* --theme-form-background-color--active: lch(
-    from var(--theme-form-background-color) calc(l - 5) c h
-  );
-
-  --theme-form-background-color--active: lch(
-    from var(--theme-form-background-color) calc(l - 5) c h
-  ); */
-
-  /* FORMS */
-  --theme-form-border-color: lch(
-    from var(--theme-background-primary-color) calc(l - 15) c h
-  );
-  --theme-form-border-color--active: lch(
-    from var(--theme-form-border-color) calc(l - 15) c h
-  );
-
-  --theme-form-button-color: lch(from var(--theme-accent-color) l c h);
-  --theme-form-button-text-color: lch(88 0 0);
+  --thm-frm-inpt-brd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 10) c h);
+  --thm-frm-inpt-bg-clr: lch(from var(--thm-bg-prm-clr) calc(l - 1) c h);
+  --thm-frm-btn-bg-clr: lch(from var(--thm-bg-ivt-clr) calc(l + 5) c h);
+  --thm-frm-btn-tx-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l + 98) c h);
 
   /* STREAMS */
-  --theme-stream-border-color: lch(
-    from var(--theme-background-primary-color) calc(l - 10) c h
-  );
+  --theme-stream-border-color: lch(from var(--thm-bg-prm-clr) calc(l - 10) c h);
 }
 
 *,
@@ -75,24 +53,39 @@ body {
   font-weight: var(--font-normal);
   margin: 0;
   color: var(--theme-text-primary-color);
-  background: var(--theme-background-primary-color);
+  background: var(--thm-bg-prm-clr);
 }
 
 button,
 input,
 textarea {
+  display: block;
   font-size: inherit;
   font-family: inherit;
   line-height: calc(var(--yr) * 4);
 }
 
-button {
-  /* font-variation-settings: "wdth" var(--font-cond); */
-  border: 0;
-  cursor: pointer;
-  transition-property: background-color, opacity;
+label {
+  display: block;
+}
+
+input {
+  transition-property: background-color, box-shadow;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
+}
+
+button {
+  font-weight: var(--font-bold);
+  border: 0;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.button:disabled {
+  cursor: default;
 }
 
 #root {
@@ -107,41 +100,15 @@ button {
       from var(--theme-text-primary-color) calc(l - 30) c h
     );
 
-    --theme-background-edge-color: lch(0 0 0);
-    --theme-background-primary-color: lch(
-      from var(--theme-background-edge-color) calc(l + 10) c h
-    );
-    --theme-background-secondary-color: lch(
-      from var(--theme-background-primary-color) calc(l + 5) c h
-    );
+    --thm-bg-clr: lch(0 0 0);
+    --thm-bg-ivt-clr: lch(100 0 0);
+    --thm-bg-prm-clr: lch(from var(--thm-bg-clr) calc(l + 10) c h);
+    --tmh-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 5) c h);
 
-    /* FORMS */
-    /* --theme-form-background-color: lch(
-      from var(--theme-background-primary-color) calc(l + 5) c h
-    );
-    --theme-form-background-color--active: lch(
-      from var(--theme-form-background-color) calc(l + 5) c h
-    ); */
-
-    --theme-form-border-color: lch(
-      from var(--theme-background-primary-color) calc(l + 25) c h
-    );
-    --theme-form-border-color--active: lch(
-      from var(--theme-form-border-color) calc(l + 20) c h
-    );
-
-    /* STREAMS */
-    --theme-stream-border-color: lch(
-      from var(--theme-background-primary-color) calc(l + 15) c h
-    );
-
-    /* --theme-background-secondary-color: lch(
-      from var(--theme-background-primary-color) calc(l + 5) c h
-    ); */
-
-    /* --theme-text-primary-color: lch(2% 0 0); */
-    /* --theme-background-primary-color: rgb(30 30 30); */
-    /* --theme-background-secondary-color: rgb(30 30 30); */
+    --thm-frm-inpt-brd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 10) c h);
+    --thm-frm-inpt-bg-clr: lch(from var(--thm-bg-prm-clr) calc(l + 3) c h);
+    --thm-frm-btn-bg-clr: lch(from var(--thm-bg-ivt-clr) calc(l - 20) c h);
+    --thm-frm-btn-tx-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l - 70) c h);
   }
 
   /* :root {

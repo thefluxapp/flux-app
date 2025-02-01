@@ -2,33 +2,29 @@
   "name": "flux-app",
   "version": "1.0.0",
   "scripts": {
-    "dev": "farm start",
-    "start": "farm start",
-    "build": "farm build",
-    "preview": "farm preview",
-    "clean": "farm clean",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
     "ci": "biome ci .",
     "check": "biome check . --write"
   },
   "dependencies": {
     "@github/webauthn-json": "^2.1.1",
-    "@lexical/plain-text": "^0.23.0",
-    "@lexical/text": "^0.23.0",
-    "@solid-primitives/i18n": "^2.1.1",
+    "@lexical/plain-text": "^0.23.1",
+    "@lexical/text": "^0.23.1",
+    "@solid-primitives/i18n": "^2.2.0",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.2",
+    "@solidjs/router": "^0.15.3",
     "axios": "^1.7.9",
-    "eventsource": "^3.0.2",
+    "eventsource": "^3.0.5",
     "nanoid": "^5.0.9",
     "solid-js": "^1.9.4"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@farmfe/cli": "^1.0.4",
-    "@farmfe/core": "^1.6.4",
-    "@types/bun": "^1.1.16",
-    "solid-refresh": "^0.7.5",
+    "@types/bun": "^1.2.1",
     "typescript": "^5.7.3",
+    "vite": "^6.0.11",
     "vite-plugin-solid": "^2.11.0",
     "vite-plugin-solid-svg": "^0.8.1"
   }

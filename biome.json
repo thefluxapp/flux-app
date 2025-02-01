@@ -18,8 +18,7 @@
     "enabled": true,
     "rules": {
       "correctness": {
-        "noUnusedImports": "warn",
-        "useExhaustiveDependencies": "off"
+        "noUnusedImports": "warn"
       },
       "recommended": true,
       "suspicious": {

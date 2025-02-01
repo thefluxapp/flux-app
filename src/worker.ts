@@ -6,13 +6,15 @@ type IPush = {
 };
 
 self.onpush = async (event) => {
-  const { title, body } = event.data?.json() as IPush;
+  console.log(event.data?.text());
 
-  const w = self.registration.showNotification(title, {
-    body,
-  });
+  // const { title, body } = event.data?.json() as IPush;
 
-  event.waitUntil(w);
+  // const w = self.registration.showNotification(title, {
+  //   body,
+  // });
+
+  // event.waitUntil(w);
 };
 
 export default null;

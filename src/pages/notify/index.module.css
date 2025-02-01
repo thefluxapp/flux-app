@@ -19,8 +19,19 @@
 }
 
 .button {
-  background: var(--theme-form-button-color);
-  color: var(--theme-form-button-text-color);
-  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
-  border-radius: 10rem;
+  background: var(--thm-frm-btn-bg-clr);
+  color: var(--thm-frm-btn-tx-clr);
+  padding: calc(var(--yr) * 2.5) calc(var(--xr) * 2);
+  /* border-radius: 10rem; */
+  border-radius: calc(var(--yr) * 2);
+}
+
+.button:disabled {
+  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 70) c h);
+  color: lch(from var(--thm-frm-btn-tx-clr) calc(l - 5) c h);
+  cursor: default;
+}
+
+.button:not(:disabled):hover {
+  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 20) c h);
 }
