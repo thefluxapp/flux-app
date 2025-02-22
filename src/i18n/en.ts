@@ -51,6 +51,7 @@ export const dict = {
     title: "Notifications",
     desc: "Bla-bla",
     button: "Allow notifications",
+    subscribed: "Bla-Bla",
     error: "Can't send notifications, try to add webapp to main screen",
     meta: {
       title: "Notifications",

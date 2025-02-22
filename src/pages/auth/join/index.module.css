@@ -55,15 +55,6 @@
   border-radius: calc(var(--yr) * 2);
 }
 
-/* .button:disabled {
-  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 70) c h);
-  color: lch(from var(--thm-frm-btn-tx-clr) calc(l - 5) c h);
-}
-
-.button:not(:disabled):hover {
-  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 20) c h);
-} */
-
 @media (prefers-color-scheme: dark) {
   .button:disabled {
     background: lch(from var(--thm-frm-btn-bg-clr) calc(l - 50) c h);

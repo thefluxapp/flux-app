@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import {
   type ParentComponent,
   createContext,
@@ -5,6 +6,9 @@ import {
   useContext,
 } from "solid-js";
 import { type SetStoreFunction, createStore, produce } from "solid-js/store";
+
+const AUTH_TOKEN_KEY = "auth-token";
+const DEVICE_ID_KEY = "device-id";
 
 const RootContext = createContext({
   rootStore: null as unknown as RootStore,
@@ -15,11 +19,11 @@ const RootContext = createContext({
 export const RootProvider: ParentComponent = (props) => {
   const [rootStore, setRootStore] = createStore(RootStore.initialize());
 
-  onMount(() => {
+  onMount(async () => {
     window.onstorage = () => {
       setRootStore(
         produce((s) => {
-          s.token = localStorage.getItem("auth-token");
+          s.token = localStorage.getItem(AUTH_TOKEN_KEY);
         }),
       );
     };
@@ -32,8 +36,21 @@ export const RootProvider: ParentComponent = (props) => {
       }),
     );
 
-    localStorage.setItem("auth-token", token);
+    localStorage.setItem(AUTH_TOKEN_KEY, token);
   };
+
+  // const getUser = async () => {
+  //   const data = await api.auth.me();
+
+  //   if (data.user !== null) {
+  //     setAuthStore(
+  //       produce((s) => {
+  //         s.isAuth = true;
+  //         s.user = data.user;
+  //       }),
+  //     );
+  //   }
+  // };
 
   return (
     <RootContext.Provider value={{ rootStore, setRootStore, updateToken }}>
@@ -43,18 +60,25 @@ export const RootProvider: ParentComponent = (props) => {
 };
 
 export class RootStore {
-  isInit = false;
   token: string | null = null;
+  deviceId: string;
 
-  constructor(isInit: boolean, token: string | null) {
-    this.isInit = isInit;
+  constructor(token: string | null, deviceId: string) {
     this.token = token;
+    this.deviceId = deviceId;
   }
 
   static initialize(): RootStore {
-    const token = localStorage.getItem("auth-token");
+    const token = localStorage.getItem(AUTH_TOKEN_KEY);
+    let deviceId = localStorage.getItem(DEVICE_ID_KEY);
 
-    return new RootStore(true, token);
+    if (deviceId == null) {
+      deviceId = nanoid();
+
+      localStorage.setItem(DEVICE_ID_KEY, deviceId);
+    }
+
+    return new RootStore(token, deviceId);
   }
 }
 

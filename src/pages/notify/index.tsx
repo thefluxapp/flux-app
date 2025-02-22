@@ -1,15 +1,21 @@
 import { Title } from "@solidjs/meta";
-import { createMemo, createResource, createSignal } from "solid-js";
+import { createResource, onMount, Show } from "solid-js";
 
 import s from "./index.module.css";
 
 import { useI18n } from "../../contexts/i18n";
 import { useAPI } from "../../contexts/api";
 import { useWorker } from "../../contexts/worker";
+import { useAuth } from "../../contexts/auth";
+import { useNavigate } from "@solidjs/router";
+import { useRoot } from "../../contexts/root";
 
 export const NotifyPage = () => {
+  const { authStore } = useAuth();
+  const { rootStore } = useRoot();
   const { t } = useI18n();
   const api = useAPI();
+  const navigate = useNavigate();
   const workerStore = useWorker();
 
   const [permission, { mutate }] = createResource<
@@ -21,29 +27,20 @@ export const NotifyPage = () => {
 
     return undefined;
   });
-  // const notification = createMemo(() => );
 
-  console.log(permission());
+  const [pushes, { refetch }] = createResource(async () => {
+    return (await api.pushes.get_pushes()).device_ids;
+  });
 
-  // const notify = () => {
-  //   if () {
-  //     console.log("QQQ");
-
-  //     return false;
-  //   }
-
-  //   return true;
-  // };
-
-  // onMount(() => {
-
-  // })
+  onMount(() => {
+    if (!authStore.isAuth) {
+      navigate("/");
+    }
+  });
 
   const handleClick = async () => {
-    const { public_key } = await api.push.get_vapid();
+    const { public_key } = await api.pushes.get_vapid();
     const registration = await workerStore.registration;
-
-    // console.log(await workerStore.registration);
 
     if (permission() === "default") {
       mutate(await Notification.requestPermission());
@@ -57,10 +54,13 @@ export const NotifyPage = () => {
         })
       ).toJSON();
 
-      console.log(subscription);
-    }
+      await api.pushes.create_push({
+        ...subscription,
+        device_id: rootStore.deviceId,
+      });
 
-    // console.log("handleClick");
+      await refetch();
+    }
   };
 
   return (
@@ -72,6 +72,11 @@ export const NotifyPage = () => {
         {permission() && (
           <>
             <div class={s.desc}>{t.notify.desc()}</div>
+
+            <Show when={pushes()?.includes(rootStore.deviceId)}>
+              <div class={s.subscribed}>{t.notify.subscribed()}</div>
+            </Show>
+
             <div class={s.submit}>
               <button class={s.button} type="button" onClick={handleClick}>
                 {t.notify.button()}

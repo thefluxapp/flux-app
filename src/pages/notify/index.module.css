@@ -35,3 +35,7 @@
 .button:not(:disabled):hover {
   background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 20) c h);
 }
+
+.subscribed {
+  margin: 0 0 calc(var(--yr) * 4);
+}

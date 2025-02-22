@@ -6,8 +6,7 @@
 }
 
 .root:not(:last-child) {
-  /* margin: 0 0 calc(var(--yr) * 2); */
-  border-bottom: 1px solid var(--theme-stream-border-color);
+  border-bottom: 1px solid var(--thm-strm-brg-cl);
 }
 
 .text {

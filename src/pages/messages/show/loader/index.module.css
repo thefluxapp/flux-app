@@ -1,10 +1,3 @@
-/* .root {
-  text-align: center;
-  font-size: calc(var(--yr) * 3);
-  line-height: calc(var(--yr) * 4);
-  padding: 0 var(--xr);
-} */
-
 .root {
   margin: 0 0 calc(var(--yr) * 4);
   padding: 0;
@@ -30,7 +23,7 @@
 .image::after {
   content: "";
   position: absolute;
-  background: var(--theme-background-secondary-color);
+  background: var(--thm-bg-scnd-clr);
   inset: 0;
   z-index: -1;
 }
@@ -60,7 +53,7 @@
 } */
 
 .button {
-  background: var(--theme-background-secondary-color);
+  background: var(--thm-bg-scnd-clr);
   border-radius: var(--yr);
   padding: calc(var(--yr)) var(--xr);
   outline: none;

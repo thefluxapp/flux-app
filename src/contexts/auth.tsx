@@ -1,5 +1,6 @@
 import {
   type ParentComponent,
+  Show,
   createContext,
   onMount,
   useContext,
@@ -11,38 +12,58 @@ import { useAPI } from "./api";
 const AuthContext = createContext({
   authStore: null as unknown as AuthStore,
   setAuthStore: null as unknown as SetStoreFunction<AuthStore>,
+  update: null as unknown as () => Promise<void>,
 });
 
 export const AuthProvider: ParentComponent = (props) => {
   const api = useAPI();
 
-  const [store, setStore] = createStore(new AuthStore());
+  const [authStore, setAuthStore] = createStore(AuthStore.initialize());
 
-  onMount(async () => {
+  const update = async () => {
     const data = await api.auth.me();
 
     if (data.user !== null) {
-      setStore(
+      setAuthStore(
         produce((s) => {
           s.isAuth = true;
           s.user = data.user;
         }),
       );
     }
+  };
+
+  onMount(async () => {
+    await update();
+
+    setAuthStore(
+      produce((s) => {
+        s.isInit = true;
+      }),
+    );
   });
 
   return (
-    <AuthContext.Provider value={{ authStore: store, setAuthStore: setStore }}>
-      {props.children}
+    <AuthContext.Provider value={{ authStore, setAuthStore, update }}>
+      <Show when={authStore.isInit}>{props.children}</Show>
     </AuthContext.Provider>
   );
 };
 
-class AuthStore {
+export class AuthStore {
   isInit = false;
   isAuth = false;
   user: IUser | null = null;
   token: string | null = null;
+
+  constructor(token: string | null) {
+    this.token = token;
+  }
+
+  static initialize(): AuthStore {
+    const token = localStorage.getItem("auth-token");
+    return new AuthStore(token);
+  }
 }
 
 export const useAuth = () => useContext(AuthContext);

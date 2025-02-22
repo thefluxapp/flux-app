@@ -3,15 +3,17 @@ import { get } from "@github/webauthn-json/extended";
 import { useNavigate } from "@solidjs/router";
 import { onMount } from "solid-js";
 
+import s from "./index.module.css";
+
 import { useAPI } from "../../../contexts/api";
 import { useRoot } from "../../../contexts/root";
-
-import s from "./index.module.css";
+import { useAuth } from "../../../contexts/auth";
 
 export const Login = ({
   request,
 }: { request: CredentialRequestOptionsJSON }) => {
   const api = useAPI();
+  const { update } = useAuth();
   const navigate = useNavigate();
   const { updateToken } = useRoot();
 
@@ -20,6 +22,7 @@ export const Login = ({
 
     const data = await api.auth.login({ credential });
     updateToken(data.jwt);
+    await update();
     navigate("/messages");
   };
 

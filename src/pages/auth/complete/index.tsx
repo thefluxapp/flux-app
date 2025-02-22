@@ -9,11 +9,13 @@ import s from "./index.module.css";
 import { useAPI } from "../../../contexts/api";
 import { useI18n } from "../../../contexts/i18n";
 import { useRoot } from "../../../contexts/root";
+import { useAuth } from "../../../contexts/auth";
 
 export const Complete = ({
   creation,
 }: { creation: CredentialCreationOptionsJSON }) => {
   const { updateToken } = useRoot();
+  const { update } = useAuth();
   const api = useAPI();
   const { t } = useI18n();
   const navigate = useNavigate();
@@ -47,6 +49,7 @@ export const Complete = ({
       });
 
       updateToken(data.jwt);
+      await update();
       navigate("/messages");
     }
   };
