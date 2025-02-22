@@ -1,9 +1,7 @@
 .root {
-  /* padding: calc(var(--yr) * 4) calc(var(--yr) * 10); */
   padding: 0;
   display: grid;
   grid-template-columns: calc(var(--yr) * 10) 1fr;
-  /* position: relative; */
 }
 
 .left {
@@ -13,7 +11,7 @@
 }
 
 .stream {
-  border-bottom: 1px solid var(--theme-stream-border-color);
+  border-bottom: 1px solid var(--thm-strm-brg-cl);
   padding: 0 0 calc(var(--yr) * 4) 0;
 }
 

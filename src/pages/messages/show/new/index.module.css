@@ -4,27 +4,22 @@
 }
 
 .input {
-  color: inherit;
-  font-size: inherit;
-  display: block;
   width: 100%;
   border: 0;
   margin: 0;
   outline: none;
-  border-radius: calc(var(--yr) * 5);
+  border-radius: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 3) calc(var(--xr) * 4) calc(var(--yr) * 3) var(--xr);
-  box-shadow: 0 0 0 2px inset var(--theme-form-border-color);
-  transition-property: box-shadow;
-  transition-duration: 0.2s;
+  box-shadow: 0 0 0 1px var(--thm-frm-inpt-brd-clr);
+  background: var(--thm-frm-inpt-bg-clr);
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.3s;
   transition-timing-function: ease-out;
-
-  /* TODO: sync with body, maybe or maybe not */
-  /* line-height: inherit; */
-  line-height: calc(var(--yr) * 4);
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px inset var(--theme-form-border-color--active);
+  box-shadow: 0 0 0 2px lch(from var(--thm-frm-inpt-brd-clr) calc(l - 5) c h);
+  background: lch(from var(--thm-frm-inpt-bg-clr) calc(l - 2) c h);
 }
 
 .input p {
@@ -40,13 +35,13 @@
   border: 0;
   cursor: pointer;
   padding: 0;
-  background: var(--theme-form-button-color);
-  color: var(--theme-form-button-text-color);
+  /* background: var(--theme-form-button-color); */
+  color: var(--thm-tx-scnd-cl);
   border-radius: 50%;
 }
 
-.button:disabled {
-  opacity: 0.3;
+.button:not(:disabled) {
+  color: var(--thm-tx-prm-cl);
 }
 
 .button svg {

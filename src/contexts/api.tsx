@@ -8,6 +8,7 @@ import axios, { type AxiosInstance } from "axios";
 import { type ParentComponent, createContext, useContext } from "solid-js";
 
 import { MessagesAPI } from "./api/messages";
+import { PushesAPI } from "./api/pushes";
 import { StreamsAPI } from "./api/streams";
 import { type RootStore, useRoot } from "./root";
 
@@ -26,6 +27,7 @@ export const APIProvider: ParentComponent = (props) => {
 export class API {
   rootStore: RootStore;
   auth = new AuthAPI(this);
+  pushes = new PushesAPI(this);
   messages = new MessagesAPI(this);
   streams = new StreamsAPI(this);
   client: AxiosInstance;

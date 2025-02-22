@@ -1,0 +1,41 @@
+.root {
+  padding: calc(var(--yr) * 10) var(--xr);
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 calc(var(--yr) * 2);
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 7);
+}
+
+.desc,
+.error {
+  margin: 0 0 calc(var(--yr) * 4);
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+}
+
+.button {
+  background: var(--thm-frm-btn-bg-clr);
+  color: var(--thm-frm-btn-tx-clr);
+  padding: calc(var(--yr) * 2.5) calc(var(--xr) * 2);
+  /* border-radius: 10rem; */
+  border-radius: calc(var(--yr) * 2);
+}
+
+.button:disabled {
+  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 70) c h);
+  color: lch(from var(--thm-frm-btn-tx-clr) calc(l - 5) c h);
+  cursor: default;
+}
+
+.button:not(:disabled):hover {
+  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 20) c h);
+}
+
+.subscribed {
+  margin: 0 0 calc(var(--yr) * 4);
+}

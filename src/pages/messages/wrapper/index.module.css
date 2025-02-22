@@ -1,13 +1,13 @@
 .new {
   padding: 0 var(--xr);
   max-width: 40rem;
-  margin: calc(var(--yr) * 2) auto calc(var(--yr) * 4);
+  margin: calc(var(--yr) * 2) auto calc(var(--yr) * 8);
 }
 
 .tabs {
   padding: 0 var(--xr);
   max-width: 40rem;
-  margin: calc(var(--yr) * 4) auto calc(var(--yr) * 2);
+  margin: 0 auto;
   display: flex;
   font-weight: var(--fw-bold);
   justify-content: center;
@@ -18,8 +18,9 @@
   text-decoration: none;
   display: block;
   font-weight: var(--font-bold);
-  padding: calc(var(--yr) * 1) var(--xr);
-  border-radius: calc(var(--yr) * 10);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 1);
+  /* border-radius: calc(var(--yr) * 10); */
+  border-radius: 10rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -30,6 +31,6 @@
 }
 
 .active {
-  background-color: var(--theme-accent-color);
-  color: #fff;
+  background-color: var(--tmh-bg-scnd-clr);
+  /* color: #fff; */
 }
