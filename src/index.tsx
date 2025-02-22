@@ -1,10 +1,17 @@
+import { MetaProvider } from "@solidjs/meta";
 import { Route, Router } from "@solidjs/router";
 import { render } from "solid-js/web";
-import { MetaProvider } from "@solidjs/meta";
 
 import "./index.css";
 
+import { APIProvider } from "./contexts/api";
+import { AuthProvider } from "./contexts/auth";
+import { I18nProvider } from "./contexts/i18n";
+import { MessagesProvider } from "./contexts/messages";
 import { RootProvider } from "./contexts/root";
+import { SSEProvider } from "./contexts/sse";
+import { StreamsProvider } from "./contexts/streams";
+import { WorkerProvider } from "./contexts/worker";
 import { Layout } from "./layout";
 import { AccountPage } from "./pages/account";
 import { AuthPage } from "./pages/auth";
@@ -14,13 +21,6 @@ import { MessagesNewPage } from "./pages/messages/new";
 import { MessagesShowPage } from "./pages/messages/show";
 import { MessagesWrapper } from "./pages/messages/wrapper";
 import { NotifyPage } from "./pages/notify";
-import { APIProvider } from "./contexts/api";
-import { AuthProvider } from "./contexts/auth";
-import { I18nProvider } from "./contexts/i18n";
-import { MessagesProvider } from "./contexts/messages";
-import { SSEProvider } from "./contexts/sse";
-import { StreamsProvider } from "./contexts/streams";
-import { WorkerProvider } from "./contexts/worker";
 
 const root = document.getElementById("root");
 

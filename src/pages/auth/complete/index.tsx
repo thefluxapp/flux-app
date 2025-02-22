@@ -7,9 +7,9 @@ import { createStore } from "solid-js/store";
 import s from "./index.module.css";
 
 import { useAPI } from "../../../contexts/api";
+import { useAuth } from "../../../contexts/auth";
 import { useI18n } from "../../../contexts/i18n";
 import { useRoot } from "../../../contexts/root";
-import { useAuth } from "../../../contexts/auth";
 
 export const Complete = ({
   creation,

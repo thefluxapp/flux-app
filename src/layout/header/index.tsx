@@ -1,11 +1,11 @@
-import { Show, type Component } from "solid-js";
+import { type Component, Show } from "solid-js";
 
 import s from "./index.module.css";
 
+import { useAuth } from "../../contexts/auth";
 import { Account } from "./account";
 import { Logo } from "./logo";
 import { Notify } from "./notify";
-import { useAuth } from "../../contexts/auth";
 
 export const Header: Component = () => {
   const { authStore } = useAuth();

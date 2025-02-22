@@ -1,12 +1,12 @@
+import { Title } from "@solidjs/meta";
 import { useLocation } from "@solidjs/router";
 import { For, createEffect } from "solid-js";
-import { Title } from "@solidjs/meta";
 
 import s from "./index.module.css";
 
+import { useI18n } from "../../../contexts/i18n";
 import { useStreams } from "../../../contexts/streams";
 import { Stream } from "./stream";
-import { useI18n } from "../../../contexts/i18n";
 
 export const MessagesIndexPage = () => {
   const location = useLocation();

@@ -1,14 +1,14 @@
 import { Title } from "@solidjs/meta";
-import { createResource, onMount, Show } from "solid-js";
+import { Show, createResource, onMount } from "solid-js";
 
 import s from "./index.module.css";
 
-import { useI18n } from "../../contexts/i18n";
-import { useAPI } from "../../contexts/api";
-import { useWorker } from "../../contexts/worker";
-import { useAuth } from "../../contexts/auth";
 import { useNavigate } from "@solidjs/router";
+import { useAPI } from "../../contexts/api";
+import { useAuth } from "../../contexts/auth";
+import { useI18n } from "../../contexts/i18n";
 import { useRoot } from "../../contexts/root";
+import { useWorker } from "../../contexts/worker";
 
 export const NotifyPage = () => {
   const { authStore } = useAuth();

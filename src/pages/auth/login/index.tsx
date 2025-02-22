@@ -6,8 +6,8 @@ import { onMount } from "solid-js";
 import s from "./index.module.css";
 
 import { useAPI } from "../../../contexts/api";
-import { useRoot } from "../../../contexts/root";
 import { useAuth } from "../../../contexts/auth";
+import { useRoot } from "../../../contexts/root";
 
 export const Login = ({
   request,
