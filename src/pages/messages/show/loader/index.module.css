@@ -23,7 +23,7 @@
 .image::after {
   content: "";
   position: absolute;
-  background: var(--thm-bg-scnd-clr);
+  background: var(--t-bg-sec-cl);
   inset: 0;
   z-index: -1;
 }
@@ -53,7 +53,7 @@
 } */
 
 .button {
-  background: var(--thm-bg-scnd-clr);
+  background: var(--t-bg-sec-cl);
   border-radius: var(--yr);
   padding: calc(var(--yr)) var(--xr);
   outline: none;

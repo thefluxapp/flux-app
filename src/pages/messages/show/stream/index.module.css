@@ -11,7 +11,7 @@
 }
 
 .stream {
-  border-bottom: 1px solid var(--thm-strm-brg-cl);
+  border-bottom: 2px solid var(--t-hr-main-cl);
   padding: 0 0 calc(var(--yr) * 4) 0;
 }
 
@@ -21,7 +21,6 @@
 
 .users {
   display: flex;
-  /* margin: 0 0 calc(var(--yr) * 1); */
 }
 
 .images {
@@ -37,7 +36,7 @@
   overflow: hidden;
   text-align: center;
   line-height: calc(var(--yr) * 5);
-  font-size: calc(var(--yr) * 2.5);
+  font-size: calc(var(--yr) * 2);
   font-weight: var(--font-bold);
   text-transform: uppercase;
 }
@@ -60,7 +59,7 @@
 }
 
 .left {
-  color: var(--theme-text-secondary-color);
+  color: var(--t-tx-sec-cl);
   /* position: absolute;
   left: 0;
   top: calc(var(--yr) * 1); */

@@ -1,0 +1,46 @@
+:root {
+  --t-ac1-cl: lch(7 60 300);
+  --t-ac2-cl: lch(92 87 118);
+
+  --t-tx-main-cl: lch(2 0 0);
+  --t-tx-sec-cl: lch(from var(--t-tx-main-cl) calc(l + 50) c h);
+
+  --t-bg-main-cl: lch(from lch(100 0 0) calc(l - 1) c h);
+  --t-bg-sec-cl: lch(from var(--t-bg-main-cl) calc(l - 3) c h);
+
+  --t-btn-tx-main-cl: lch(from lch(100 0 0) calc(l - 5) c h);
+  --t-btn-tx-disabled-cl: lch(from var(--t-btn-tx-main-cl) calc(l - 15) c h);
+  --t-btn-bg-main-cl: lch(from lch(0 0 0) calc(l + 15) c h);
+  --t-btn-bg-disabled-cl: lch(from var(--t-btn-bg-main-cl) calc(l + 50) c h);
+  --t-btn-bg-hover-cl: lch(from var(--t-btn-bg-main-cl) calc(l - 15) c h);
+
+  --t-npt-brd-main-cl: lch(from var(--t-bg-main-cl) calc(l - 10) c h);
+  --t-npt-brd-focus-cl: lch(from var(--t-npt-brd-main-cl) calc(l - 5) c h);
+  --t-npt-bg-main-cl: lch(from var(--t-npt-bg-main-cl) calc(l - 1) c h);
+  --t-npt-bg-focus-cl: lch(from var(--t-bg-main-cl) calc(l - 2) c h);
+
+  --t-hr-main-cl: lch(from var(--t-bg-main-cl) calc(l - 10) c h);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --t-tx-main-cl: lch(88 0 0);
+    --t-tx-sec-cl: lch(from var(--t-tx-main-cl) calc(l - 30) c h);
+
+    --t-bg-main-cl: lch(from lch(0 0 0) calc(l + 10) c h);
+    --t-bg-sec-cl: lch(from var(--t-bg-main-cl) calc(l + 5) c h);
+
+    --t-btn-tx-main-cl: lch(from lch(0 0 0) calc(l + 5) c h);
+    --t-btn-tx-disabled-cl: lch(from var(--t-btn-tx-main-cl) calc(l + 15) c h);
+    --t-btn-bg-main-cl: lch(from lch(100 0 0) calc(l - 15) c h);
+    --t-btn-bg-disabled-cl: lch(from var(--t-btn-bg-main-cl) calc(l - 50) c h);
+    --t-btn-bg-hover-cl: lch(from var(--t-btn-bg-main-cl) calc(l + 15) c h);
+
+    --t-npt-brd-main-cl: lch(from var(--t-bg-main-cl) calc(l + 10) c h);
+    --t-npt-brd-focus-cl: lch(from var(--t-npt-brd-main-cl) calc(l + 10) c h);
+    --t-npt-bg-main-cl: lch(from var(--t-npt-bg-main-cl) calc(l + 3) c h);
+    --t-npt-bg-focus-cl: lch(from var(--t-bg-main-cl) calc(l + 3) c h);
+
+    --t-hr-main-cl: lch(from var(--t-bg-main-cl) calc(l + 10) c h);
+  }
+}

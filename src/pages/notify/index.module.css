@@ -19,21 +19,19 @@
 }
 
 .button {
-  background: var(--thm-frm-btn-bg-clr);
-  color: var(--thm-frm-btn-tx-clr);
+  background: var(--t-btn-bg-main-cl);
+  color: var(--t-btn-tx-main-cl);
   padding: calc(var(--yr) * 2.5) calc(var(--xr) * 2);
-  /* border-radius: 10rem; */
   border-radius: calc(var(--yr) * 2);
 }
 
 .button:disabled {
-  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 70) c h);
-  color: lch(from var(--thm-frm-btn-tx-clr) calc(l - 5) c h);
-  cursor: default;
+  background: var(--t-btn-bg-disabled-cl);
+  color: var(--t-btn-tx-disabled-cl);
 }
 
 .button:not(:disabled):hover {
-  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 20) c h);
+  background: var(--t-btn-bg-hover-cl);
 }
 
 .subscribed {

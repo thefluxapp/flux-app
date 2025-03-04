@@ -24,11 +24,12 @@
 
 .label {
   font-weight: var(--font-bold);
-  margin: 0 0 calc(var(--yr) * 1);
+  margin: 0 0 calc(var(--yr) * 2);
 }
 
 .field {
   margin: 0 0 calc(var(--yr) * 4);
+  max-width: 20rem;
 }
 
 .input {
@@ -38,29 +39,27 @@
   outline: none;
   border-radius: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 3) var(--xr);
-  box-shadow: 0 0 0 1px var(--thm-frm-inpt-brd-clr);
-  background: var(--thm-frm-inpt-bg-clr);
+  box-shadow: 0 0 0 1px var(--t-npt-brd-main-cl);
+  background: var(--t-npt-bg-main-cl);
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px lch(from var(--thm-frm-inpt-brd-clr) calc(l - 5) c h);
-  background: lch(from var(--thm-frm-inpt-bg-clr) calc(l - 2) c h);
+  box-shadow: 0 0 0 2px var(--t-npt-brd-focus-cl);
+  background: var(--t-npt-bg-focus-cl);
 }
 
 .button {
-  background: var(--thm-frm-btn-bg-clr);
-  color: var(--thm-frm-btn-tx-clr);
+  background: var(--t-btn-bg-main-cl);
+  color: var(--t-btn-tx-main-cl);
   padding: calc(var(--yr) * 2.5) calc(var(--xr) * 2);
-  /* border-radius: 10rem; */
   border-radius: calc(var(--yr) * 2);
 }
 
 .button:disabled {
-  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 70) c h);
-  color: lch(from var(--thm-frm-btn-tx-clr) calc(l - 5) c h);
-  cursor: default;
+  background: var(--t-btn-bg-disabled-cl);
+  color: var(--t-btn-tx-disabled-cl);
 }
 
 .button:not(:disabled):hover {
-  background: lch(from var(--thm-frm-btn-bg-clr) calc(l + 20) c h);
+  background: var(--t-btn-bg-hover-cl);
 }

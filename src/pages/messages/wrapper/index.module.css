@@ -10,7 +10,7 @@
   margin: 0 auto;
   display: flex;
   font-weight: var(--fw-bold);
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .tab {
@@ -18,9 +18,7 @@
   text-decoration: none;
   display: block;
   font-weight: var(--font-bold);
-  padding: calc(var(--yr) * 2) calc(var(--xr) * 1);
-  /* border-radius: calc(var(--yr) * 10); */
-  border-radius: 10rem;
+  padding: calc(var(--yr) * 2) 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -31,6 +29,5 @@
 }
 
 .active {
-  background-color: var(--tmh-bg-scnd-clr);
-  /* color: #fff; */
+  border-bottom: 2px solid lch(from var(--t-tx-main-cl) l c h / 0.7);
 }
