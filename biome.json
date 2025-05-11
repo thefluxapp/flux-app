@@ -1,5 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.2/schema.json",
+  "files": {
+    "ignore": ["node_modules/**", "dist/**"]
+  },
   "css": {
     "formatter": {
       "enabled": true
@@ -13,6 +16,11 @@
   },
   "formatter": {
     "indentStyle": "space"
+  },
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
   },
   "linter": {
     "enabled": true,
