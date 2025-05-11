@@ -1,112 +1,85 @@
+// import { createAsyncStore } from "@solidjs/router";
 import {
   type ParentComponent,
   createContext,
+  createSignal,
   onCleanup,
-  onMount,
   useContext,
 } from "solid-js";
-import { createStore } from "solid-js/store";
+import { type IMessage, useMessages } from "./messages";
+// import { createStore } from "solid-js/store";
 
 // import { useAPI } from "./api";
 
 const SyncContext = createContext({
-  syncStore: null as unknown as SyncStore,
+  // syncStore: null as unknown as SyncStore,
+  subscribe: null as unknown as (streamIds: string[]) => void,
 });
 
 export const SyncProvider: ParentComponent = (props) => {
-  // const api = useAPI();
+  const { append } = useMessages();
 
-  const [syncStore, setSyncStore] = createStore(SyncStore.initialize());
+  let timeout: Timer | undefined = undefined;
 
-  onMount(() => {
-    connect();
-  });
+  const connect = (): Promise<WebSocket> => {
+    return new Promise((resolve, reject) => {
+      const ws = new WebSocket("/api/notify");
 
-  const connect = () => {
-    close();
+      ws.onopen = () => {
+        clearTimeout(timeout);
+        resolve(ws);
+      };
 
-    const ws = new WebSocket(syncStore.url);
+      ws.onmessage = (e) => {
+        const event: IEvent = JSON.parse(e.data);
 
-    ws.onopen = (e) => {
-      // console.log("OPEN");
-      // console.log(e);
-    };
+        process(event);
+      };
 
-    ws.onerror = (e) => {
-      // console.log("ERROR");
-      // console.log(e);
-    };
+      ws.onclose = (e) => {
+        reject(e);
 
-    ws.onclose = (e) => {
-      if (e.code !== 1000) {
-        const timeout = setTimeout(() => {
-          connect();
-        }, 1000);
-
-        setSyncStore("timeout", timeout);
-      }
-    };
-
-    setSyncStore("ws", ws);
+        if (e.code !== 1000) {
+          timeout = setTimeout(() => {
+            setWSStore(connect());
+          }, 3000);
+        }
+      };
+    });
   };
 
-  const close = () => {
-    syncStore.ws?.close(1000);
+  const [wsStore, setWSStore] = createSignal(connect());
 
-    clearTimeout(syncStore.timeout);
-    setSyncStore({ ws: undefined, timeout: undefined });
+  const subscribe = async (streamIds: string[]) => {
+    (await wsStore()).send(
+      JSON.stringify({ subscribe: { stream_ids: streamIds } }),
+    );
   };
 
-  onCleanup(() => {
-    // console.log("CLEANUP");
-    close();
+  const process = (event: IEvent) => {
+    if (event.message !== undefined) {
+      const message = event.message;
+
+      append([message]);
+    }
+  };
+
+  onCleanup(async () => {
+    (await wsStore()).close(1000);
+    clearTimeout(timeout);
   });
 
   return (
-    <SyncContext.Provider value={{ syncStore }}>
+    <SyncContext.Provider value={{ subscribe }}>
       {props.children}
     </SyncContext.Provider>
   );
 };
 
-class SyncStore {
-  url: URL;
-  ws?: WebSocket;
-  timeout?: Timer;
-
-  constructor(url: URL) {
-    this.url = url;
-  }
-
-  static initialize(): SyncStore {
-    const url = new URL("/api/notify", window.location.href);
-    url.protocol = url.protocol.replace("http", "ws");
-
-    return new SyncStore(url);
-  }
-}
-
 export const useSync = () => useContext(SyncContext);
 
-// type IEvent = {
-//   message: IEventMessage | null;
-// };
+type IEvent = {
+  message?: IEventMessage;
+};
 
-// type IEventMessage = {
-//   message_id: string;
-//   text: string;
-//   code: string;
-//   order: number;
-//   stream: {
-//     message_id: string;
-//     stream_id: string;
-//   };
-//   user: {
-//     user_id: string;
-//     name: string;
-//     first_name: string;
-//     last_name: string;
-//     abbr: string;
-//     color: string;
-//   };
-// };
+type IEventMessage = IMessage;
