@@ -1,0 +1,50 @@
+:root {
+  --thm-tx-prm-cl: lch(2 0 0);
+  --thm-tx-scnd-cl: lch(from var(--thm-tx-prm-cl) calc(l + 50) c h);
+
+  --thm-bg-clr: lch(100 0 0);
+  --thm-bg-ivt-clr: lch(0 0 0);
+  --thm-bg-prm-clr: lch(from var(--thm-bg-clr) calc(l - 1) c h);
+  --thm-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 3) c h);
+
+  --thm-frm-inpt-brd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 10) c h);
+  --thm-frm-inpt-brd-act-clr: lch(from var(--thm-frm-inpt-brd-clr) calc(l - 5) c h);
+  --thm-frm-inpt-bg-clr: lch(from var(--thm-bg-prm-clr) calc(l + 1) c h);
+  --thm-frm-inpt-rds: calc(var(--yr) * 2);
+
+  --thm-frm-btn-bg-clr: lch(from var(--thm-bg-ivt-clr) calc(l + 5) c h);
+  --thm-frm-btn-bg-dsb-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l + 80) c h);
+  --thm-frm-btn-tx-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l + 98) c h);
+  --thm-frm-btn-tx-dsb-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l + 98) c h);
+  --thm-frm-btn-rds: 50rem;
+
+    /* STREAMS */
+    --thm-strm-brg-cl: lch(from var(--thm-bg-prm-clr) calc(l - 5) c h);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --thm-tx-prm-cl: lch(88 0 0);
+    --thm-tx-scnd-cl: lch(from var(--thm-tx-prm-cl) calc(l - 30) c h);
+
+    --thm-bg-clr: lch(0 0 0);
+    --thm-bg-ivt-clr: lch(100 0 0);
+    --thm-bg-prm-clr: lch(from var(--thm-bg-clr) calc(l + 10) c h);
+    --thm-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 5) c h);
+
+    --thm-frm-inpt-brd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 10) c h);
+    --thm-frm-inpt-brd-act-clr: lch(from var(--thm-frm-inpt-brd-clr) calc(l + 5) c h);
+    --thm-frm-inpt-bg-clr: lch(from var(--thm-bg-prm-clr) calc(l + 3) c h);
+    --thm-frm-inpt-rds: calc(var(--yr) * 2);
+
+    --thm-frm-btn-bg-clr: lch(from var(--thm-bg-ivt-clr) calc(l - 25) c h);
+    --thm-frm-btn-bg-dsb-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l - 50) c h);
+    --thm-frm-btn-tx-clr: lch(from var(--thm-frm-btn-bg-clr) calc(l - 70) c h);
+    --thm-frm-btn-tx-dsb-clr: lch(from var(--thm-frm-btn-tx-clr) calc(l + 8) c h);
+    --thm-frm-btn-rds: 50rem;
+
+    /* STREAMS */
+    --thm-strm-brg-cl: lch(from var(--thm-bg-prm-clr) calc(l + 5) c h);
+  }
+}

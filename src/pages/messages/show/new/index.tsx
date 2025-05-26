@@ -7,7 +7,8 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import SubmitImg from "./../..//wrapper/new/right.svg";
+import SubmitImg from "./../../wrapper/new/right.svg";
+import AttachImg from "./../../wrapper/new/attach.svg";
 
 import { useAuth } from "../../../../contexts/auth";
 // import { useI18n } from "../../../../contexts/i18n";
@@ -64,19 +65,23 @@ export const New: Component = () => {
 
   return (
     <div class={s.root}>
-      <div class={s.field}>
-        <div class={s.input} contenteditable={true} ref={editorRef} />
+      <div class={s.media}>
+        <button class={s.attach} disabled={true}><AttachImg /></button>
       </div>
 
-      <div class={s.submit}>
-        <button
-          class={s.button}
-          type="button"
-          disabled={form.text.length < 3 || authStore.user === null}
-          onClick={handleSubmit}
-        >
-          <SubmitImg />
-        </button>
+      <div class={s.field}>
+        <div class={s.input} contenteditable={true} ref={editorRef} />
+
+        <div class={s.submit}>
+          <button
+            class={s.save}
+            type="button"
+            disabled={form.text.length < 3}
+            onClick={handleSubmit}
+          >
+            <SubmitImg />
+          </button>
+        </div>
       </div>
     </div>
   );

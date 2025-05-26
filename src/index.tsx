@@ -3,6 +3,7 @@ import { Route, Router } from "@solidjs/router";
 import { render } from "solid-js/web";
 
 import "./index.css";
+import "./theme.css";
 
 import { APIProvider } from "./contexts/api";
 import { AuthProvider } from "./contexts/auth";

@@ -3,8 +3,6 @@ import { get } from "@github/webauthn-json/extended";
 import { useNavigate } from "@solidjs/router";
 import { onMount } from "solid-js";
 
-import s from "./index.module.css";
-
 import { useAPI } from "../../../contexts/api";
 import { useAuth } from "../../../contexts/auth";
 import { useRoot } from "../../../contexts/root";
@@ -30,5 +28,5 @@ export const Login = ({
     await handleLogin();
   });
 
-  return <div class={s.root} />;
+  return <div />;
 };
