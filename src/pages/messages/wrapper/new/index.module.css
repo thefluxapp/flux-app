@@ -3,13 +3,18 @@
   position: relative;
 }
 
+
+.field {
+  position: relative;
+}
+
 .input {
   width: 100%;
   border: 0;
   margin: 0;
   outline: none;
-  border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 3) calc(var(--xr) * 4) calc(var(--yr) * 3) var(--xr);
+  border-radius: calc(var(--yr) * 5);
+  padding: calc(var(--yr) * 2.75) calc(var(--xr) * 4) calc(var(--yr) * 2.75) calc(var(--yr) * 4);
   box-shadow: 0 0 0 1px var(--thm-frm-inpt-brd-clr);
   background: var(--thm-frm-inpt-bg-clr);
   transition-property: background-color, box-shadow;
@@ -18,8 +23,7 @@
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px lch(from var(--thm-frm-inpt-brd-clr) calc(l - 5) c h);
-  background: lch(from var(--thm-frm-inpt-bg-clr) calc(l - 2) c h);
+  box-shadow: 0 0 0 2px var(--thm-frm-inpt-brd-act-clr);
 }
 
 .input p {
@@ -33,25 +37,6 @@
   color: var(--thm-tx-scnd-cl);
 }
 
-.button {
-  appearance: none;
-  display: block;
-  background: none;
-  padding: 0;
-  height: 100%;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-  color: var(--thm-tx-scnd-cl);
-  border-radius: 50%;
-}
-
-.button svg {
-  display: block;
-  height: 100%;
-  padding: calc(var(--yr) * 0.5);
-}
-
 .submit {
   margin: 0;
   display: block;
@@ -60,9 +45,43 @@
   height: calc(var(--yr) * 10);
   bottom: 0;
   right: 0;
-  padding: calc(var(--yr) * 1.5);
 }
 
-.active .button:not(:disabled) {
-  color: var(--thm-tx-prm-cl);
+.save {
+  appearance: none;
+  display: block;
+  background: none;
+  padding: calc(var(--yr) * 2);
+  color: var(--thm-frm-btn-tx-clr);
+  height: 100%;
+  border: 0;
+  cursor: pointer;
 }
+
+.save::after {
+  content: '';
+  background: var(--thm-frm-btn-bg-clr);
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+  inset: calc(var(--yr) * 1.5);
+}
+
+.save:disabled {
+  color: var(--thm-frm-btn-tx-dsb-clr);
+}
+
+.save:disabled::after {
+  background: var(--thm-frm-btn-bg-dsb-clr);
+}
+
+.save svg {
+  display: block;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* .active .button:not(:disabled) {
+  color: var(--thm-tx-prm-cl);
+} */

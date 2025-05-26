@@ -78,23 +78,26 @@ export const MessagesNew = () => {
 
   return (
     <div class={s.root} classList={{ [s.active]: Boolean(isNew()) }}>
-      <div
-        class={s.input}
-        onFocus={handleFocus}
-        contentEditable="plaintext-only"
-        data-placeholder={t.new.placeholder()}
-        ref={editorRef}
-      />
 
-      <div class={s.submit}>
-        <button
-          class={s.button}
-          type="button"
-          disabled={form.text.length < 3 || authStore.user === null}
-          onClick={handleSubmit}
-        >
-          <SubmitImg />
-        </button>
+      <div class={s.field}>
+        <div
+          class={s.input}
+          onFocus={handleFocus}
+          contentEditable="plaintext-only"
+          data-placeholder={t.new.placeholder()}
+          ref={editorRef}
+        />
+
+        <div class={s.submit}>
+          <button
+            class={s.save}
+            type="button"
+            disabled={form.text.length < 3 || authStore.user === null}
+            onClick={handleSubmit}
+          >
+            <SubmitImg />
+          </button>
+        </div>
       </div>
     </div>
   );

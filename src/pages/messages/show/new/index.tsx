@@ -11,13 +11,13 @@ import SubmitImg from "./../../wrapper/new/right.svg";
 import AttachImg from "./../../wrapper/new/attach.svg";
 
 import { useAuth } from "../../../../contexts/auth";
-// import { useI18n } from "../../../../contexts/i18n";
+import { useI18n } from "../../../../contexts/i18n";
 import { IState, useMessages } from "../../../../contexts/messages";
 
 export const New: Component = () => {
   const { authStore } = useAuth();
   const { append, messagesStore } = useMessages();
-  // const { t } = useI18n();
+  const { t } = useI18n();
 
   let editorRef!: HTMLDivElement;
   const editor = createEditor({});
@@ -67,6 +67,8 @@ export const New: Component = () => {
     <div class={s.root}>
       <div class={s.media}>
         <button class={s.attach} disabled={true}><AttachImg /></button>
+
+        <div class={s.soon}>{t.soon()}</div>
       </div>
 
       <div class={s.field}>

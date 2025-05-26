@@ -60,4 +60,6 @@ export const dict: Dict = {
       title: "Уведомления",
     },
   },
+
+  soon: "Скоро"
 };

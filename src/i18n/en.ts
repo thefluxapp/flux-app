@@ -57,4 +57,6 @@ export const dict = {
       title: "Notifications",
     },
   },
+
+  soon: "Soon"
 };
