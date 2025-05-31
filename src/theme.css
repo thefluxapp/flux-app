@@ -18,7 +18,6 @@
   --th-fr-btn-tx-dis-cl: lch(from var(--th-fr-btn-bg-cl) calc(l + 98) c h);
   --th-fr-btn-rds: 50rem;
 
-
   --th-btn-tx-cl: lch(from var(--th-tx-pr-cl) calc(l + 45) c h);
   --th-btn-brd-cl: lch(from var(--th-btn-tx-cl) calc(l + 30) c h);
 
@@ -47,6 +46,9 @@
     --th-fr-btn-tx-cl: lch(from var(--th-fr-btn-bg-cl) calc(l - 70) c h);
     --th-fr-btn-tx-dis-cl: lch(from var(--th-fr-btn-tx-cl) calc(l + 8) c h);
     --th-fr-btn-rds: 50rem;
+
+    --th-btn-tx-cl: lch(from var(--th-tx-pr-cl) calc(l - 15) c h);
+    --th-btn-brd-cl: lch(from var(--th-btn-tx-cl) calc(l - 30) c h);
 
     /* STREAMS */
     --th-str-brd-cl: lch(from var(--th-bg-pr-cl) calc(l + 5) c h);
