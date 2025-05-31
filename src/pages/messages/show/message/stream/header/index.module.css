@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+}
+
+.icon {
+  padding: calc(var(--yr) * 1) 0;
+  line-height: calc(var(--yr) * 5);
+  color: var(--thm-tx-scnd-cl);
+  display: flex;
+  font-size: calc(var(--yr) * 2.25);
+  text-transform: uppercase;
+}
+
+.icon svg {
+  display: block;
+  width: calc(var(--yr) * 5);
+  height: calc(var(--yr) * 5);
+  margin-right: calc(var(--yr) * 2);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  /* color: var(--thm-tx-scnd-cl); */
+  color: var(--thm-frm-btn-bg-dsb-clr);
+  margin:  0 0 0 var(--xr);
+}
+
+.button {
+  appearance: none;
+  background: none;
+  padding: 0;
+  color:  inherit;
+}
+
+.button svg {
+  display: block;
+  height: calc(var(--yr) * 5);
+  width: calc(var(--yr) * 5);
+}
+
+.soon {
+  margin: 0 0 0 var(--xr);
+  color: var(--thm-tx-scnd-cl);
+  box-shadow: 0 0 0 1px inset var(--thm-frm-btn-bg-dsb-clr);
+  font-size: calc(var(--yr) * 1.75);
+  line-height: calc(var(--yr) * 2);
+  height: calc(var(--yr) * 3);
+  padding: calc(var(--yr) * 0.5) var(--yr);
+  border-radius: var(--thm-frm-btn-rds);
+  text-transform: uppercase;
+  text-align: center;
+}

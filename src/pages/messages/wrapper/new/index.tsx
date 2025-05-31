@@ -8,7 +8,7 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import SubmitImg from "./right.svg";
+import SaveImg from "./save.svg";
 
 import { useAPI } from "../../../../contexts/api";
 import { useAuth } from "../../../../contexts/auth";
@@ -95,7 +95,7 @@ export const MessagesNew = () => {
             disabled={form.text.length < 3 || authStore.user === null}
             onClick={handleSubmit}
           >
-            <SubmitImg />
+            <SaveImg />
           </button>
         </div>
       </div>

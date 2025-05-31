@@ -5,7 +5,7 @@
   --thm-bg-clr: lch(100 0 0);
   --thm-bg-ivt-clr: lch(0 0 0);
   --thm-bg-prm-clr: lch(from var(--thm-bg-clr) calc(l - 1) c h);
-  --thm-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 3) c h);
+  --thm-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 5) c h);
 
   --thm-frm-inpt-brd-clr: lch(from var(--thm-bg-prm-clr) calc(l - 10) c h);
   --thm-frm-inpt-brd-act-clr: lch(from var(--thm-frm-inpt-brd-clr) calc(l - 5) c h);
@@ -31,7 +31,7 @@
     --thm-bg-clr: lch(0 0 0);
     --thm-bg-ivt-clr: lch(100 0 0);
     --thm-bg-prm-clr: lch(from var(--thm-bg-clr) calc(l + 10) c h);
-    --thm-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 5) c h);
+    --thm-bg-scnd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 7) c h);
 
     --thm-frm-inpt-brd-clr: lch(from var(--thm-bg-prm-clr) calc(l + 10) c h);
     --thm-frm-inpt-brd-act-clr: lch(from var(--thm-frm-inpt-brd-clr) calc(l + 5) c h);

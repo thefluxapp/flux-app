@@ -6,7 +6,7 @@
 }
 
 .user {
-  /* padding: var(--yr) 0; */
+  padding: var(--yr) 0;
   font-size: calc(var(--yr) * 3);
   line-height: calc(var(--yr) * 4);
   font-weight: var(--font-bold);
@@ -28,7 +28,7 @@
 .image::after {
   content: "";
   position: absolute;
-  background: var(--theme-background-secondary-color);
+  background: var(--thm-bg-scnd-clr);
   inset: 0;
   z-index: -1;
 }
@@ -36,7 +36,7 @@
 .actions {
   display: flex;
   user-select: none;
-  color: var(--theme-text-secondary-color);
+  color: var(--thm-tx-scnd-cl);
 }
 
 .text {
@@ -51,10 +51,6 @@
   margin-right: var(--xr);
 }
 
-.state {
-  margin-left: auto;
-}
-
 .date,
 .like,
 .reply,
@@ -64,7 +60,12 @@
   text-decoration: none;
   padding: calc(var(--yr) * 1) 0;
   font-size: calc(var(--yr) * 3);
-  line-height: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 5);
+}
+
+.state {
+  display: none;
+  margin-left: auto;
 }
 
 .like,

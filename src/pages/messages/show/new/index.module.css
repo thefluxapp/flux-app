@@ -81,7 +81,6 @@
   background: none;
   color: var(--thm-frm-btn-tx-clr);
   padding: calc(var(--yr) * 2);
-  height: 100%;
   border: 0;
   cursor: pointer;
   position: relative;
@@ -122,7 +121,8 @@
 .soon {
   position: absolute;
   left: calc((50% -  var(--yr) / 2));
-  box-shadow: 0 0 0 1px var(--thm-tx-scnd-cl);
+  color: var(--thm-tx-scnd-cl);
+  box-shadow: 0 0 0 1px inset var(--thm-frm-btn-bg-dsb-clr);
   bottom: calc(var(--yr) * -3);
   font-size: calc(var(--yr) * 1.75);
   line-height: calc(var(--yr) * 2);
@@ -130,6 +130,5 @@
   border-radius: var(--thm-frm-btn-rds);
   text-transform: uppercase;
   text-align: center;
-  opacity: 0.5;
   transform: translate(-50%, 0);
 }

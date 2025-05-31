@@ -25,6 +25,9 @@ export const dict: Dict = {
 
   stream: {
     more: "и ещё {{count}}",
+    replies: "{{count}} ответов",
+    auto: "Авто",
+    summary: "Кратко",
   },
 
   login: {

@@ -35,11 +35,11 @@ export const Message: Component<{ message: MessageStore }> = ({ message }) => {
             <div class={s.like}>{t.message.like()}</div>
 
             {messagesStore.rootStore?.messageStore.message_id !==
-              message.message_id && (
-              <A href={`/messages/${message.message_id}`} class={s.reply}>
-                {t.message.reply()}
-              </A>
-            )}
+              message.message_id && !message.stream && (
+                <A href={`/messages/${message.message_id}`} class={s.reply}>
+                  {t.message.reply()}
+                </A>
+              )}
 
             <div class={s.state}>{message.state}</div>
           </div>

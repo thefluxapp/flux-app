@@ -23,6 +23,9 @@ export const dict = {
 
   stream: {
     more: "and {{count}} more",
+    replies: "{{count}} replies",
+    auto: "Auto",
+    summary: "Summary",
   },
 
   login: {
