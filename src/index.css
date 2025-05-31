@@ -31,8 +31,8 @@ body {
   line-height: calc(var(--yr) * 4.5);
   font-weight: var(--font-normal);
   margin: 0;
-  color: var(--thm-tx-prm-cl);
-  background: var(--thm-bg-prm-clr);
+  color: var(--th-tx-pr-cl);
+  background: var(--th-bg-pr-cl);
 }
 
 button,

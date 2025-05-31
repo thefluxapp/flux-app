@@ -5,7 +5,7 @@
 .icon {
   padding: calc(var(--yr) * 1) 0;
   line-height: calc(var(--yr) * 5);
-  color: var(--thm-tx-scnd-cl);
+  color: var(--th-tx-sc-cl);
   display: flex;
   font-size: calc(var(--yr) * 2.25);
   text-transform: uppercase;
@@ -21,8 +21,8 @@
 .actions {
   display: flex;
   align-items: center;
-  /* color: var(--thm-tx-scnd-cl); */
-  color: var(--thm-frm-btn-bg-dsb-clr);
+  /* color: var(--th-tx-sc-cl); */
+  color: var(--th-fr-btn-bg-dis-cl);
   margin:  0 0 0 var(--xr);
 }
 
@@ -41,13 +41,13 @@
 
 .soon {
   margin: 0 0 0 var(--xr);
-  color: var(--thm-tx-scnd-cl);
-  box-shadow: 0 0 0 1px inset var(--thm-frm-btn-bg-dsb-clr);
+  color: var(--th-tx-sc-cl);
+  box-shadow: 0 0 0 1px inset var(--th-fr-btn-bg-dis-cl);
   font-size: calc(var(--yr) * 1.75);
   line-height: calc(var(--yr) * 2);
   height: calc(var(--yr) * 3);
   padding: calc(var(--yr) * 0.5) var(--yr);
-  border-radius: var(--thm-frm-btn-rds);
+  border-radius: var(--th-fr-btn-rds);
   text-transform: uppercase;
   text-align: center;
 }

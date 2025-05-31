@@ -36,24 +36,24 @@
   border: 0;
   margin: 0;
   outline: none;
-  border-radius: var(--thm-frm-inpt-rds);
+  border-radius: var(--th-fr-inp-rds);
   padding: calc(var(--yr) * 3) var(--xr);
-  box-shadow: 0 0 0 1px var(--thm-frm-inpt-brd-clr);
-  background: var(--thm-frm-inpt-bg-clr);
+  box-shadow: 0 0 0 1px var(--th-fr-inp-brd-cl);
+  background: var(--th-fr-inp-bg-cl);
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px var(--thm-frm-inpt-brd-act-clr);
+  box-shadow: 0 0 0 2px var(--th-fr-inp-brd-ac-cl);
 }
 
 .button {
-  background: var(--thm-frm-btn-bg-clr);
-  color: var(--thm-frm-btn-tx-clr);
+  background: var(--th-fr-btn-bg-cl);
+  color: var(--th-fr-btn-tx-cl);
   padding: calc(var(--yr) * 2.5) calc(var(--xr) * 2);
-  border-radius: var(--thm-frm-btn-rds);
+  border-radius: var(--th-fr-btn-rds);
 }
 
 .button:disabled {
-  background: var(--thm-frm-btn-bg-dsb-clr);
-  color: var(--thm-frm-btn-tx-dsb-clr);
+  background: var(--th-fr-btn-bg-dis-cl);
+  color: var(--th-fr-btn-tx-dis-cl);
 }

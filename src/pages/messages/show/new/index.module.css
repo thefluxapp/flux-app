@@ -15,15 +15,15 @@
   outline: none;
   border-radius: calc(var(--yr) * 5);
   padding: calc(var(--yr) * 2.75) calc(var(--xr) * 4) calc(var(--yr) * 2.75) calc(var(--yr) * 4);
-  box-shadow: 0 0 0 1px var(--thm-frm-inpt-brd-clr);
-  background: var(--thm-frm-inpt-bg-clr);
+  box-shadow: 0 0 0 1px var(--th-fr-inp-brd-cl);
+  background: var(--th-fr-inp-bg-cl);
   transition-property: background-color, box-shadow;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px var(--thm-frm-inpt-brd-act-clr);
+  box-shadow: 0 0 0 2px var(--th-fr-inp-brd-ac-cl);
 }
 
 .input p {
@@ -45,7 +45,7 @@
   display: block;
   background: none;
   padding: calc(var(--yr) * 2);
-  color: var(--thm-frm-btn-tx-clr);
+  color: var(--th-fr-btn-tx-cl);
   height: 100%;
   border: 0;
   cursor: pointer;
@@ -53,7 +53,7 @@
 
 .save::after {
   content: '';
-  background: var(--thm-frm-btn-bg-clr);
+  background: var(--th-fr-btn-bg-cl);
   position: absolute;
   border-radius: 50%;
   display: block;
@@ -61,11 +61,11 @@
 }
 
 .save:disabled {
-  color: var(--thm-frm-btn-tx-dsb-clr);
+  color: var(--th-fr-btn-tx-dis-cl);
 }
 
 .save:disabled::after {
-  background: var(--thm-frm-btn-bg-dsb-clr);
+  background: var(--th-fr-btn-bg-dis-cl);
 }
 
 .save svg {
@@ -79,7 +79,7 @@
   appearance: none;
   display: block;
   background: none;
-  color: var(--thm-frm-btn-tx-clr);
+  color: var(--th-fr-btn-tx-cl);
   padding: calc(var(--yr) * 2);
   border: 0;
   cursor: pointer;
@@ -91,7 +91,7 @@
 
 .attach::after {
   content: '';
-  background: var(--thm-frm-btn-bg-clr);
+  background: var(--th-fr-btn-bg-cl);
   position: absolute;
   border-radius: 50%;
   display: block;
@@ -99,11 +99,11 @@
 }
 
 .attach:disabled {
-  color: var(--thm-frm-btn-tx-dsb-clr);
+  color: var(--th-fr-btn-tx-dis-cl);
 }
 
 .attach:disabled::after {
-  background: var(--thm-frm-btn-bg-dsb-clr);
+  background: var(--th-fr-btn-bg-dis-cl);
 }
 
 .attach svg {
@@ -121,13 +121,13 @@
 .soon {
   position: absolute;
   left: calc((50% -  var(--yr) / 2));
-  color: var(--thm-tx-scnd-cl);
-  box-shadow: 0 0 0 1px inset var(--thm-frm-btn-bg-dsb-clr);
+  color: var(--th-tx-sc-cl);
+  box-shadow: 0 0 0 1px inset var(--th-fr-btn-bg-dis-cl);
   bottom: calc(var(--yr) * -3);
   font-size: calc(var(--yr) * 1.75);
   line-height: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 0.5) var(--yr);
-  border-radius: var(--thm-frm-btn-rds);
+  border-radius: var(--th-fr-btn-rds);
   text-transform: uppercase;
   text-align: center;
   transform: translate(-50%, 0);

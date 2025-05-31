@@ -11,7 +11,7 @@
 }
 
 .stream {
-  border-bottom: 1px solid var(--thm-strm-brg-cl);
+  border-bottom: 1px solid var(--th-str-brd-cl);
   padding: 0 0 calc(var(--yr) * 4) 0;
 }
 
@@ -60,10 +60,7 @@
 }
 
 .left {
-  color: var(--theme-text-secondary-color);
-  /* position: absolute;
-  left: 0;
-  top: calc(var(--yr) * 1); */
+  color: var(--th-tx-sc-cl);
   width: calc(var(--yr) * 8);
   height: calc(var(--yr) * 8);
   padding: calc(var(--yr) * 2);

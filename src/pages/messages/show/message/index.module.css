@@ -28,7 +28,7 @@
 .image::after {
   content: "";
   position: absolute;
-  background: var(--thm-bg-scnd-clr);
+  background: var(--th-bg-sc-cl);
   inset: 0;
   z-index: -1;
 }
@@ -36,7 +36,7 @@
 .actions {
   display: flex;
   user-select: none;
-  color: var(--thm-tx-scnd-cl);
+  color: var(--th-tx-sc-cl);
 }
 
 .text {
