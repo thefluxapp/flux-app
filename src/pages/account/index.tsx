@@ -1,12 +1,15 @@
+import { useI18n } from "../../contexts/i18n";
 import s from "./index.module.css";
 
 export const AccountPage = () => {
+  const { t } = useI18n()
+
   return (
     <div class={s.root}>
       <div class={s.title}>
-        Тут будет страница аккаунта со всякими настройками и плюшками
+        {t.account.title()}
       </div>
-      <div class={s.desc}>Но пока нет возможности её сделать :(</div>
+      <div class={s.desc}>{t.account.desc()}</div>
     </div>
   );
 };

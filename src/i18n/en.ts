@@ -5,7 +5,10 @@ export const dict = {
 
   streams: {
     all: "All streams",
-    my: "Only my",
+    my: {
+      title: "Only my",
+      empty: "Only logged-in users can see their own fluxes. Once you’re in, you'll see your list of active flows you’re following.",
+    },
     meta: {
       title: "Streams",
     },
@@ -51,14 +54,19 @@ export const dict = {
   },
 
   notify: {
-    title: "Notifications",
-    desc: "Bla-bla",
-    button: "Allow notifications",
-    subscribed: "Bla-Bla",
-    error: "Can't send notifications, try to add webapp to main screen",
+    title: "Notifications & Pushes",
+    desc: "To get push notifications about new messages in your flows, you need to give the app permission. Tap the button to start getting pushes on this device.",
+    button: "Allow Notifications",
+    error: "Can’t send pushes to this device — try adding the site to your home screen",
+    subscribed: "We’re already sending notifications to this device.",
     meta: {
       title: "Notifications",
     },
+  },
+
+  account: {
+    title: "This will be your account page with all the settings and goodies",
+    desc: "But we can't build it just yet :(",
   },
 
   soon: "Soon"

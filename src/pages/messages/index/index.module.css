@@ -3,3 +3,43 @@
   max-width: 40rem;
   margin: 0 auto;
 }
+
+.tabs {
+  padding: 0 var(--xr);
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+.tab {
+  font-size: calc(var(--yr) * 3);
+  line-height: calc(var(--yr) * 4);
+  font-weight: var(--font-bold);
+
+
+  color: var(--th-btn-tx-cl);
+  text-decoration: none;
+  display: block;
+  padding: calc(var(--yr) * 1.5) calc(var(--xr) * 1);
+  border-radius: var(--th-fr-btn-rds);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.tab:not(:last-child) {
+  margin: 0 var(--xr) 0 0;
+}
+
+.active {
+  box-shadow:  0 0 0 1px var(--th-btn-brd-cl);
+}
+
+/* TODO Нужно по высоте (за минусом new и табов) выравнять как в account фраза про плюшки :-D */
+.empty {
+  margin: calc(var(--yr) * 10) 0;
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 7);
+}
