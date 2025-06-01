@@ -3,6 +3,10 @@ export const dict = {
     title: "Flux",
   },
 
+  header: {
+    about: "What is a Flux?",
+  },
+
   streams: {
     all: "All streams",
     my: {
@@ -67,6 +71,59 @@ export const dict = {
   account: {
     title: "This will be your account page with all the settings and goodies",
     desc: "But we can't build it just yet :(",
+  },
+
+  about: {
+    meta: {
+      title: "What is a Flux?",
+    },
+
+    title: "What is a Flux?",
+    desc: "Flux is a space where you speak and read at your own pace. Say it how you want. Read when it fits.",
+
+    summary: {
+      title: "Messages don’t pile up",
+      text: [
+        "Every message can start a new direction. It instantly gets a short summary — simple, clear, to the point.",
+        "You don’t have to open everything. Just scroll and see what matters.",
+        "You choose the detail — one line or a bit more. Flux adjusts to you.",
+      ],
+    },
+
+    streams: {
+      title: "New fluxes grow from any message",
+      text: [
+        "Conversations in Flux shift naturally. One thought leads to another — no friction.",
+        "A new direction isn’t a new room. It’s just the next idea. It shows up right under the message — with a short summary of what’s inside.",
+        "You stay in one view. Everything stays connected.",
+      ],
+    },
+
+
+    adhoc: {
+      title: "Instant side chats — no group needed",
+      text: [
+        "No need to create a new group just to talk. Pick a message, invite who you want — and start.",
+        "Bring in one person. A few. Or no one — just to save the thought.",
+        "Flux fits how people actually talk. Fast. Fluid. Straight to the point.",
+      ],
+    },
+
+    rhythm: {
+      title: "Your rhythm matters",
+      text: [
+        "New content comes fast. But there’s no rush. Each update has a short version — you choose when to go deeper.",
+        "Go full detail when it’s worth it. Skim when it’s not. You’re always in sync, even if you’re days behind.",
+      ],
+    },
+
+    ai: {
+      title: "Built on AI — not built around it",
+      text: [
+        "Flux uses AI to make reading smoother. No fake bots. Just clean summaries and faster flow.",
+        "It’s not a trendy add-on. It’s what makes Flux possible.",
+      ],
+    },
   },
 
   soon: "Soon"

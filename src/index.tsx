@@ -22,6 +22,7 @@ import { MessagesNewPage } from "./pages/messages/new";
 import { MessagesShowPage } from "./pages/messages/show";
 import { MessagesWrapper } from "./pages/messages/wrapper";
 import { NotifyPage } from "./pages/notify";
+import { AboutPage } from "./pages/about";
 
 const root = document.getElementById("root");
 
@@ -56,6 +57,11 @@ render(
                         <Route
                           path="/messages/:id"
                           component={MessagesShowPage}
+                        />
+
+                        <Route
+                          path="/about"
+                          component={AboutPage}
                         />
                       </Router>
                     </I18nProvider>
