@@ -10,21 +10,21 @@
   },
   "dependencies": {
     "@github/webauthn-json": "^2.1.1",
-    "@lexical/plain-text": "^0.23.1",
-    "@lexical/text": "^0.23.1",
-    "@solid-primitives/i18n": "^2.2.0",
+    "@lexical/plain-text": "^0.31.2",
+    "@lexical/text": "^0.31.2",
+    "@solid-primitives/i18n": "^2.2.1",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
-    "axios": "^1.7.9",
-    "nanoid": "^5.0.9",
-    "solid-js": "^1.9.4"
+    "axios": "^1.9.0",
+    "nanoid": "^5.1.5",
+    "solid-js": "^1.9.7"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/bun": "^1.2.1",
-    "typescript": "^5.7.3",
-    "vite": "^6.0.11",
-    "vite-plugin-solid": "^2.11.0",
+    "@types/bun": "^1.2.15",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-solid": "^2.11.6",
     "vite-plugin-solid-svg": "^0.8.1"
   }
 }
