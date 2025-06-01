@@ -1,6 +1,7 @@
 .root {
   display: flex;
   height: calc(var(--yr) * 10);
+  position: relative;
 }
 
 .logo {
@@ -14,4 +15,20 @@
 
 .notify {
   height: 100%;
+}
+
+.about {
+  /* margin: 0 auto; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  line-height: calc(var(--yr) * 6);
+  transform: translate(-50%, -50%);
+}
+
+.about a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: calc(var(--yr) * 2) var(--xr);
 }

@@ -5,6 +5,7 @@ import s from "./index.module.css";
 
 import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
+import { useSync } from "../../../contexts/sync";
 import { Loader } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
@@ -14,9 +15,11 @@ export const MessagesShowPage = () => {
   const params = useParams();
   const { authStore } = useAuth();
   const { update, clean, messagesStore } = useMessages();
+  const { subscribe } = useSync();
 
   onCleanup(() => {
     clean();
+    subscribe([]);
   });
 
   createEffect(
@@ -24,6 +27,9 @@ export const MessagesShowPage = () => {
       () => params.id,
       async () => {
         clean();
+
+        subscribe([params.id]);
+
         await update(params.id);
       },
     ),
@@ -31,22 +37,24 @@ export const MessagesShowPage = () => {
 
   return (
     <div class={s.root}>
-      {messagesStore.rootStore &&
-        messagesStore.rootStore.messageStore.stream !== null && (
-          <div class={s.stream}>
-            <Stream stream={messagesStore.rootStore.messageStore.stream} />
+      <div class={s.messages}>
+        {messagesStore.rootStore &&
+          messagesStore.rootStore.messageStore.stream !== null && (
+            <div class={s.stream}>
+              <Stream stream={messagesStore.rootStore.messageStore.stream} />
+            </div>
+          )}
+
+        {messagesStore.cursor !== null && (
+          <div class={s.loader}>
+            <Loader messageId={params.id} />
           </div>
         )}
 
-      {messagesStore.cursor !== null && (
-        <div class={s.loader}>
-          <Loader messageId={params.id} />
-        </div>
-      )}
-
-      <For each={messagesStore.listStore}>
-        {({ messageStore }) => <Message message={messageStore} />}
-      </For>
+        <For each={messagesStore.listStore}>
+          {({ messageStore }) => <Message message={messageStore} />}
+        </For>
+      </div>
 
       {messagesStore.rootStore !== null && authStore.isAuth && <New />}
     </div>

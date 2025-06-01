@@ -3,23 +3,27 @@
   position: relative;
 }
 
+.field {
+  position: relative;
+}
+
 .input {
   width: 100%;
   border: 0;
   margin: 0;
   outline: none;
-  border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 3) calc(var(--xr) * 4) calc(var(--yr) * 3) var(--xr);
-  box-shadow: 0 0 0 1px var(--thm-frm-inpt-brd-clr);
-  background: var(--thm-frm-inpt-bg-clr);
+  border-radius: calc(var(--yr) * 5);
+  padding: calc(var(--yr) * 2.75) calc(var(--xr) * 4) calc(var(--yr) * 2.75)
+    calc(var(--yr) * 4);
+  box-shadow: 0 0 0 1px var(--th-fr-inp-brd-cl);
+  background: var(--th-fr-inp-bg-cl);
   transition-property: background-color, box-shadow;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px lch(from var(--thm-frm-inpt-brd-clr) calc(l - 5) c h);
-  background: lch(from var(--thm-frm-inpt-bg-clr) calc(l - 2) c h);
+  box-shadow: 0 0 0 2px var(--th-fr-inp-brd-ac-cl);
 }
 
 .input p {
@@ -30,26 +34,7 @@
   content: attr(data-placeholder);
   pointer-events: none;
   display: block;
-  color: var(--thm-tx-scnd-cl);
-}
-
-.button {
-  appearance: none;
-  display: block;
-  background: none;
-  padding: 0;
-  height: 100%;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-  color: var(--thm-tx-scnd-cl);
-  border-radius: 50%;
-}
-
-.button svg {
-  display: block;
-  height: 100%;
-  padding: calc(var(--yr) * 0.5);
+  color: var(--th-tx-sc-cl);
 }
 
 .submit {
@@ -60,9 +45,43 @@
   height: calc(var(--yr) * 10);
   bottom: 0;
   right: 0;
-  padding: calc(var(--yr) * 1.5);
 }
 
-.active .button:not(:disabled) {
-  color: var(--thm-tx-prm-cl);
+.save {
+  appearance: none;
+  display: block;
+  background: none;
+  padding: calc(var(--yr) * 2);
+  color: var(--th-fr-btn-tx-cl);
+  height: 100%;
+  border: 0;
+  cursor: pointer;
 }
+
+.save::after {
+  content: "";
+  background: var(--th-fr-btn-bg-cl);
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+  inset: calc(var(--yr) * 1.5);
+}
+
+.save:disabled {
+  color: var(--th-fr-btn-tx-dis-cl);
+}
+
+.save:disabled::after {
+  background: var(--th-fr-btn-bg-dis-cl);
+}
+
+.save svg {
+  display: block;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* .active .button:not(:disabled) {
+  color: var(--th-tx-pr-cl);
+} */

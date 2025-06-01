@@ -1,0 +1,30 @@
+.main {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.main section {
+  padding: calc(var(--yr) * 8) var(--xr);
+}
+
+.main section p {
+  margin: 0 0 calc(var(--yr) * 2) 0;
+}
+
+.main section p:last-child {
+  margin: 0;
+}
+
+.main h1 {
+  margin: 0 0 calc(var(--yr) * 4) 0;
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 10);
+  line-height: calc(var(--yr) * 11);
+}
+
+.main h2 {
+  margin: 0 0 calc(var(--yr) * 4) 0;
+  font-weight: var(--font-bold);
+  font-size: calc(var(--yr) * 7);
+  line-height: calc(var(--yr) * 8);
+}

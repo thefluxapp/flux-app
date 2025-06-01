@@ -1,7 +1,11 @@
 .root {
-  padding: calc(var(--yr) * 2) var(--xr) calc(var(--yr) * 10);
+  padding: calc(var(--yr) * 2) 0 calc(var(--yr) * 10);
   max-width: 40rem;
   margin: 0 auto;
+}
+
+.messages {
+  padding: 0 var(--xr);
 }
 
 .loader {

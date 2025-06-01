@@ -7,16 +7,17 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import SubmitImg from "./../..//wrapper/new/right.svg";
+import AttachImg from "./../../wrapper/new/attach.svg";
+import SaveImg from "./../../wrapper/new/save.svg";
 
 import { useAuth } from "../../../../contexts/auth";
-// import { useI18n } from "../../../../contexts/i18n";
+import { useI18n } from "../../../../contexts/i18n";
 import { IState, useMessages } from "../../../../contexts/messages";
 
 export const New: Component = () => {
   const { authStore } = useAuth();
   const { append, messagesStore } = useMessages();
-  // const { t } = useI18n();
+  const { t } = useI18n();
 
   let editorRef!: HTMLDivElement;
   const editor = createEditor({});
@@ -64,19 +65,27 @@ export const New: Component = () => {
 
   return (
     <div class={s.root}>
-      <div class={s.field}>
-        <div class={s.input} contenteditable={true} ref={editorRef} />
+      <div class={s.media}>
+        <button class={s.attach} disabled={true} type="button">
+          <AttachImg />
+        </button>
+
+        <div class={s.soon}>{t.soon()}</div>
       </div>
 
-      <div class={s.submit}>
-        <button
-          class={s.button}
-          type="button"
-          disabled={form.text.length < 3 || authStore.user === null}
-          onClick={handleSubmit}
-        >
-          <SubmitImg />
-        </button>
+      <div class={s.field}>
+        <div class={s.input} contenteditable={true} ref={editorRef} />
+
+        <div class={s.submit}>
+          <button
+            class={s.save}
+            type="button"
+            disabled={form.text.length < 3}
+            onClick={handleSubmit}
+          >
+            <SaveImg />
+          </button>
+        </div>
       </div>
     </div>
   );
