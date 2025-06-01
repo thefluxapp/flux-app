@@ -8,7 +8,7 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import SubmitImg from "./right.svg";
+import SaveImg from "./save.svg";
 
 import { useAPI } from "../../../../contexts/api";
 import { useAuth } from "../../../../contexts/auth";
@@ -78,23 +78,25 @@ export const MessagesNew = () => {
 
   return (
     <div class={s.root} classList={{ [s.active]: Boolean(isNew()) }}>
-      <div
-        class={s.input}
-        onFocus={handleFocus}
-        contentEditable="plaintext-only"
-        data-placeholder={t.new.placeholder()}
-        ref={editorRef}
-      />
+      <div class={s.field}>
+        <div
+          class={s.input}
+          onFocus={handleFocus}
+          contentEditable="plaintext-only"
+          data-placeholder={t.new.placeholder()}
+          ref={editorRef}
+        />
 
-      <div class={s.submit}>
-        <button
-          class={s.button}
-          type="button"
-          disabled={form.text.length < 3 || authStore.user === null}
-          onClick={handleSubmit}
-        >
-          <SubmitImg />
-        </button>
+        <div class={s.submit}>
+          <button
+            class={s.save}
+            type="button"
+            disabled={form.text.length < 3 || authStore.user === null}
+            onClick={handleSubmit}
+          >
+            <SaveImg />
+          </button>
+        </div>
       </div>
     </div>
   );

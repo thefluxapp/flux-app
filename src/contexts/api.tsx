@@ -35,7 +35,10 @@ export class API {
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
 
-    this.client = axios.create();
+    this.client = axios.create({
+      adapter: "fetch",
+    });
+
     this.client.interceptors.request.use((config) => {
       if (this.rootStore.token !== null) {
         config.headers.Authorization = `Bearer ${this.rootStore.token}`;

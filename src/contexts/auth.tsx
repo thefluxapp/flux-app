@@ -61,6 +61,8 @@ export class AuthStore {
   }
 
   static initialize(): AuthStore {
+    // localStorage.setItem("auth-token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIwMTk2YzAzYS1hYzgyLTc3NDEtYThiYS1hYjI0YTczOWM5YzYiLCJleHAiOjE3NzI5MDE4MDd9.q51PcbSgFLXzB4cyVtS9lCYrnd7YXddRYXM-Sx_K9KIIVuDWOC7n2UUBLAZgo92VL3pN0rwWj-vSwxb9FwyWIQ6cSDLiSWHic6MPZ0o1l32Y4W6nLuwePQ96rF6enpYKcArApqhFJMLeExME1ytRi-bgixi4CKKUV38eZh_8f53zDhzqpLkX-VTAEetKlie4nlBcn26jqEaB8QQBZmk0DcU9h9qAD6Y6f8qEB8g0qhqJGuc4fZsefSoKJTichpVMACj0fYmdV9aNdX5rfoGYHA2rrdsK5phCkQ1-Cop8zDILG5rvJhfuywSxl85ZY5-6_WJYjy8fyqBvuwr5kLiiOU-ig4MMTGrfYh0szkFUXYEh79SLHxNLIaVFFXbET8esI_PdWvbNt0Ryud5gcmVFSyeH45uuVHn-S3oOb0MfVx9JvdjkQSk1f3CeoXDp1tnQuHOcC4caqsZ6AgX1wRzcEjt6mf7Xaad_DiIjSc_bArwFP5pGnCYFlGpFHsesq6wnWWCj2fM3V71znO5z6KaLzNU-5i61u3x2sk6DgXzS34bjEgTLuyzVe2Mrro4FX_gjHWep1ipkWEw38S-wfgo1Im93-MC00nh5RjoFgAx4LqqH1qtCiDPHr8ecPf5pOcdnvq0QBhfx47ofuuXDw-fFh66EVdLm7r0lH_7q6af2X-8")
+    // localStorage.setItem("device-id", "6D8a3rCX4pXf4iFv1L_Jv")
     const token = localStorage.getItem("auth-token");
     return new AuthStore(token);
   }

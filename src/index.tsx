@@ -3,16 +3,18 @@ import { Route, Router } from "@solidjs/router";
 import { render } from "solid-js/web";
 
 import "./index.css";
+import "./theme.css";
 
 import { APIProvider } from "./contexts/api";
 import { AuthProvider } from "./contexts/auth";
 import { I18nProvider } from "./contexts/i18n";
 import { MessagesProvider } from "./contexts/messages";
 import { RootProvider } from "./contexts/root";
-import { SSEProvider } from "./contexts/sse";
 import { StreamsProvider } from "./contexts/streams";
+import { SyncProvider } from "./contexts/sync";
 import { WorkerProvider } from "./contexts/worker";
 import { Layout } from "./layout";
+import { AboutPage } from "./pages/about";
 import { AccountPage } from "./pages/account";
 import { AuthPage } from "./pages/auth";
 import { HomePage } from "./pages/home";
@@ -36,7 +38,7 @@ render(
           <WorkerProvider>
             <StreamsProvider>
               <MessagesProvider>
-                <SSEProvider>
+                <SyncProvider>
                   <MetaProvider>
                     <I18nProvider>
                       <Router root={Layout}>
@@ -56,10 +58,12 @@ render(
                           path="/messages/:id"
                           component={MessagesShowPage}
                         />
+
+                        <Route path="/about" component={AboutPage} />
                       </Router>
                     </I18nProvider>
                   </MetaProvider>
-                </SSEProvider>
+                </SyncProvider>
               </MessagesProvider>
             </StreamsProvider>
           </WorkerProvider>

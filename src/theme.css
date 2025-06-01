@@ -1,0 +1,55 @@
+:root {
+  --th-tx-pr-cl: lch(2 0 0);
+  --th-tx-sc-cl: lch(from var(--th-tx-pr-cl) calc(l + 50) c h);
+
+  --th-bg-cl: lch(100 0 0);
+  --th-bg-inv-cl: lch(0 0 0);
+  --th-bg-pr-cl: lch(from var(--th-bg-cl) calc(l - 1) c h);
+  --th-bg-sc-cl: lch(from var(--th-bg-pr-cl) calc(l - 5) c h);
+
+  --th-fr-inp-brd-cl: lch(from var(--th-bg-pr-cl) calc(l - 10) c h);
+  --th-fr-inp-brd-ac-cl: lch(from var(--th-fr-inp-brd-cl) calc(l - 5) c h);
+  --th-fr-inp-bg-cl: lch(from var(--th-bg-pr-cl) calc(l + 1) c h);
+  --th-fr-inp-rds: calc(var(--yr) * 2);
+
+  --th-fr-btn-bg-cl: lch(from var(--th-bg-inv-cl) calc(l + 5) c h);
+  --th-fr-btn-bg-dis-cl: lch(from var(--th-fr-btn-bg-cl) calc(l + 80) c h);
+  --th-fr-btn-tx-cl: lch(from var(--th-fr-btn-bg-cl) calc(l + 98) c h);
+  --th-fr-btn-tx-dis-cl: lch(from var(--th-fr-btn-bg-cl) calc(l + 98) c h);
+  --th-fr-btn-rds: 50rem;
+
+  --th-btn-tx-cl: lch(from var(--th-tx-pr-cl) calc(l + 45) c h);
+  --th-btn-brd-cl: lch(from var(--th-btn-tx-cl) calc(l + 30) c h);
+
+  /* STREAMS */
+  --th-str-brd-cl: lch(from var(--th-bg-pr-cl) calc(l - 5) c h);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --th-tx-pr-cl: lch(88 0 0);
+    --th-tx-sc-cl: lch(from var(--th-tx-pr-cl) calc(l - 30) c h);
+
+    --th-bg-cl: lch(0 0 0);
+    --th-bg-inv-cl: lch(100 0 0);
+    --th-bg-pr-cl: lch(from var(--th-bg-cl) calc(l + 10) c h);
+    --th-bg-sc-cl: lch(from var(--th-bg-pr-cl) calc(l + 7) c h);
+
+    --th-fr-inp-brd-cl: lch(from var(--th-bg-pr-cl) calc(l + 10) c h);
+    --th-fr-inp-brd-ac-cl: lch(from var(--th-fr-inp-brd-cl) calc(l + 5) c h);
+    --th-fr-inp-bg-cl: lch(from var(--th-bg-pr-cl) calc(l + 3) c h);
+    --th-fr-inp-rds: calc(var(--yr) * 2);
+
+    --th-fr-btn-bg-cl: lch(from var(--th-bg-inv-cl) calc(l - 25) c h);
+    --th-fr-btn-bg-dis-cl: lch(from var(--th-fr-btn-bg-cl) calc(l - 50) c h);
+    --th-fr-btn-tx-cl: lch(from var(--th-fr-btn-bg-cl) calc(l - 70) c h);
+    --th-fr-btn-tx-dis-cl: lch(from var(--th-fr-btn-tx-cl) calc(l + 8) c h);
+    --th-fr-btn-rds: 50rem;
+
+    --th-btn-tx-cl: lch(from var(--th-tx-pr-cl) calc(l - 15) c h);
+    --th-btn-brd-cl: lch(from var(--th-btn-tx-cl) calc(l - 30) c h);
+
+    /* STREAMS */
+    --th-str-brd-cl: lch(from var(--th-bg-pr-cl) calc(l + 5) c h);
+  }
+}
