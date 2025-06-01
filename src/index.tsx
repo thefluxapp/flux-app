@@ -10,7 +10,7 @@ import { AuthProvider } from "./contexts/auth";
 import { I18nProvider } from "./contexts/i18n";
 import { MessagesProvider } from "./contexts/messages";
 import { RootProvider } from "./contexts/root";
-import { SSEProvider } from "./contexts/sse";
+import { SyncProvider } from "./contexts/sync";
 import { StreamsProvider } from "./contexts/streams";
 import { WorkerProvider } from "./contexts/worker";
 import { Layout } from "./layout";
@@ -38,7 +38,7 @@ render(
           <WorkerProvider>
             <StreamsProvider>
               <MessagesProvider>
-                <SSEProvider>
+                <SyncProvider>
                   <MetaProvider>
                     <I18nProvider>
                       <Router root={Layout}>
@@ -66,7 +66,7 @@ render(
                       </Router>
                     </I18nProvider>
                   </MetaProvider>
-                </SSEProvider>
+                </SyncProvider>
               </MessagesProvider>
             </StreamsProvider>
           </WorkerProvider>

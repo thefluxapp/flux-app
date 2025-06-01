@@ -1,4 +1,4 @@
-import { type ParentComponent, createContext, useContext } from "solid-js";
+import { type ParentComponent, createContext, onMount, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import WORKER_PATH from "./../worker?worker&url";
@@ -7,6 +7,10 @@ const WorkerContext = createContext<WorkerStore>();
 
 export const WorkerProvider: ParentComponent = (props) => {
   const [workerStore] = createStore(new WorkerStore(WORKER_PATH));
+
+  onMount(async () => {
+    (await workerStore.registration)?.update();
+  });
 
   return (
     <WorkerContext.Provider value={workerStore}>

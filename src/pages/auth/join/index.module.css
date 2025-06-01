@@ -29,6 +29,7 @@
 
 .field {
   margin: 0 0 calc(var(--yr) * 4);
+  max-width: 20rem;
 }
 
 .input {

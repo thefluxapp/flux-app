@@ -5,6 +5,7 @@ import s from "./index.module.css";
 
 import { useMessages } from "../../../contexts/messages";
 import { useAuth } from "../../../contexts/auth";
+import { useSync } from "../../../contexts/sync";
 import { Loader } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
@@ -14,9 +15,11 @@ export const MessagesShowPage = () => {
   const params = useParams();
   const { authStore } = useAuth();
   const { update, clean, messagesStore } = useMessages();
+  const { subscribe } = useSync();
 
   onCleanup(() => {
     clean();
+    subscribe([]);
   });
 
   createEffect(
@@ -24,6 +27,9 @@ export const MessagesShowPage = () => {
       () => params.id,
       async () => {
         clean();
+
+        subscribe([params.id]);
+
         await update(params.id);
       },
     ),

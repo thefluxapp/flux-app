@@ -28,5 +28,5 @@ export const Login = ({
     await handleLogin();
   });
 
-  return <div />;
+  return null;
 };

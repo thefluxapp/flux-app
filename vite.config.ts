@@ -12,6 +12,12 @@ export default defineConfig({
         target: "https://theflux.app",
         changeOrigin: true,
       },
+      "/api/notify": {
+        // target: "http://localhost:3010",
+        target: "https://theflux.app",
+        ws: true,
+        changeOrigin: true,
+      },
     },
   },
 });
