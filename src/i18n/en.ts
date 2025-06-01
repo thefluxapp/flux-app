@@ -11,7 +11,8 @@ export const dict = {
     all: "All streams",
     my: {
       title: "Only my",
-      empty: "Only logged-in users can see their own fluxes. Once you’re in, you'll see your list of active flows you’re following.",
+      empty:
+        "Only logged-in users can see their own fluxes. Once you’re in, you'll see your list of active flows you’re following.",
     },
     meta: {
       title: "Streams",
@@ -61,7 +62,8 @@ export const dict = {
     title: "Notifications & Pushes",
     desc: "To get push notifications about new messages in your flows, you need to give the app permission. Tap the button to start getting pushes on this device.",
     button: "Allow Notifications",
-    error: "Can’t send pushes to this device — try adding the site to your home screen",
+    error:
+      "Can’t send pushes to this device — try adding the site to your home screen",
     subscribed: "We’re already sending notifications to this device.",
     meta: {
       title: "Notifications",
@@ -99,7 +101,6 @@ export const dict = {
       ],
     },
 
-
     adhoc: {
       title: "Instant side chats — no group needed",
       text: [
@@ -126,5 +127,5 @@ export const dict = {
     },
   },
 
-  soon: "Soon"
+  soon: "Soon",
 };

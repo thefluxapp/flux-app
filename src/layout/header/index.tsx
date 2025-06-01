@@ -1,13 +1,13 @@
-import { type Component, Show } from "solid-js";
 import { A, useMatch } from "@solidjs/router";
+import { type Component, Show } from "solid-js";
 
 import s from "./index.module.css";
 
 import { useAuth } from "../../contexts/auth";
+import { useI18n } from "../../contexts/i18n";
 import { Account } from "./account";
 import { Logo } from "./logo";
 import { Notify } from "./notify";
-import { useI18n } from "../../contexts/i18n";
 
 export const Header: Component = () => {
   const isAboutPage = useMatch(() => "/about");
@@ -22,10 +22,7 @@ export const Header: Component = () => {
 
       <Show when={!isAboutPage()}>
         <div class={s.about}>
-
-          <A href="/about">
-            {t.header.about()}
-          </A>
+          <A href="/about">{t.header.about()}</A>
         </div>
       </Show>
 

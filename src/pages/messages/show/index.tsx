@@ -3,8 +3,8 @@ import { For, createEffect, on, onCleanup } from "solid-js";
 
 import s from "./index.module.css";
 
-import { useMessages } from "../../../contexts/messages";
 import { useAuth } from "../../../contexts/auth";
+import { useMessages } from "../../../contexts/messages";
 import { useSync } from "../../../contexts/sync";
 import { Loader } from "./loader";
 import { Message } from "./message";

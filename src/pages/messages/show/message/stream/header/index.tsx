@@ -1,8 +1,8 @@
 import s from "./index.module.css";
 
+import AiImg from "./ai.svg";
 import MinusImg from "./minus.svg";
 import PlusImg from "./plus.svg";
-import AiImg from "./ai.svg";
 
 import { useI18n } from "../../../../../../contexts/i18n";
 
@@ -17,8 +17,12 @@ export const Header = () => {
       </div>
 
       <div class={s.actions}>
-        <button class={s.button}><MinusImg /></button>
-        <button class={s.button}><PlusImg /></button>
+        <button class={s.button} type="button">
+          <MinusImg />
+        </button>
+        <button class={s.button} type="button">
+          <PlusImg />
+        </button>
 
         <div class={s.soon}>{t.soon()}</div>
       </div>

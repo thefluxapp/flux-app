@@ -7,8 +7,8 @@ import { createStore } from "solid-js/store";
 
 import s from "./index.module.css";
 
-import SaveImg from "./../../wrapper/new/save.svg";
 import AttachImg from "./../../wrapper/new/attach.svg";
+import SaveImg from "./../../wrapper/new/save.svg";
 
 import { useAuth } from "../../../../contexts/auth";
 import { useI18n } from "../../../../contexts/i18n";
@@ -66,7 +66,9 @@ export const New: Component = () => {
   return (
     <div class={s.root}>
       <div class={s.media}>
-        <button class={s.attach} disabled={true}><AttachImg /></button>
+        <button class={s.attach} disabled={true} type="button">
+          <AttachImg />
+        </button>
 
         <div class={s.soon}>{t.soon()}</div>
       </div>

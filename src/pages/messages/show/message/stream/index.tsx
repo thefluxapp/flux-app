@@ -1,5 +1,5 @@
-import { type Component, For } from "solid-js";
 import { A } from "@solidjs/router";
+import { type Component, For } from "solid-js";
 
 import s from "./index.module.css";
 

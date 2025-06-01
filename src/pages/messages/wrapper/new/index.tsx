@@ -78,7 +78,6 @@ export const MessagesNew = () => {
 
   return (
     <div class={s.root} classList={{ [s.active]: Boolean(isNew()) }}>
-
       <div class={s.field}>
         <div
           class={s.input}

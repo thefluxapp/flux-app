@@ -21,9 +21,8 @@
   --th-btn-tx-cl: lch(from var(--th-tx-pr-cl) calc(l + 45) c h);
   --th-btn-brd-cl: lch(from var(--th-btn-tx-cl) calc(l + 30) c h);
 
-    /* STREAMS */
-    --th-str-brd-cl: lch(from var(--th-bg-pr-cl) calc(l - 5) c h);
-
+  /* STREAMS */
+  --th-str-brd-cl: lch(from var(--th-bg-pr-cl) calc(l - 5) c h);
 }
 
 @media (prefers-color-scheme: dark) {

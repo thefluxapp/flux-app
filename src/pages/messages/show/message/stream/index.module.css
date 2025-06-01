@@ -10,7 +10,8 @@
   max-width: 30rem;
 }
 
-.root::before, .root::after {
+.root::before,
+.root::after {
   content: "";
   position: absolute;
   background: var(--th-bg-sc-cl);

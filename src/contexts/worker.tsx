@@ -1,4 +1,9 @@
-import { type ParentComponent, createContext, onMount, useContext } from "solid-js";
+import {
+  type ParentComponent,
+  createContext,
+  onMount,
+  useContext,
+} from "solid-js";
 import { createStore } from "solid-js/store";
 
 import WORKER_PATH from "./../worker?worker&url";

@@ -14,7 +14,8 @@
   margin: 0;
   outline: none;
   border-radius: calc(var(--yr) * 5);
-  padding: calc(var(--yr) * 2.75) calc(var(--xr) * 4) calc(var(--yr) * 2.75) calc(var(--yr) * 4);
+  padding: calc(var(--yr) * 2.75) calc(var(--xr) * 4) calc(var(--yr) * 2.75)
+    calc(var(--yr) * 4);
   box-shadow: 0 0 0 1px var(--th-fr-inp-brd-cl);
   background: var(--th-fr-inp-bg-cl);
   transition-property: background-color, box-shadow;
@@ -52,7 +53,7 @@
 }
 
 .save::after {
-  content: '';
+  content: "";
   background: var(--th-fr-btn-bg-cl);
   position: absolute;
   border-radius: 50%;
@@ -90,7 +91,7 @@
 }
 
 .attach::after {
-  content: '';
+  content: "";
   background: var(--th-fr-btn-bg-cl);
   position: absolute;
   border-radius: 50%;
@@ -113,14 +114,13 @@
   z-index: 1;
 }
 
-
 .media {
   position: relative;
 }
 
 .soon {
   position: absolute;
-  left: calc((50% -  var(--yr) / 2));
+  left: calc((50% - var(--yr) / 2));
   color: var(--th-tx-sc-cl);
   box-shadow: 0 0 0 1px inset var(--th-fr-btn-bg-dis-cl);
   bottom: calc(var(--yr) * -3);

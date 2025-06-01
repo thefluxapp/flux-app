@@ -4,10 +4,10 @@ import { For, createEffect } from "solid-js";
 
 import s from "./index.module.css";
 
+import { useAuth } from "../../../contexts/auth";
 import { useI18n } from "../../../contexts/i18n";
 import { useStreams } from "../../../contexts/streams";
 import { Stream } from "./stream";
-import { useAuth } from "../../../contexts/auth";
 
 export const MessagesIndexPage = () => {
   const location = useLocation();
@@ -38,9 +38,7 @@ export const MessagesIndexPage = () => {
 
       <div class={s.root}>
         {Boolean(isMyPage()) && !authStore.isAuth && (
-          <div class={s.empty}>
-            {t.streams.my.empty()}
-          </div>
+          <div class={s.empty}>{t.streams.my.empty()}</div>
         )}
 
         <For each={streamsStore.streams}>

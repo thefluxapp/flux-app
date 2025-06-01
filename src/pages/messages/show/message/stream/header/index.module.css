@@ -23,14 +23,14 @@
   align-items: center;
   /* color: var(--th-tx-sc-cl); */
   color: var(--th-fr-btn-bg-dis-cl);
-  margin:  0 0 0 var(--xr);
+  margin: 0 0 0 var(--xr);
 }
 
 .button {
   appearance: none;
   background: none;
   padding: 0;
-  color:  inherit;
+  color: inherit;
 }
 
 .button svg {

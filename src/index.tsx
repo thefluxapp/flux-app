@@ -10,10 +10,11 @@ import { AuthProvider } from "./contexts/auth";
 import { I18nProvider } from "./contexts/i18n";
 import { MessagesProvider } from "./contexts/messages";
 import { RootProvider } from "./contexts/root";
-import { SyncProvider } from "./contexts/sync";
 import { StreamsProvider } from "./contexts/streams";
+import { SyncProvider } from "./contexts/sync";
 import { WorkerProvider } from "./contexts/worker";
 import { Layout } from "./layout";
+import { AboutPage } from "./pages/about";
 import { AccountPage } from "./pages/account";
 import { AuthPage } from "./pages/auth";
 import { HomePage } from "./pages/home";
@@ -22,7 +23,6 @@ import { MessagesNewPage } from "./pages/messages/new";
 import { MessagesShowPage } from "./pages/messages/show";
 import { MessagesWrapper } from "./pages/messages/wrapper";
 import { NotifyPage } from "./pages/notify";
-import { AboutPage } from "./pages/about";
 
 const root = document.getElementById("root");
 
@@ -59,10 +59,7 @@ render(
                           component={MessagesShowPage}
                         />
 
-                        <Route
-                          path="/about"
-                          component={AboutPage}
-                        />
+                        <Route path="/about" component={AboutPage} />
                       </Router>
                     </I18nProvider>
                   </MetaProvider>
