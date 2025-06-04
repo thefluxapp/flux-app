@@ -8,6 +8,8 @@ export const Layout: ParentComponent = (props) => {
       <Header />
 
       {props.children}
+
+      <div>test</div>
     </>
   );
 };
