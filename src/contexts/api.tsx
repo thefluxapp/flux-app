@@ -10,8 +10,8 @@ import { type ParentComponent, createContext, useContext } from "solid-js";
 import { MessagesAPI } from "./api/messages";
 import { PushesAPI } from "./api/pushes";
 import { StreamsAPI } from "./api/streams";
-import { type RootStore, useRoot } from "./root";
 import { type I18nStore, useI18n } from "./i18n";
+import { type RootStore, useRoot } from "./root";
 
 const APIContext = createContext<API>(null as unknown as API);
 
