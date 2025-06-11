@@ -32,7 +32,8 @@ export const I18nProvider: ParentComponent = (props) => {
   );
 };
 
-class I18nStore {
+export class I18nStore {
+  locale: Locale;
   t: ChainedTranslator<Dict>;
 
   constructor() {
@@ -54,6 +55,7 @@ class I18nStore {
     })();
 
     this.t = proxyTranslator(translator(() => flatten(dict), resolveTemplate));
+    this.locale = locale;
   }
 }
 

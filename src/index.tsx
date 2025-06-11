@@ -33,14 +33,14 @@ if (!root) {
 render(
   () => (
     <RootProvider>
-      <APIProvider>
-        <AuthProvider>
-          <WorkerProvider>
-            <StreamsProvider>
-              <MessagesProvider>
-                <SyncProvider>
-                  <MetaProvider>
-                    <I18nProvider>
+      <I18nProvider>
+        <APIProvider>
+          <AuthProvider>
+            <WorkerProvider>
+              <StreamsProvider>
+                <MessagesProvider>
+                  <SyncProvider>
+                    <MetaProvider>
                       <Router root={Layout}>
                         <Route path="/" component={HomePage} />
                         <Route path="/auth" component={AuthPage} />
@@ -61,14 +61,14 @@ render(
 
                         <Route path="/about" component={AboutPage} />
                       </Router>
-                    </I18nProvider>
-                  </MetaProvider>
-                </SyncProvider>
-              </MessagesProvider>
-            </StreamsProvider>
-          </WorkerProvider>
-        </AuthProvider>
-      </APIProvider>
+                    </MetaProvider>
+                  </SyncProvider>
+                </MessagesProvider>
+              </StreamsProvider>
+            </WorkerProvider>
+          </AuthProvider>
+        </APIProvider>
+      </I18nProvider>
     </RootProvider>
   ),
   root,

@@ -8,13 +8,11 @@ export default defineConfig({
     allowedHosts: true,
     proxy: {
       "/api": {
-        // target: "http://localhost:3010",
-        target: "https://theflux.app",
+        target: "http://localhost:3010",
         changeOrigin: true,
       },
       "/api/notify": {
-        // target: "http://localhost:3010",
-        target: "https://theflux.app",
+        target: "http://localhost:3010",
         ws: true,
         changeOrigin: true,
       },

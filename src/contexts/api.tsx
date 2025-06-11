@@ -11,14 +11,16 @@ import { MessagesAPI } from "./api/messages";
 import { PushesAPI } from "./api/pushes";
 import { StreamsAPI } from "./api/streams";
 import { type RootStore, useRoot } from "./root";
+import { type I18nStore, useI18n } from "./i18n";
 
 const APIContext = createContext<API>(null as unknown as API);
 
 export const APIProvider: ParentComponent = (props) => {
   const { rootStore } = useRoot();
+  const { i18nStore } = useI18n();
 
   return (
-    <APIContext.Provider value={new API(rootStore)}>
+    <APIContext.Provider value={new API(rootStore, i18nStore)}>
       {props.children}
     </APIContext.Provider>
   );
@@ -32,7 +34,7 @@ export class API {
   streams = new StreamsAPI(this);
   client: AxiosInstance;
 
-  constructor(rootStore: RootStore) {
+  constructor(rootStore: RootStore, i18nStore: I18nStore) {
     this.rootStore = rootStore;
 
     this.client = axios.create({
@@ -43,6 +45,8 @@ export class API {
       if (this.rootStore.token !== null) {
         config.headers.Authorization = `Bearer ${this.rootStore.token}`;
       }
+
+      config.headers.Locale = i18nStore.locale;
 
       return config;
     });
