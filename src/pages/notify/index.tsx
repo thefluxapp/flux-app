@@ -18,15 +18,14 @@ export const NotifyPage = () => {
   const navigate = useNavigate();
   const workerStore = useWorker();
 
-  const [permission, { mutate }] = createResource<
-    NotificationPermission | undefined
-  >(() => {
-    if ("Notification" in window) {
-      return Notification.permission;
-    }
+  const [permission, { mutate }] =
+    createResource<NotificationPermission | null>(() => {
+      if ("Notification" in window) {
+        return Notification.permission;
+      }
 
-    return undefined;
-  });
+      return null;
+    });
 
   const [pushes, { refetch }] = createResource(async () => {
     return (await api.pushes.get_pushes()).device_ids;

@@ -1,6 +1,6 @@
 import { Title } from "@solidjs/meta";
 import { A, useLocation, useMatch } from "@solidjs/router";
-import { For, createEffect } from "solid-js";
+import { For, Show, createEffect } from "solid-js";
 
 import s from "./index.module.css";
 
@@ -8,6 +8,7 @@ import { useAuth } from "../../../contexts/auth";
 import { useI18n } from "../../../contexts/i18n";
 import { useStreams } from "../../../contexts/streams";
 import { Stream } from "./stream";
+import { Loading } from "../../../layout/loading";
 
 export const MessagesIndexPage = () => {
   const location = useLocation();
@@ -41,9 +42,11 @@ export const MessagesIndexPage = () => {
           <div class={s.empty}>{t.streams.my.empty()}</div>
         )}
 
-        <For each={streamsStore.streams}>
-          {(stream) => <Stream stream={stream} />}
-        </For>
+        <Show when={!streamsStore.loading} fallback={<Loading />}>
+          <For each={streamsStore.streams}>
+            {(stream) => <Stream stream={stream} />}
+          </For>
+        </Show>
       </div>
     </>
   );

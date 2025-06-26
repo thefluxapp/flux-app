@@ -1,0 +1,10 @@
+.root {
+  padding: calc(var(--yr) * 10);
+  color: var(--th-tx-sc-cl);
+}
+
+.root svg {
+  margin: 0 auto;
+  display: block;
+  width: calc(var(--yr) * 10);
+}

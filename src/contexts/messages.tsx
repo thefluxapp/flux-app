@@ -8,13 +8,28 @@ import {
 
 import { useAPI } from "./api";
 
-const MessagesContext = createContext({
-  messagesStore: null as unknown as MessagesStore,
-  setMessagesStore: null as unknown as SetStoreFunction<MessagesStore>,
-  update: null as unknown as (messageId: string) => Promise<void>,
-  clean: null as unknown as () => void,
-  append: null as unknown as (message: IMessage[]) => void,
-});
+type MessagesStore = {
+  loading: boolean;
+  cursor: string | null;
+  listStore: {
+    messageStore: MessageStore;
+    setMessageStore: SetStoreFunction<MessageStore>;
+  }[];
+  rootStore: {
+    messageStore: MessageStore;
+    setMessageStore: SetStoreFunction<MessageStore>;
+  } | null;
+};
+
+type MessagesContextData = {
+  messagesStore: MessagesStore;
+  setMessagesStore: SetStoreFunction<MessagesStore>;
+  update: (messageId: string, loading?: boolean) => Promise<void>;
+  clean: () => void;
+  append: (message: IMessage[]) => void;
+};
+
+const MessagesContext = createContext(null as unknown as MessagesContextData);
 
 export type IMessage = {
   message_id: string | null;
@@ -56,28 +71,16 @@ export enum IState {
   Failed = "failed",
 }
 
-type MessagesStore = {
-  cursor: string | null;
-  listStore: {
-    messageStore: MessageStore;
-    setMessageStore: SetStoreFunction<MessageStore>;
-  }[];
-  rootStore: {
-    messageStore: MessageStore;
-    setMessageStore: SetStoreFunction<MessageStore>;
-  } | null;
-};
-
 export const MessagesProvider: ParentComponent = (props) => {
   const api = useAPI();
 
-  const [messagesStore, setMessagesStore] = createStore<MessagesStore>({
-    cursor: null,
-    listStore: [],
-    rootStore: null,
-  });
+  const [messagesStore, setMessagesStore] = createStore<MessagesStore>(
+    null as unknown as MessagesStore,
+  );
 
-  const update = async (message_id: string) => {
+  const update = async (message_id: string, loading = true) => {
+    if (loading) setMessagesStore("loading", true);
+
     const data = await api.messages.get_message({
       message_id,
       cursor_message_id: messagesStore.cursor,
@@ -109,6 +112,8 @@ export const MessagesProvider: ParentComponent = (props) => {
       }),
       ...messagesStore.listStore,
     ]);
+
+    setMessagesStore("loading", false);
   };
 
   const clean = () => {
