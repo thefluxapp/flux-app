@@ -7,8 +7,8 @@ import s from "./index.module.css";
 import { useAuth } from "../../../contexts/auth";
 import { useI18n } from "../../../contexts/i18n";
 import { useStreams } from "../../../contexts/streams";
-import { Stream } from "./stream";
 import { Loading } from "../../../layout/loading";
+import { Stream } from "./stream";
 
 export const MessagesIndexPage = () => {
   const location = useLocation();

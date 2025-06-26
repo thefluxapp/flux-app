@@ -6,11 +6,11 @@ import s from "./index.module.css";
 import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
 import { useSync } from "../../../contexts/sync";
+import { Loading } from "../../../layout/loading";
 import { Loader as LoadMore } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
 import { Stream } from "./stream";
-import { Loading } from "../../../layout/loading";
 
 export const MessagesShowPage = () => {
   const params = useParams();
