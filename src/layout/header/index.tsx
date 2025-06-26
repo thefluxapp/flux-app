@@ -10,7 +10,7 @@ import { Logo } from "./logo";
 import { Notify } from "./notify";
 
 export const Header: Component = () => {
-  const isAboutPage = useMatch(() => "/about");
+  const isMessagesPage = useMatch(() => "/messages");
   const { authStore } = useAuth();
   const { t } = useI18n();
 
@@ -20,7 +20,7 @@ export const Header: Component = () => {
         <Logo />
       </div>
 
-      <Show when={!isAboutPage()}>
+      <Show when={isMessagesPage()}>
         <div class={s.about}>
           <A href="/about">{t.header.about()}</A>
         </div>

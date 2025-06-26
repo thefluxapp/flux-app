@@ -1,12 +1,13 @@
 import { useParams } from "@solidjs/router";
-import { For, createEffect, on, onCleanup } from "solid-js";
+import { For, Show, createEffect, on, onCleanup } from "solid-js";
 
 import s from "./index.module.css";
 
 import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
 import { useSync } from "../../../contexts/sync";
-import { Loader } from "./loader";
+import { Loading } from "../../../layout/loading";
+import { Loader as LoadMore } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
 import { Stream } from "./stream";
@@ -37,26 +38,28 @@ export const MessagesShowPage = () => {
 
   return (
     <div class={s.root}>
-      <div class={s.messages}>
-        {messagesStore.rootStore &&
-          messagesStore.rootStore.messageStore.stream !== null && (
-            <div class={s.stream}>
-              <Stream stream={messagesStore.rootStore.messageStore.stream} />
+      <Show when={!messagesStore.loading} fallback={<Loading />}>
+        <div class={s.messages}>
+          {messagesStore.rootStore &&
+            messagesStore.rootStore.messageStore.stream !== null && (
+              <div class={s.stream}>
+                <Stream stream={messagesStore.rootStore.messageStore.stream} />
+              </div>
+            )}
+
+          {messagesStore.cursor !== null && (
+            <div class={s.loader}>
+              <LoadMore messageId={params.id} />
             </div>
           )}
 
-        {messagesStore.cursor !== null && (
-          <div class={s.loader}>
-            <Loader messageId={params.id} />
-          </div>
-        )}
+          <For each={messagesStore.listStore}>
+            {({ messageStore }) => <Message message={messageStore} />}
+          </For>
+        </div>
 
-        <For each={messagesStore.listStore}>
-          {({ messageStore }) => <Message message={messageStore} />}
-        </For>
-      </div>
-
-      {messagesStore.rootStore !== null && authStore.isAuth && <New />}
+        {messagesStore.rootStore !== null && authStore.isAuth && <New />}
+      </Show>
     </div>
   );
 };

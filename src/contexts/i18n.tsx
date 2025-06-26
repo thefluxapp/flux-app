@@ -38,7 +38,9 @@ export class I18nStore {
 
   constructor() {
     const locale = ((): Locale => {
-      if (navigator.languages.includes(Locale.RU)) {
+      const ll = localStorage.getItem("locale");
+
+      if (navigator.languages.includes(Locale.RU) || ll === Locale.RU) {
         return Locale.RU;
       }
 

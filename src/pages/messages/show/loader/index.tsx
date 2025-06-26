@@ -23,7 +23,7 @@ export const Loader: Component<{ messageId: string }> = ({ messageId }) => {
             class={s.button}
             type="button"
             onClick={async () => {
-              await update(messageId);
+              await update(messageId, false);
             }}
           >
             {t.loader.button()}

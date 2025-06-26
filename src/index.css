@@ -66,3 +66,7 @@ button {
 .button:disabled {
   cursor: default;
 }
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}

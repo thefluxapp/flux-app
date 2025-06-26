@@ -3,25 +3,35 @@ import { type SetStoreFunction, createStore } from "solid-js/store";
 
 import { useAPI } from "./api";
 
-const StreamsContext = createContext({
-  streamsStore: null as unknown as StreamsStore,
-  setStreamsStore: null as unknown as SetStoreFunction<StreamsStore>,
-  update: null as unknown as (user: boolean) => Promise<void>,
-});
+type StreamsStore = {
+  loading: boolean;
+  streams: IStream[];
+};
+
+type StreamsContextData = {
+  streamsStore: StreamsStore;
+  setStreamsStore: SetStoreFunction<StreamsStore>;
+  update: (user: boolean) => Promise<void>;
+};
+
+const StreamsContext = createContext(null as unknown as StreamsContextData);
 
 export const StreamsProvider: ParentComponent = (props) => {
   const api = useAPI();
 
-  const [streamsStore, setStreamsStore] = createStore(
-    StreamsStore.initialize(),
-  );
+  const [streamsStore, setStreamsStore] = createStore<StreamsStore>({
+    loading: false,
+    streams: [],
+  });
 
   const update = async (user: boolean) => {
+    setStreamsStore("loading", true);
     setStreamsStore("streams", []);
 
     const data = await api.streams.get_streams(user);
 
     setStreamsStore("streams", data.streams);
+    setStreamsStore("loading", false);
   };
 
   return (
@@ -30,14 +40,6 @@ export const StreamsProvider: ParentComponent = (props) => {
     </StreamsContext.Provider>
   );
 };
-
-class StreamsStore {
-  streams: IStream[] | null = null;
-
-  static initialize(): StreamsStore {
-    return new StreamsStore();
-  }
-}
 
 export const useStreams = () => useContext(StreamsContext);
 
