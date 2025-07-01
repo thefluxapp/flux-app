@@ -47,7 +47,7 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
         </div>
 
         <A href={`/messages/${stream.message_id}`} class={s.link}>
-          <span>{t.stream.replies({ count: 99 })}</span>
+          <span>{t.stream.replies({ count: stream.messages_count })}</span>
           <RightImg />
         </A>
       </div>
