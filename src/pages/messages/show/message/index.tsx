@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { createSignal, Show, type Component } from "solid-js";
+import { type Component, Show, createSignal } from "solid-js";
 
 import s from "./index.module.css";
 
@@ -8,8 +8,8 @@ import { type MessageStore, useMessages } from "../../../../contexts/messages";
 import { Stream } from "./stream";
 
 import AiImg from "./ai.svg";
-import RightImg from "./right.svg";
 import BottomImg from "./bottom.svg";
+import RightImg from "./right.svg";
 
 export const Message: Component<{ message: MessageStore }> = ({ message }) => {
   const { t } = useI18n();
