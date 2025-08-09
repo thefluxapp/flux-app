@@ -3,11 +3,10 @@ import { type Component, For } from "solid-js";
 
 import s from "./index.module.css";
 
-import RightImg from "./right.svg";
-
 import { useI18n } from "../../../../../contexts/i18n";
 import type { IStream } from "../../../../../contexts/messages";
-import { Header } from "./header";
+
+import RightImg from "../right.svg";
 
 export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
   const { t } = useI18n();
@@ -15,16 +14,8 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
   const visible = stream.users.slice(0, 3);
   const hidden = stream.users.slice(3);
 
-  //
-
   return (
-    <div class={s.root}>
-      {/* <div class={s.right}>
-        <RightImg />
-      </div> */}
-
-      <Header />
-
+    <A href={`/messages/${stream.message_id}`} class={s.root}>
       <div class={s.main}>
         <div class={s.text}>{stream.text}</div>
 
@@ -46,11 +37,11 @@ export const Stream: Component<{ stream: IStream }> = ({ stream }) => {
           </div>
         </div>
 
-        <A href={`/messages/${stream.message_id}`} class={s.link}>
-          <span>{t.stream.replies({ count: stream.messages_count })}</span>
-          <RightImg />
-        </A>
+        <div class={s.link}>
+          <span>{t.stream.replies()}</span>
+          <RightImg class={s.right} />
+        </div>
       </div>
-    </div>
+    </A>
   );
 };

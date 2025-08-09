@@ -16,7 +16,7 @@
   line-height: calc(var(--yr) * 4);
   font-weight: var(--font-bold);
 
-  color: var(--th-btn-tx-cl);
+  color: var(--th-tx-sc-cl);
   text-decoration: none;
   display: block;
   padding: calc(var(--yr) * 1.5) calc(var(--xr) * 1);
@@ -31,7 +31,8 @@
 }
 
 .active {
-  box-shadow: 0 0 0 1px var(--th-btn-brd-cl);
+  background-color: var(--th-bg-sc-cl);
+  color: var(--th-tx-pr-cl);
 }
 
 /* TODO Нужно по высоте (за минусом new и табов) выравнять как в account фраза про плюшки :-D */

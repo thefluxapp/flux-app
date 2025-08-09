@@ -7,7 +7,7 @@ import { useAuth } from "../../../contexts/auth";
 import { useMessages } from "../../../contexts/messages";
 import { useSync } from "../../../contexts/sync";
 import { Loading } from "../../../layout/loading";
-import { Loader as LoadMore } from "./loader";
+import { Loader } from "./loader";
 import { Message } from "./message";
 import { New } from "./new";
 import { Stream } from "./stream";
@@ -49,7 +49,7 @@ export const MessagesShowPage = () => {
 
           {messagesStore.cursor !== null && (
             <div class={s.loader}>
-              <LoadMore messageId={params.id} />
+              <Loader messageId={params.id} />
             </div>
           )}
 

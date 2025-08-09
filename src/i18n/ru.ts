@@ -23,6 +23,7 @@ export const dict: Dict = {
 
   message: {
     reply: "Ответить",
+    replies: "Ответов: {{count}}",
     like: "Лайк",
     submit: "Отравить",
   },
@@ -33,7 +34,7 @@ export const dict: Dict = {
 
   stream: {
     more: "и ещё {{count}}",
-    replies: "{{count}} ответов",
+    replies: "К ответам",
     auto: "Авто",
     summary: "Кратко",
   },

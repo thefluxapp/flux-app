@@ -21,6 +21,7 @@ export const dict = {
 
   message: {
     reply: "Reply",
+    replies: "Replies {{count}}",
     like: "Like",
     submit: "Send",
   },
@@ -31,7 +32,7 @@ export const dict = {
 
   stream: {
     more: "and {{count}} more",
-    replies: "{{count}} replies",
+    replies: "To replies",
     auto: "Auto",
     summary: "Summary",
   },
