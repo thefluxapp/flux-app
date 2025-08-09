@@ -5,11 +5,20 @@
   grid-template-columns: calc(var(--yr) * 10) 1fr;
 }
 
-.user {
-  padding: var(--yr) 0;
+.header {
   font-size: calc(var(--yr) * 3);
   line-height: calc(var(--yr) * 4);
+  padding: var(--yr) 0;
+  display: flex;
+}
+
+.user {
   font-weight: var(--font-bold);
+}
+
+.datetime {
+  color: var(--th-tx-sc-cl);
+  margin: 0 0 0 var(--xr);
 }
 
 .image {
@@ -28,6 +37,7 @@
   display: flex;
   user-select: none;
   color: var(--th-tx-sc-cl);
+  margin: var(--yr) 0 0 0;
 }
 
 .text {
@@ -39,19 +49,20 @@
 }
 
 .like {
-  margin-right: var(--xr);
+  margin: 0 calc(var(--yr) * 1) 0 calc(var(--yr) * -1);
 }
 
 .date,
 .like,
+.replies,
 .reply,
 .state {
   display: block;
   color: inherit;
   text-decoration: none;
-  padding: calc(var(--yr) * 1) 0;
+  padding: 0;
   font-size: calc(var(--yr) * 3);
-  line-height: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 4);
 }
 
 .state {
@@ -59,7 +70,29 @@
   margin-left: auto;
 }
 
+.replies,
 .like,
 .reply {
   font-weight: var(--font-bold);
+  padding: calc(var(--yr) * 1) calc(var(--yr) * 1);
+  white-space: nowrap;
+  appearance: none;
+  display: flex;
+}
+
+.ai {
+  margin: 0 var(--yr) 0 0;
+}
+
+.thumb,
+.ai,
+.right,
+.bottom {
+  display: block;
+  height: calc(var(--yr) * 4);
+  stroke-width: 2;
+}
+
+.bottom {
+  margin: 0 0 0 var(--yr);
 }

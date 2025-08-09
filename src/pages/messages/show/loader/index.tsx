@@ -12,7 +12,7 @@ export const Loader: Component<{ messageId: string }> = ({ messageId }) => {
   return (
     <div class={s.root}>
       <div>
-        <div class={s.image}>+99</div>
+        <div class={s.image}>99+</div>
       </div>
 
       <div class={s.content}>

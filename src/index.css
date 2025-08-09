@@ -18,6 +18,9 @@
   --font-bold: 550;
 
   --font-cond: 90;
+
+  --brd-rd: calc(var(--yr) * 2);
+  --brd-rd-rd: 50rem;
 }
 
 *,
@@ -56,8 +59,11 @@ input {
 
 button {
   font-weight: var(--font-bold);
+  background: none;
+  padding: 0;
   border: 0;
   cursor: pointer;
+  outline: none;
   transition-property: background-color, color;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
